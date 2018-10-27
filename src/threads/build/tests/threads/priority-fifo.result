@@ -1,5 +1,1 @@
-FAIL
-Kernel panic in run: PANIC at ../../threads/synch.c:196 in lock_acquire(): assertion `lock != NULL' failed.
-Call stack: 0xc0117f90
-Translation of call stack:
-0xc0117f90: (unknown)
+PASS

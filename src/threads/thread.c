@@ -388,7 +388,14 @@ void
 thread_set_priority (int new_priority) 
 {
   struct thread *curr = thread_current ();
-  curr->priority = new_priority;
+  if (curr->priority == curr->priority_ori){
+	curr->priority = new_priority;
+	curr->priority_ori = new_priority;
+  }else{
+	curr->priority_ori = new_priority;
+  }
+  
+  //  curr->priority = new_priority;
   /*
    * list_sort (&ready_list, high_pri_func, NULL);
   if(list_empty (&curr->lock_list)){
@@ -405,9 +412,16 @@ thread_set_priority (int new_priority)
   //if(!list_empty (&ready_list) && new_priority < list_entry (list_front (&ready_list), struct thread, elem))
     //time_to_yield();    //thread_yield();
   */
+  time_to_yield ();
 }
 
+void
+thread_donate (struct thread *t, int new_priority){
+  t->priority = new_priority;
 
+  if (t==thread_current ())
+	time_to_yield ();
+}
 /* Returns the current thread's priority. */
 int
 thread_get_priority (void) 
@@ -529,7 +543,7 @@ init_thread (struct thread *t, const char *name, int priority)
   t->priority = priority;
 
   t->priority_ori = priority;
-  //list_init (&t->lock_list);
+  list_init (&t->lock_list);
 
   //P2 second addition
   list_push_back (&thread_list, &t->all);
