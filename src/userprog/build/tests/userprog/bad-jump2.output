@@ -1,5 +1,5 @@
-Copying tests/userprog/bad-jump2 into /tmp/FIIz5zciAX.dsk...
-Writing command line to /tmp/QGMGa1Fpqr.dsk...
+Copying tests/userprog/bad-jump2 into /tmp/_ZQruJzdzc.dsk...
+Writing command line to /tmp/d_crQ0P0_n.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put bad-jump2 run bad-jump2
@@ -24,8 +24,8 @@ Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0000000
  cs=001b ds=0023 es=0023 ss=0023
 bad-jump2: exit(-1)
 Execution of 'bad-jump2' complete.
-Timer: 300 ticks
-Thread: 0 idle ticks, 224 kernel ticks, 83 user ticks
+Timer: 333 ticks
+Thread: 0 idle ticks, 252 kernel ticks, 87 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 216 writes
 hd1:0: 104 reads, 0 writes

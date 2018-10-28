@@ -43,23 +43,17 @@ static bool high_lock_func (const struct list_elem *a,
 static bool high_pri_func_syn (const struct list_elem *a,
 	const struct list_elem *b,
 	void *aux UNUSED){
-  ASSERT (a != NULL);
-  ASSERT (b != NULL);
-  const struct thread *ta = list_entry (a, struct thread, elem);
-  const struct thread *tb = list_entry (b, struct thread, elem);
-  return ta->priority > tb->priority;
+  return list_entry (a, struct thread, elem)->priority >
+	list_entry (b, struct thread, elem)->priority;
 }
 
 static bool high_lock_func (const struct list_elem *a,
 	const struct list_elem *b,
 	void *aux UNUSED){
-  ASSERT (a != NULL);
-  ASSERT (b != NULL);
-  const struct lock *la = list_entry (a, struct lock, lock_elem);
-  const struct lock *lb = list_entry (b, struct lock, lock_elem);
-
-  return la->lock_pri >= lb->lock_pri;
+  return list_entry (a, struct lock, lock_elem)->lock_pri >= 
+	list_entry (b, struct lock, lock_elem)->lock_pri;
 }
+
 /* Initializes semaphore SEMA to VALUE.  A semaphore is a
    nonnegative integer along with two atomic operators for
    manipulating it:
@@ -145,16 +139,15 @@ sema_up (struct semaphore *sema)
 
   ASSERT (sema != NULL);
 
-  sema->value++;
-
   old_level = intr_disable ();
   if (!list_empty (&sema->waiters)){
 	list_sort (&sema->waiters, high_pri_func_syn, NULL);	
     thread_unblock (list_entry (list_pop_front (&sema->waiters),
                                 struct thread, elem));
   }
+  
+  sema->value++;
   time_to_yield ();
-  //sema->value++;
   
   intr_set_level (old_level);
 }
@@ -229,6 +222,14 @@ lock_init (struct lock *lock)
    interrupt handler.  This function may be called with
    interrupts disabled, but interrupts will be turned back on if
    we need to sleep. */
+
+void thread_donate (struct thread *t, int new_priority){
+  t->priority = new_priority;
+  if (t == thread_current ())
+	time_to_yield ();
+}
+  
+
 void
 lock_acquire (struct lock *lock)
 {
@@ -240,24 +241,27 @@ lock_acquire (struct lock *lock)
   old_level = intr_disable ();
   
   struct lock *cur_lock = lock;
-  struct thread *t_holder = lock->holder;
-  struct thread *t_current = thread_current ();
+  struct thread *keeper = lock->holder;
+  struct thread *seeker = thread_current ();
 
+  seeker->wait_on = lock;
 
+  if (keeper == NULL){
+	cur_lock->lock_pri = seeker->priority;
+  }else{
+    while (keeper != NULL){
+	  if (keeper->priority < seeker->priority)
+	    thread_donate (keeper, seeker->priority);
+	  else
+	    break;
 
-  t_current->wait_on = lock;
-
-  if (t_holder == NULL){
-	cur_lock->lock_pri = t_current->priority;
-  }
-  while (t_holder != NULL && t_holder->priority < t_current->priority){
-	thread_donate (t_holder, t_current->priority);
-	if (cur_lock->lock_pri < t_current->priority){
-	  cur_lock->lock_pri = t_current->priority;
-	}
-	cur_lock = t_holder->wait_on;
-	if (cur_lock == NULL) break;
-	t_holder = cur_lock->holder;
+	  if (cur_lock->lock_pri < seeker->priority){
+	    cur_lock->lock_pri = seeker->priority;
+	  }
+	  if ((cur_lock = keeper->wait_on) == NULL) 
+	    break;
+	  keeper = cur_lock->holder;
+    }
   }
 
   sema_down (&lock->semaphore);
@@ -301,17 +305,16 @@ lock_release (struct lock *lock)
   ASSERT (lock != NULL);
   ASSERT (lock_held_by_current_thread (lock));
   enum intr_level old_level;
+  old_level = intr_disable ();
 
   struct thread *cur = thread_current ();
-
-  old_level = intr_disable ();
 
   lock->holder = NULL;
   sema_up (&lock->semaphore);
 
   list_remove (&lock->lock_elem);
   if (list_empty (&cur->lock_list)){
-	thread_donate (cur, cur->priority_ori);
+	cur->priority = cur->priority_ori;
   }else{
 	int new_pri = PRI_MIN;
 	int temp = PRI_MIN;
@@ -326,9 +329,9 @@ lock_release (struct lock *lock)
 	//list_sort (&(cur->lock_list), high_lock_func, NULL);
 	//struct lock *temp = list_entry (list_front (&cur->lock_list), struct lock, lock_elem);
 	//struct lock *temp = list_entry (list_max (&cur->lock_list, high_lock_func, NULL), struct lock, lock_elem);
-	//thread_donate (cur, temp->lock_pri);
-	thread_donate (cur, new_pri);
+	cur->priority = new_pri;
   }
+  time_to_yield ();
   intr_set_level (old_level);
 }
 

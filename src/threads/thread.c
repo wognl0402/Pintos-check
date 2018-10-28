@@ -415,13 +415,6 @@ thread_set_priority (int new_priority)
   time_to_yield ();
 }
 
-void
-thread_donate (struct thread *t, int new_priority){
-  t->priority = new_priority;
-
-  if (t==thread_current ())
-	time_to_yield ();
-}
 /* Returns the current thread's priority. */
 int
 thread_get_priority (void) 

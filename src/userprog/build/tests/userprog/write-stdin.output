@@ -1,5 +1,5 @@
-Copying tests/userprog/write-stdin into /tmp/jcyR6PVA9H.dsk...
-Writing command line to /tmp/_4Hy2Z7m_g.dsk...
+Copying tests/userprog/write-stdin into /tmp/MYmDHceE9_.dsk...
+Writing command line to /tmp/nBPz7cjflP.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put write-stdin run write-stdin
@@ -17,8 +17,8 @@ Executing 'write-stdin':
 (write-stdin) begin
 write-stdin: exit(-1)
 Execution of 'write-stdin' complete.
-Timer: 252 ticks
-Thread: 0 idle ticks, 225 kernel ticks, 34 user ticks
+Timer: 290 ticks
+Thread: 0 idle ticks, 254 kernel ticks, 39 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 216 writes
 hd1:0: 104 reads, 0 writes

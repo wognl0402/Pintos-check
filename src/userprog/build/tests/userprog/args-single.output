@@ -1,5 +1,5 @@
-Copying tests/userprog/args-single into /tmp/pqGPbLvvEm.dsk...
-Writing command line to /tmp/iC1l0g4SXj.dsk...
+Copying tests/userprog/args-single into /tmp/sht8Idkz2s.dsk...
+Writing command line to /tmp/yD8vS5Faay.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put args-single run 'args-single onearg'
@@ -22,8 +22,8 @@ Executing 'args-single onearg':
 (args) end
 args-single: exit(0)
 Execution of 'args-single onearg' complete.
-Timer: 278 ticks
-Thread: 0 idle ticks, 229 kernel ticks, 52 user ticks
+Timer: 311 ticks
+Thread: 0 idle ticks, 258 kernel ticks, 56 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 214 writes
 hd1:0: 103 reads, 0 writes
