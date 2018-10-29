@@ -1,12 +1,12 @@
-Copying tests/vm/page-merge-seq into /tmp/M3EUFq5D6i.dsk...
-Copying tests/vm/child-sort into /tmp/M3EUFq5D6i.dsk...
-Writing command line to /tmp/u4ZXrKC8UP.dsk...
+Copying tests/vm/page-merge-seq into /tmp/Tw5JZKvnsQ.dsk...
+Copying tests/vm/child-sort into /tmp/Tw5JZKvnsQ.dsk...
+Writing command line to /tmp/77T74NejIP.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put page-merge-seq put child-sort run page-merge-seq
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
-374 pages available in user pool.
+373 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -17,14 +17,15 @@ Boot complete.
 Putting 'page-merge-seq' into the file system...
 Putting 'child-sort' into the file system...
 Executing 'page-merge-seq':
+vm_frame_alloc: WE HAVE TO EVICT SOME FRAME
 Execution of 'page-merge-seq' complete.
-Timer: 1752 ticks
-Thread: 0 idle ticks, 375 kernel ticks, 1384 user ticks
+Timer: 2156 ticks
+Thread: 0 idle ticks, 374 kernel ticks, 1789 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 87 reads, 446 writes
 hd1:0: 218 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 948 characters output
+Console: 992 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
 Powering off...

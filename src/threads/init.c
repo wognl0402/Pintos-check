@@ -20,6 +20,7 @@
 #include "threads/palloc.h"
 #include "threads/pte.h"
 #include "threads/thread.h"
+#include "threads/synch.h"
 #ifdef USERPROG
 #include "userprog/process.h"
 #include "userprog/exception.h"
@@ -34,6 +35,8 @@
 #include "filesys/filesys.h"
 #include "filesys/fsutil.h"
 #endif
+
+#include "vm/frame.h"
 
 /* Amount of physical memory, in 4 kB pages. */
 size_t ram_pages;
@@ -102,10 +105,13 @@ main (void)
 #ifdef USERPROG
   exception_init ();
   syscall_init ();
+  //P3
+  /* My Imp*/
+  /* Start thread scheduler and enable interrupts. */
+  vm_frt_init ();
 #endif
 
-  /* Start thread scheduler and enable interrupts. */
-  thread_start ();
+    thread_start ();
   serial_init_queue ();
   timer_calibrate ();
 

@@ -42,14 +42,14 @@ void *vm_frame_alloc (enum palloc_flags flags){
 }
 
 void vm_frame_set (void *kpage, void*upage){
-
+  //printf("I'm setting up\n");
+  //acquire_frt_lock ();
+  
   struct frt_entry *f = get_frt_entry (kpage);
   
   ASSERT (f->tid == thread_current ()->tid);
   ASSERT (f->in_use);
-
   acquire_frt_lock ();
-  
   f->upage = upage;
   f->in_use = false;
 
@@ -59,9 +59,11 @@ void vm_frame_set (void *kpage, void*upage){
 
 void vm_frame_free (void *frame)
 {
+  //acquire_frt_lock ();
   struct frt_entry *f = get_frt_entry (frame);
   if(f == NULL){
 	printf ("vm_frame_free: NO SUCH FRAME EXIST\n");
+	//release_frt_lock ();
 	return;
   }
   //Remove frt_entry from the frt
@@ -77,10 +79,13 @@ void vm_frame_free (void *frame)
 //HELP TO ACCESS frt, frt_lock 
 
 void acquire_frt_lock (void){
+  //printf("try to acq\n");
   lock_acquire (&frt_lock);
+  //printf("succeed \n");
 }
 
 void release_frt_lock (void){
+  //printf("try to acq\n");
   lock_release (&frt_lock);
 }
 
@@ -99,4 +104,6 @@ struct frt_entry *get_frt_entry (void *frame){
   release_frt_lock ();
   return NULL;
 }
+
+
 

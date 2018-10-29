@@ -1,11 +1,11 @@
-Copying tests/userprog/args-dbl-space into /tmp/us3y5bJrtG.dsk...
-Writing command line to /tmp/sUQX7pgGfo.dsk...
+Copying tests/userprog/args-dbl-space into /tmp/fuyf_ENU9g.dsk...
+Writing command line to /tmp/hQEhjwxoIU.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put args-dbl-space run 'args-dbl-space two  spaces!'
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
-374 pages available in user pool.
+373 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -24,8 +24,8 @@ Executing 'args-dbl-space two  spaces!':
 (args) end
 args-dbl-space: exit(0)
 Execution of 'args-dbl-space two  spaces!' complete.
-Timer: 332 ticks
-Thread: 0 idle ticks, 279 kernel ticks, 60 user ticks
+Timer: 335 ticks
+Thread: 0 idle ticks, 277 kernel ticks, 65 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 214 writes
 hd1:0: 103 reads, 0 writes

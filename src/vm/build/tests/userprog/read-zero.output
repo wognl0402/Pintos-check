@@ -1,12 +1,12 @@
-Copying tests/userprog/read-zero into /tmp/5MzvlLp9gJ.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/5MzvlLp9gJ.dsk...
-Writing command line to /tmp/b8ObDM5tT_.dsk...
+Copying tests/userprog/read-zero into /tmp/5AJpLMhwL3.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/5AJpLMhwL3.dsk...
+Writing command line to /tmp/MSIpZDBpGI.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put read-zero put sample.txt run read-zero
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
-374 pages available in user pool.
+373 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -22,8 +22,8 @@ Executing 'read-zero':
 (read-zero) end
 read-zero: exit(0)
 Execution of 'read-zero' complete.
-Timer: 344 ticks
-Thread: 0 idle ticks, 297 kernel ticks, 53 user ticks
+Timer: 349 ticks
+Thread: 0 idle ticks, 299 kernel ticks, 56 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 90 reads, 222 writes
 hd1:0: 106 reads, 0 writes

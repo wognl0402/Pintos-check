@@ -29,4 +29,3 @@ void acquire_frt_lock (void);
 void release_frt_lock (void);
 struct frt_entry *get_frt_entry (void *);
 
-

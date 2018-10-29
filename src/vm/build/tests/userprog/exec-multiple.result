@@ -1,1 +1,5 @@
-PASS
+FAIL
+Kernel panic in run: PANIC at ../../vm/frame.c:50 in vm_frame_set(): assertion `f->tid == thread_current ()->tid' failed.
+Call stack: 0xc0123e30
+Translation of call stack:
+0xc0123e30: (unknown)

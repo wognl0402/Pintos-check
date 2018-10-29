@@ -1,12 +1,12 @@
-Copying tests/userprog/exec-once into /tmp/hB0_H14nHd.dsk...
-Copying tests/userprog/child-simple into /tmp/hB0_H14nHd.dsk...
-Writing command line to /tmp/pCmLokY5tv.dsk...
+Copying tests/userprog/exec-once into /tmp/SKcptBIr59.dsk...
+Copying tests/userprog/child-simple into /tmp/SKcptBIr59.dsk...
+Writing command line to /tmp/1Xn4bal9Ue.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put exec-once put child-simple run exec-once
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
-374 pages available in user pool.
+373 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -23,8 +23,8 @@ child-simple: exit(81)
 (exec-once) end
 exec-once: exit(0)
 Execution of 'exec-once' complete.
-Timer: 460 ticks
-Thread: 0 idle ticks, 388 kernel ticks, 83 user ticks
+Timer: 467 ticks
+Thread: 0 idle ticks, 389 kernel ticks, 89 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 122 reads, 424 writes
 hd1:0: 207 reads, 0 writes

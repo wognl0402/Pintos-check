@@ -1,11 +1,11 @@
-Copying tests/vm/mmap-zero into /tmp/aUa7qDb14R.dsk...
-Writing command line to /tmp/xasZHp3oE5.dsk...
+Copying tests/vm/mmap-zero into /tmp/ak0DC6F4XD.dsk...
+Writing command line to /tmp/CuGvZtr9zj.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put mmap-zero run mmap-zero
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
-374 pages available in user pool.
+373 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -22,7 +22,7 @@ Executing 'mmap-zero':
 mmap-zero: exit(-1)
 Execution of 'mmap-zero' complete.
 Timer: 341 ticks
-Thread: 0 idle ticks, 269 kernel ticks, 78 user ticks
+Thread: 0 idle ticks, 266 kernel ticks, 81 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 85 reads, 220 writes
 hd1:0: 104 reads, 0 writes

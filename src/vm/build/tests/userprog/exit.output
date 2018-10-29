@@ -1,11 +1,11 @@
-Copying tests/userprog/exit into /tmp/m8leXuyzmm.dsk...
-Writing command line to /tmp/Q39lvfqQz8.dsk...
+Copying tests/userprog/exit into /tmp/4jbC6uX5cJ.dsk...
+Writing command line to /tmp/1A6spk07bf.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put exit run exit
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
-374 pages available in user pool.
+373 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -18,8 +18,8 @@ Executing 'exit':
 (exit) begin
 exit: exit(57)
 Execution of 'exit' complete.
-Timer: 295 ticks
-Thread: 0 idle ticks, 268 kernel ticks, 33 user ticks
+Timer: 298 ticks
+Thread: 0 idle ticks, 266 kernel ticks, 38 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 214 writes
 hd1:0: 103 reads, 0 writes

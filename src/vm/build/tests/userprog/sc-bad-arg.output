@@ -1,11 +1,11 @@
-Copying tests/userprog/sc-bad-arg into /tmp/unCJmvv_DS.dsk...
-Writing command line to /tmp/GKJxdz2BfI.dsk...
+Copying tests/userprog/sc-bad-arg into /tmp/vKSU7Ujs42.dsk...
+Writing command line to /tmp/GwsEo7h1Vc.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put sc-bad-arg run sc-bad-arg
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
-374 pages available in user pool.
+373 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -18,8 +18,8 @@ Executing 'sc-bad-arg':
 (sc-bad-arg) begin
 sc-bad-arg: exit(-1)
 Execution of 'sc-bad-arg' complete.
-Timer: 300 ticks
-Thread: 0 idle ticks, 267 kernel ticks, 39 user ticks
+Timer: 304 ticks
+Thread: 0 idle ticks, 268 kernel ticks, 42 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 216 writes
 hd1:0: 104 reads, 0 writes

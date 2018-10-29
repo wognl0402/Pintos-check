@@ -1,11 +1,11 @@
-Copying tests/vm/page-shuffle into /tmp/255C1DIznQ.dsk...
-Writing command line to /tmp/Z1aUyG8bcX.dsk...
+Copying tests/vm/page-shuffle into /tmp/AZ6nvoa1jz.dsk...
+Writing command line to /tmp/1L9uaEFdV4.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put page-shuffle run page-shuffle
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
-374 pages available in user pool.
+373 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -30,8 +30,8 @@ Executing 'page-shuffle':
 (page-shuffle) end
 page-shuffle: exit(0)
 Execution of 'page-shuffle' complete.
-Timer: 22635 ticks
-Thread: 0 idle ticks, 276 kernel ticks, 22362 user ticks
+Timer: 22652 ticks
+Thread: 0 idle ticks, 275 kernel ticks, 22380 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 62 reads, 234 writes
 hd1:0: 113 reads, 0 writes

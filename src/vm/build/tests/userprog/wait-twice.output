@@ -1,12 +1,12 @@
-Copying tests/userprog/wait-twice into /tmp/G08LuBF9t3.dsk...
-Copying tests/userprog/child-simple into /tmp/G08LuBF9t3.dsk...
-Writing command line to /tmp/_FgtcuhmdJ.dsk...
+Copying tests/userprog/wait-twice into /tmp/dPgMv2K9vr.dsk...
+Copying tests/userprog/child-simple into /tmp/dPgMv2K9vr.dsk...
+Writing command line to /tmp/Fr2tHTdWOx.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put wait-twice put child-simple run wait-twice
 Pintos booting with 4,096 kB RAM...
 374 pages available in kernel pool.
-374 pages available in user pool.
+373 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -25,8 +25,8 @@ child-simple: exit(81)
 (wait-twice) end
 wait-twice: exit(0)
 Execution of 'wait-twice' complete.
-Timer: 485 ticks
-Thread: 0 idle ticks, 400 kernel ticks, 92 user ticks
+Timer: 491 ticks
+Thread: 0 idle ticks, 400 kernel ticks, 98 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 122 reads, 424 writes
 hd1:0: 207 reads, 0 writes
