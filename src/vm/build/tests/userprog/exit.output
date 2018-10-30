@@ -1,5 +1,5 @@
-Copying tests/userprog/exit into /tmp/4jbC6uX5cJ.dsk...
-Writing command line to /tmp/1A6spk07bf.dsk...
+Copying tests/userprog/exit into /tmp/iWuPw8AVaV.dsk...
+Writing command line to /tmp/PTv1hedG3R.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put exit run exit
@@ -18,8 +18,8 @@ Executing 'exit':
 (exit) begin
 exit: exit(57)
 Execution of 'exit' complete.
-Timer: 298 ticks
-Thread: 0 idle ticks, 266 kernel ticks, 38 user ticks
+Timer: 294 ticks
+Thread: 0 idle ticks, 263 kernel ticks, 37 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 214 writes
 hd1:0: 103 reads, 0 writes

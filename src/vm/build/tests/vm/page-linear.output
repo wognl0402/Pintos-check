@@ -1,5 +1,5 @@
-Copying tests/vm/page-linear into /tmp/byYVA4Az3U.dsk...
-Writing command line to /tmp/0LgBNLSbCc.dsk...
+Copying tests/vm/page-linear into /tmp/_TF2B_2qd3.dsk...
+Writing command line to /tmp/hKcEmzRehE.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put page-linear run page-linear
@@ -17,8 +17,8 @@ Putting 'page-linear' into the file system...
 Executing 'page-linear':
 vm_frame_alloc: WE HAVE TO EVICT SOME FRAME
 Execution of 'page-linear' complete.
-Timer: 2050 ticks
-Thread: 0 idle ticks, 268 kernel ticks, 1789 user ticks
+Timer: 1733 ticks
+Thread: 0 idle ticks, 266 kernel ticks, 1470 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 228 writes
 hd1:0: 110 reads, 0 writes

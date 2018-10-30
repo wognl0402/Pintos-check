@@ -1,5 +1,5 @@
-Copying tests/vm/page-shuffle into /tmp/AZ6nvoa1jz.dsk...
-Writing command line to /tmp/1L9uaEFdV4.dsk...
+Copying tests/vm/page-shuffle into /tmp/joIvsAI3xH.dsk...
+Writing command line to /tmp/rE8Yq4DfF8.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put page-shuffle run page-shuffle
@@ -30,8 +30,8 @@ Executing 'page-shuffle':
 (page-shuffle) end
 page-shuffle: exit(0)
 Execution of 'page-shuffle' complete.
-Timer: 22652 ticks
-Thread: 0 idle ticks, 275 kernel ticks, 22380 user ticks
+Timer: 22643 ticks
+Thread: 0 idle ticks, 275 kernel ticks, 22371 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 62 reads, 234 writes
 hd1:0: 113 reads, 0 writes

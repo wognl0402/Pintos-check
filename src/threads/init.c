@@ -30,13 +30,16 @@
 #else
 #include "tests/threads/tests.h"
 #endif
+#ifdef VM
+#include "vm/frame.h"
+#endif
 #ifdef FILESYS
 #include "devices/disk.h"
 #include "filesys/filesys.h"
 #include "filesys/fsutil.h"
 #endif
 
-#include "vm/frame.h"
+//#include "vm/frame.h"
 
 /* Amount of physical memory, in 4 kB pages. */
 size_t ram_pages;
@@ -90,7 +93,9 @@ main (void)
   palloc_init ();
   malloc_init ();
   paging_init ();
-
+#ifdef VM
+  vm_frt_init ();
+#endif
   /* Segmentation. */
 #ifdef USERPROG
   tss_init ();
@@ -108,7 +113,7 @@ main (void)
   //P3
   /* My Imp*/
   /* Start thread scheduler and enable interrupts. */
-  vm_frt_init ();
+  //vm_frt_init ();
 #endif
 
     thread_start ();

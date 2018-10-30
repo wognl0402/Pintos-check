@@ -1,5 +1,5 @@
-Copying tests/userprog/create-exists into /tmp/_QaPD0dZlO.dsk...
-Writing command line to /tmp/J0aCinB3VP.dsk...
+Copying tests/userprog/create-exists into /tmp/Gx6t2L5B5L.dsk...
+Writing command line to /tmp/IH9YH_Qch_.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put create-exists run create-exists
@@ -24,8 +24,8 @@ Executing 'create-exists':
 (create-exists) end
 create-exists: exit(0)
 Execution of 'create-exists' complete.
-Timer: 421 ticks
-Thread: 0 idle ticks, 271 kernel ticks, 153 user ticks
+Timer: 418 ticks
+Thread: 0 idle ticks, 271 kernel ticks, 150 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 141 reads, 236 writes
 hd1:0: 104 reads, 0 writes

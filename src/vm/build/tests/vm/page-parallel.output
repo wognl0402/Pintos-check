@@ -1,6 +1,6 @@
-Copying tests/vm/page-parallel into /tmp/lU5qsOZ5HT.dsk...
-Copying tests/vm/child-linear into /tmp/lU5qsOZ5HT.dsk...
-Writing command line to /tmp/ggxbmcFC8X.dsk...
+Copying tests/vm/page-parallel into /tmp/cuNTiGDT35.dsk...
+Copying tests/vm/child-linear into /tmp/cuNTiGDT35.dsk...
+Writing command line to /tmp/RRgutzLkcB.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put page-parallel put child-linear run page-parallel
@@ -24,8 +24,8 @@ vm_frame_alloc: WE HAVE TO EVICT SOME FRAME
 (page-parallel) exec "child-linear": FAILED
 page-parallel: exit(1)
 Execution of 'page-parallel' complete.
-Timer: 2975 ticks
-Thread: 0 idle ticks, 399 kernel ticks, 2579 user ticks
+Timer: 2517 ticks
+Thread: 0 idle ticks, 401 kernel ticks, 2119 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 160 reads, 434 writes
 hd1:0: 212 reads, 0 writes

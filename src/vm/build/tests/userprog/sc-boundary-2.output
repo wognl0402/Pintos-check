@@ -1,5 +1,5 @@
-Copying tests/userprog/sc-boundary-2 into /tmp/aYMaFv5O3s.dsk...
-Writing command line to /tmp/223_OrK15Z.dsk...
+Copying tests/userprog/sc-boundary-2 into /tmp/9Q11lYmStY.dsk...
+Writing command line to /tmp/4VLfmplE9r.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put sc-boundary-2 run sc-boundary-2
@@ -18,8 +18,8 @@ Executing 'sc-boundary-2':
 (sc-boundary-2) begin
 sc-boundary-2: exit(67)
 Execution of 'sc-boundary-2' complete.
-Timer: 316 ticks
-Thread: 0 idle ticks, 272 kernel ticks, 47 user ticks
+Timer: 315 ticks
+Thread: 0 idle ticks, 271 kernel ticks, 47 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 220 writes
 hd1:0: 106 reads, 0 writes

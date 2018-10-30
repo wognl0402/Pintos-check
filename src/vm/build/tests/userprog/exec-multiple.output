@@ -1,6 +1,6 @@
-Copying tests/userprog/exec-multiple into /tmp/jemG2xqIUN.dsk...
-Copying tests/userprog/child-simple into /tmp/jemG2xqIUN.dsk...
-Writing command line to /tmp/1qm4mtRI5c.dsk...
+Copying tests/userprog/exec-multiple into /tmp/qm_3OSWTez.dsk...
+Copying tests/userprog/child-simple into /tmp/qm_3OSWTez.dsk...
+Writing command line to /tmp/kES1CVgjrd.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put exec-multiple put child-simple run exec-multiple
@@ -20,21 +20,22 @@ Executing 'exec-multiple':
 (exec-multiple) begin
 (child-simple) run
 child-simple: exit(81)
-Kernel PANIC at ../../vm/frame.c:50 in vm_frame_set(): assertion `f->tid == thread_current ()->tid' failed.
-Call stack: 0xc0123e30Page fault at 0x32: not present error reading page in kernel context.
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0105652
- cr2=00000032 error=00000000
- eax=00000032 ebx=00000032 ecx=c0123d5c edx=000003d4
- esi=c010de34 edi=c010fd98 esp=c010ef6b ebp=c0123df0
- cs=0008 ds=0010 es=0010 ss=3e30
-Kernel PANIC recursion at ../../userprog/exception.c:101 in kill().
-Timer: 510 ticks
-Thread: 0 idle ticks, 374 kernel ticks, 136 user ticks
+(child-simple) run
+child-simple: exit(81)
+(child-simple) run
+child-simple: exit(81)
+(child-simple) run
+child-simple: exit(81)
+(exec-multiple) end
+exec-multiple: exit(0)
+Execution of 'exec-multiple' complete.
+Timer: 680 ticks
+Thread: 0 idle ticks, 461 kernel ticks, 226 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 136 reads, 424 writes
+hd0:1: 230 reads, 424 writes
 hd1:0: 207 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1467 characters output
+Console: 1179 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 0 page faults
 Powering off...

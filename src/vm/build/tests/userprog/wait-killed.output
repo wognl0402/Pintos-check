@@ -1,6 +1,6 @@
-Copying tests/userprog/wait-killed into /tmp/JDok4elUWf.dsk...
-Copying tests/userprog/child-bad into /tmp/JDok4elUWf.dsk...
-Writing command line to /tmp/fcNchlPKDU.dsk...
+Copying tests/userprog/wait-killed into /tmp/UZT21U_WP6.dsk...
+Copying tests/userprog/child-bad into /tmp/UZT21U_WP6.dsk...
+Writing command line to /tmp/PEcs6lJXqJ.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put wait-killed put child-bad run wait-killed
@@ -24,8 +24,8 @@ child-bad: exit(-1)
 (wait-killed) end
 wait-killed: exit(0)
 Execution of 'wait-killed' complete.
-Timer: 491 ticks
-Thread: 0 idle ticks, 402 kernel ticks, 96 user ticks
+Timer: 489 ticks
+Thread: 0 idle ticks, 402 kernel ticks, 93 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 116 reads, 426 writes
 hd1:0: 208 reads, 0 writes

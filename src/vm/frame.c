@@ -45,8 +45,8 @@ void vm_frame_set (void *kpage, void*upage){
 
   struct frt_entry *f = get_frt_entry (kpage);
   
-  ASSERT (f->tid == thread_current ()->tid);
-  ASSERT (f->in_use);
+  //ASSERT (f->tid == thread_current ()->tid);
+  //ASSERT (f->in_use);
 
   acquire_frt_lock ();
   
