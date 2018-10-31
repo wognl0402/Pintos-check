@@ -30,7 +30,7 @@
 00000000000i[     ]   SB16 support: no
 00000000000i[     ]   USB support: no
 00000000000i[     ]   VGA extension support:  
-00000000000i[MEM0 ] allocated memory at 0x7f0527859010. after alignment, vector=0x7f052785a000
+00000000000i[MEM0 ] allocated memory at 0x2b9bc670a010. after alignment, vector=0x2b9bc670b000
 00000000000i[MEM0 ] 4.00MB
 00000000000i[MEM0 ] rom at 0xf0000/65536 ('/usr/local/share/bochs/BIOS-bochs-latest')
 00000000000i[MEM0 ] rom at 0xc0000/32768 ('/usr/local/share/bochs/VGABIOS-lgpl-latest')
@@ -46,10 +46,10 @@
 00000000000i[     ] init_mem of 'extfpuirq' plugin device by virtual method
 00000000000i[     ] init_mem of 'speaker' plugin device by virtual method
 00000000000i[     ] init_dev of 'harddrv' plugin device by virtual method
-00000000000i[HD   ] HD on ata0-0: '/tmp/Hh4ZYR1V3Y.dsk' 'flat' mode 
-00000000000i[HD   ] HD on ata0-1: '/tmp/FrsLO7dbVL.dsk' 'flat' mode 
-00000000000i[HD   ] HD on ata1-0: '/tmp/Na_T3CkrDV.dsk' 'flat' mode 
-00000000000i[HD   ] HD on ata1-1: '/tmp/mESKc0ra60.dsk' 'flat' mode 
+00000000000i[HD   ] HD on ata0-0: '/tmp/iXPpTAwb9i.dsk' 'flat' mode 
+00000000000i[HD   ] HD on ata0-1: '/tmp/lysnANVRbz.dsk' 'flat' mode 
+00000000000i[HD   ] HD on ata1-0: '/tmp/wHvBZHNfvF.dsk' 'flat' mode 
+00000000000i[HD   ] HD on ata1-1: '/tmp/fQ487zyWIw.dsk' 'flat' mode 
 00000000000i[HD   ] Using boot sequence disk, none, none
 00000000000i[HD   ] Floppy boot signature check is enabled
 00000000000i[     ] init_dev of 'keyboard' plugin device by virtual method
@@ -76,97 +76,27 @@
 00000793268i[BIOS ] ata0-1: PCHS=4/16/63 translation=none LCHS=4/16/63
 00000848672i[BIOS ] ata1-0: PCHS=1/16/63 translation=none LCHS=1/16/63
 00000904090i[BIOS ] ata1-1: PCHS=8/16/63 translation=none LCHS=8/16/63
-00004730237e[CPU  ] exception(): 3rd (14) exception with no resolution, shutdown status is 00h, resetting
-00004730237i[CPU  ] protected mode
-00004730237i[CPU  ] CS.d_b = 32 bit
-00004730237i[CPU  ] SS.d_b = 32 bit
-00004730237i[CPU  ] | EAX=0000000e  EBX=00000000  ECX=00000010  EDX=c010a9a2
-00004730237i[CPU  ] | ESP=c0115ff0  EBP=c0116008  ESI=c010e221  EDI=c0116074
-00004730237i[CPU  ] | IOPL=0 id vip vif ac vm RF nt of df if tf SF zf af PF cf
-00004730237i[CPU  ] | SEG selector     base    limit G D
-00004730237i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
-00004730237i[CPU  ] |  CS:0008( 0001| 0|  0) 00000000 000fffff 1 1
-00004730237i[CPU  ] |  DS:0010( 0002| 0|  0) 00000000 000fffff 1 1
-00004730237i[CPU  ] |  SS:0010( 0002| 0|  0) 00000000 000fffff 1 1
-00004730237i[CPU  ] |  ES:0010( 0002| 0|  0) 00000000 000fffff 1 1
-00004730237i[CPU  ] |  FS:0023( 0004| 0|  3) 00000000 000fffff 1 1
-00004730237i[CPU  ] |  GS:0023( 0004| 0|  3) 00000000 000fffff 1 1
-00004730237i[CPU  ] | EIP=c01017a9 (c01017a9)
-00004730237i[CPU  ] | CR0=0x80010015 CR1=0 CR2=0xc0115fec
-00004730237i[CPU  ] | CR3=0x00120000 CR4=0x00000000
-00004730237i[CPU  ] >> e8
-00004730237i[CPU  ] >> f2
-00004730237i[CPU  ] >> fa
-00004730237i[CPU  ] >> ff
-00004730237i[CPU  ] >> ff
-00004730237i[CPU  ] >> : call .+0xfffffaf2
-00004730237i[SYS  ] bx_pc_system_c::Reset(SOFTWARE) called
-00004733977i[BIOS ] $Revision: 1.160 $ $Date: 2006/01/25 17:51:49 $
-00005047800i[KBD  ] reset-disable command received
-00005155487i[VBIOS] VGABios $Id: vgabios.c,v 1.63 2005/12/26 19:50:26 vruppert Exp $
-00005158494i[VBIOS] VBE Bios $Id: vbe.c,v 1.48 2005/12/26 19:50:26 vruppert Exp $
-00005468109i[BIOS ] ata0-0: PCHS=1/16/63 translation=none LCHS=1/16/63
-00005523505i[BIOS ] ata0-1: PCHS=4/16/63 translation=none LCHS=4/16/63
-00005578909i[BIOS ] ata1-0: PCHS=1/16/63 translation=none LCHS=1/16/63
-00005634327i[BIOS ] ata1-1: PCHS=8/16/63 translation=none LCHS=8/16/63
-00009460474e[CPU  ] exception(): 3rd (14) exception with no resolution, shutdown status is 00h, resetting
-00009460474i[CPU  ] protected mode
-00009460474i[CPU  ] CS.d_b = 32 bit
-00009460474i[CPU  ] SS.d_b = 32 bit
-00009460474i[CPU  ] | EAX=0000000e  EBX=00000000  ECX=00000010  EDX=c010a9a2
-00009460474i[CPU  ] | ESP=c0115ff0  EBP=c0116008  ESI=c010e221  EDI=c0116074
-00009460474i[CPU  ] | IOPL=0 id vip vif ac vm RF nt of df if tf SF zf af PF cf
-00009460474i[CPU  ] | SEG selector     base    limit G D
-00009460474i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
-00009460474i[CPU  ] |  CS:0008( 0001| 0|  0) 00000000 000fffff 1 1
-00009460474i[CPU  ] |  DS:0010( 0002| 0|  0) 00000000 000fffff 1 1
-00009460474i[CPU  ] |  SS:0010( 0002| 0|  0) 00000000 000fffff 1 1
-00009460474i[CPU  ] |  ES:0010( 0002| 0|  0) 00000000 000fffff 1 1
-00009460474i[CPU  ] |  FS:0023( 0004| 0|  3) 00000000 000fffff 1 1
-00009460474i[CPU  ] |  GS:0023( 0004| 0|  3) 00000000 000fffff 1 1
-00009460474i[CPU  ] | EIP=c01017a9 (c01017a9)
-00009460474i[CPU  ] | CR0=0x80010015 CR1=0 CR2=0xc0115fec
-00009460474i[CPU  ] | CR3=0x00120000 CR4=0x00000000
-00009460474i[CPU  ] >> e8
-00009460474i[CPU  ] >> f2
-00009460474i[CPU  ] >> fa
-00009460474i[CPU  ] >> ff
-00009460474i[CPU  ] >> ff
-00009460474i[CPU  ] >> : call .+0xfffffaf2
-00009460474i[SYS  ] bx_pc_system_c::Reset(SOFTWARE) called
-00009464214i[BIOS ] $Revision: 1.160 $ $Date: 2006/01/25 17:51:49 $
-00009778075i[KBD  ] reset-disable command received
-00009885762i[VBIOS] VGABios $Id: vgabios.c,v 1.63 2005/12/26 19:50:26 vruppert Exp $
-00009888769i[VBIOS] VBE Bios $Id: vbe.c,v 1.48 2005/12/26 19:50:26 vruppert Exp $
-00010198384i[BIOS ] ata0-0: PCHS=1/16/63 translation=none LCHS=1/16/63
-00010253780i[BIOS ] ata0-1: PCHS=4/16/63 translation=none LCHS=4/16/63
-00010309184i[BIOS ] ata1-0: PCHS=1/16/63 translation=none LCHS=1/16/63
-00010364602i[BIOS ] ata1-1: PCHS=8/16/63 translation=none LCHS=8/16/63
-00013055380p[     ] >>PANIC<< SIGNAL 2 caught
-00013055380i[SYS  ] Last time is 13
-00013055380i[NGUI ] bx_nogui_gui_c::exit() not implemented yet.
-00013055380i[CPU  ] protected mode
-00013055380i[CPU  ] CS.d_b = 32 bit
-00013055380i[CPU  ] SS.d_b = 32 bit
-00013055380i[CPU  ] | EAX=c002fe98  EBX=c01129c4  ECX=00000000  EDX=00000001
-00013055380i[CPU  ] | ESP=c002fe98  EBP=c002fe98  ESI=c01129c8  EDI=c01129c4
-00013055380i[CPU  ] | IOPL=0 id vip vif ac vm rf nt of df if tf SF zf af PF cf
-00013055380i[CPU  ] | SEG selector     base    limit G D
-00013055380i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
-00013055380i[CPU  ] |  CS:0008( 0001| 0|  0) 00000000 000fffff 1 1
-00013055380i[CPU  ] |  DS:0010( 0002| 0|  0) 00000000 000fffff 1 1
-00013055380i[CPU  ] |  SS:0010( 0002| 0|  0) 00000000 000fffff 1 1
-00013055380i[CPU  ] |  ES:0010( 0002| 0|  0) 00000000 000fffff 1 1
-00013055380i[CPU  ] |  FS:0010( 0002| 0|  0) 00000000 000fffff 1 1
-00013055380i[CPU  ] |  GS:0010( 0002| 0|  0) 00000000 000fffff 1 1
-00013055380i[CPU  ] | EIP=c010076f (c010076f)
-00013055380i[CPU  ] | CR0=0x80010015 CR1=0 CR2=0x00000000
-00013055380i[CPU  ] | CR3=0x00115000 CR4=0x00000000
-00013055380i[CPU  ] >> 25
-00013055380i[CPU  ] >> 00
-00013055380i[CPU  ] >> f0
-00013055380i[CPU  ] >> ff
-00013055380i[CPU  ] >> ff
-00013055380i[CPU  ] >> : and eax, 0xfffff000
-00013055380i[     ] restoring default signal behavior
-00013055380i[CTRL ] quit_sim called with exit code 1
+00018519538p[UNMP ] >>PANIC<< Shutdown port: shutdown requested
+00018519538i[SYS  ] Last time is 18
+00018519538i[NGUI ] bx_nogui_gui_c::exit() not implemented yet.
+00018519538i[CPU  ] protected mode
+00018519538i[CPU  ] CS.d_b = 32 bit
+00018519538i[CPU  ] SS.d_b = 32 bit
+00018519538i[CPU  ] | EAX=0000006e  EBX=c002ff82  ECX=ffff8900  EDX=ffff8900
+00018519538i[CPU  ] | ESP=c002ff70  EBP=c002ff88  ESI=00000000  EDI=c0115c00
+00018519538i[CPU  ] | IOPL=0 id vip vif ac vm rf nt of df IF tf sf zf af pf cf
+00018519538i[CPU  ] | SEG selector     base    limit G D
+00018519538i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
+00018519538i[CPU  ] |  CS:0008( 0001| 0|  0) 00000000 000fffff 1 1
+00018519538i[CPU  ] |  DS:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00018519538i[CPU  ] |  SS:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00018519538i[CPU  ] |  ES:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00018519538i[CPU  ] |  FS:0023( 0004| 0|  3) 00000000 000fffff 1 1
+00018519538i[CPU  ] |  GS:0023( 0004| 0|  3) 00000000 000fffff 1 1
+00018519538i[CPU  ] | EIP=c0100079 (c0100078)
+00018519538i[CPU  ] | CR0=0x80010015 CR1=0 CR2=0x00000000
+00018519538i[CPU  ] | CR3=0x00115000 CR4=0x00000000
+00018519538i[CPU  ] >> ee
+00018519538i[CPU  ] >> : out dx, al
+00018519538i[     ] restoring default signal behavior
+00018519538i[CTRL ] quit_sim called with exit code 1

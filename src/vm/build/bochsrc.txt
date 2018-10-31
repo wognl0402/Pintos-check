@@ -6,10 +6,10 @@ megs: 4
 log: bochsout.txt
 panic: action=fatal
 clock: sync=none, time0=0
-ata0-master: type=disk, path=/tmp/Hh4ZYR1V3Y.dsk, mode=flat, cylinders=1, heads=16, spt=63, translation=none
-ata0-slave: type=disk, path=/tmp/FrsLO7dbVL.dsk, mode=flat, cylinders=4, heads=16, spt=63, translation=none
+ata0-master: type=disk, path=/tmp/iXPpTAwb9i.dsk, mode=flat, cylinders=1, heads=16, spt=63, translation=none
+ata0-slave: type=disk, path=/tmp/lysnANVRbz.dsk, mode=flat, cylinders=4, heads=16, spt=63, translation=none
 ata1: enabled=1, ioaddr1=0x170, ioaddr2=0x370, irq=15
-ata1-master: type=disk, path=/tmp/Na_T3CkrDV.dsk, mode=flat, cylinders=1, heads=16, spt=63, translation=none
-ata1-slave: type=disk, path=/tmp/mESKc0ra60.dsk, mode=flat, cylinders=8, heads=16, spt=63, translation=none
+ata1-master: type=disk, path=/tmp/wHvBZHNfvF.dsk, mode=flat, cylinders=1, heads=16, spt=63, translation=none
+ata1-slave: type=disk, path=/tmp/fQ487zyWIw.dsk, mode=flat, cylinders=8, heads=16, spt=63, translation=none
 com1: enabled=1, mode=file, dev=/dev/stdout
 display_library: nogui

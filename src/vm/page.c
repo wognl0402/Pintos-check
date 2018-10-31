@@ -73,21 +73,40 @@ bool vm_put_spt_entry (struct hash *h, void *upage, void *kpage){
   }
 }
 
-void vm_stack_grow (struct hash *h, void *fault_addr){
+void vm_stack_grow (struct hash *h, void *fault_page){
   //printf("GO TO GROWING!!!!!!\n");
   //struct thread *t = thread_current ();
   void *frame = vm_frame_alloc (PAL_USER | PAL_ZERO);
-  if (frame == NULL)
-	printf("Still no eviction...\n");
-  //else{
+  if (frame == NULL){
+	PANIC ("NO FRAME FOR GROW");
+	
+	//printf("Still no eviction...\n");
+  }//else{
 
-  struct spt_entry *spte;
-  spte = malloc (sizeof (*spte));
-  spte->upage = pg_round_down (fault_addr);
-  spte->kpage = NULL;
-  spte->status = CLEARED;
+  //struct spt_entry *spte;
+  //spte = malloc (sizeof (*spte));
+  //spte->upage = pg_round_down (fault_addr);
+  //spte->upage = fault_page;
+  //spte->kpage = frame;
+  //spte->status = CLEARED;
 
+  struct thread *t = thread_current ();
+  if (pagedir_get_page (t->pagedir, fault_page) != NULL)
+	PANIC ("WHILE GROW, ALREADY IN PAGEDIR");
+  if (!pagedir_set_page (t->pagedir, fault_page, frame, true))
+	PANIC ("CANNOT SET PAGEDIR");
+  if (!vm_put_spt_entry (&t->spt, fault_page, frame))
+	PANIC ("CANNOT PUT INTO SPT");
+  
+  return;
+	  /*
   struct hash_elem *e = hash_insert (h, &spte->spt_elem);
+  if (e == NULL){
+	PANIC ("WHILE GROW, DUPLICATED HASH ELEM");
+  }
+  struct thread *t = thread_current ();
+  //pagedir_set_page (t->pagedir, fault_page)
+  */
   return;
 }
 //struct hash_elem *vm_put_spt_entry (struct hash *h, void *upage){

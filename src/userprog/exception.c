@@ -152,7 +152,19 @@ page_fault (struct intr_frame *f)
   not_present = (f->error_code & PF_P) == 0;
   write = (f->error_code & PF_W) != 0;
   user = (f->error_code & PF_U) != 0;
-/*
+  
+  struct thread *t= thread_current ();
+
+  void *fault_page = (void *) pg_round_down (fault_addr);
+
+  if (not_present){
+	if (fault_addr >= f->esp -32 
+		&&PHYS_BASE - fault_page <= STACK_MAX){
+	  vm_stack_grow (&t->spt, fault_page);
+	  return;
+	}
+  }
+  /*
   struct thread *t = thread_current ();
   struct hash *h = &t->spt;
   void *fault_page = (void *) pg_round_down (fault_addr);
