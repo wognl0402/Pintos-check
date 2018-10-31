@@ -1,6 +1,6 @@
-Copying tests/vm/page-parallel into /tmp/7Iabo8CMnU.dsk...
-Copying tests/vm/child-linear into /tmp/7Iabo8CMnU.dsk...
-Writing command line to /tmp/hoQeCCpivM.dsk...
+Copying tests/vm/page-parallel into /tmp/TMrEpyJ_Kn.dsk...
+Copying tests/vm/child-linear into /tmp/TMrEpyJ_Kn.dsk...
+Writing command line to /tmp/QLJSCLy7Gn.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put page-parallel put child-linear run page-parallel
@@ -20,17 +20,15 @@ Executing 'page-parallel':
 (page-parallel) begin
 (page-parallel) exec "child-linear"
 (page-parallel) exec "child-linear"
-vm_frame_alloc: WE HAVE TO EVICT SOME FRAME
-(page-parallel) exec "child-linear": FAILED
-page-parallel: exit(1)
-Execution of 'page-parallel' complete.
-Timer: 2923 ticks
-Thread: 0 idle ticks, 379 kernel ticks, 2547 user ticks
+Kernel PANIC at ../../vm/frame.c:70 in vm_frame_evict(): assertion `victim != NULL' failed.
+Call stack: 0xc0125e70Kernel PANIC recursion at ../../lib/kernel/hash.c:272 in hash_bytes().
+Timer: 2842 ticks
+Thread: 0 idle ticks, 368 kernel ticks, 2474 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 160 reads, 434 writes
 hd1:0: 212 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1153 characters output
+Console: 1188 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 1 page faults
 Powering off...

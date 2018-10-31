@@ -1,2 +1,5 @@
 FAIL
-run: exec "child-linear": FAILED
+Kernel panic in run: PANIC at ../../vm/frame.c:70 in vm_frame_evict(): assertion `victim != NULL' failed.
+Call stack: 0xc0125e70
+Translation of call stack:
+0xc0125e70: (unknown)

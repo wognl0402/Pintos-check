@@ -35,6 +35,7 @@ struct spt_entry *vm_get_spt_entry (struct hash *h, void *upage){
   spte.upage = upage;
   struct hash_elem *e = hash_find (h, &spte.spt_elem);
   
+  //PANIC("DURING vm_get");
   if (e == NULL)
 	return NULL;
   
@@ -73,6 +74,35 @@ bool vm_put_spt_entry (struct hash *h, void *upage, void *kpage){
   }
 }
 
+bool vm_spt_reclaim (struct hash *h, struct spt_entry *spte){
+  void *kpage = vm_frame_alloc (PAL_USER);
+
+  if (kpage == NULL)
+	PANIC ("HAVE YOU IMPLEMENTED EVCITION?");
+
+  if (!pagedir_set_page (thread_current ()->pagedir, spte->upage, kpage, true)){
+	vm_frame_free (kpage);
+	return false;
+  }
+
+  vm_swap_in (spte->swap_index, spte->upage);
+  
+  spte->kpage = kpage;
+  spte->status = ON_FRAME;
+
+  return true;
+}
+
+bool vm_set_swap (struct hash *h, void *upage, int swap_index){
+  struct spt_entry *spte = vm_get_spt_entry (h, upage);
+  if (spte == NULL)
+	return false;
+	//PANIC ("vm_set_swap: NO SUCH spt entry");
+
+  spte->status = ON_SWAP;
+  spte->swap_index = swap_index;
+  return true;
+}
 void vm_stack_grow (struct hash *h, void *fault_page){
   //printf("GO TO GROWING!!!!!!\n");
   //struct thread *t = thread_current ();
@@ -106,9 +136,10 @@ void vm_stack_grow (struct hash *h, void *fault_page){
   }
   struct thread *t = thread_current ();
   //pagedir_set_page (t->pagedir, fault_page)
-  */
+  
   return;
-}
+  */
+ }
 //struct hash_elem *vm_put_spt_entry (struct hash *h, void *upage){
 
 /* HASH INIT FUNC */

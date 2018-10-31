@@ -1,1 +1,5 @@
-PASS
+FAIL
+Kernel panic in run: PANIC at ../../userprog/pagedir.c:114 in pagedir_set_page(): assertion `(*pte & PTE_P) == 0' failed.
+Call stack: 0xc011ed88
+Translation of call stack:
+0xc011ed88: (unknown)

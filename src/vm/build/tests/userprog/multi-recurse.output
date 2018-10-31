@@ -1,5 +1,5 @@
-Copying tests/userprog/multi-recurse into /tmp/fMh64wvVG8.dsk...
-Writing command line to /tmp/fqxAHVrqCo.dsk...
+Copying tests/userprog/multi-recurse into /tmp/w4fMl0ijxi.dsk...
+Writing command line to /tmp/qSPiIEsBQt.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put multi-recurse run 'multi-recurse 15'
@@ -80,7 +80,7 @@ multi-recurse: exit(14)
 multi-recurse: exit(15)
 Execution of 'multi-recurse 15' complete.
 Timer: 1618 ticks
-Thread: 0 idle ticks, 664 kernel ticks, 964 user ticks
+Thread: 0 idle ticks, 660 kernel ticks, 968 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 639 reads, 240 writes
 hd1:0: 116 reads, 0 writes

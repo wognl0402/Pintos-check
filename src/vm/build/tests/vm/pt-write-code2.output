@@ -1,6 +1,6 @@
-Copying tests/vm/pt-write-code2 into /tmp/b2ZZnRjkbZ.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/b2ZZnRjkbZ.dsk...
-Writing command line to /tmp/0zS5qyMkQ8.dsk...
+Copying tests/vm/pt-write-code2 into /tmp/GxQbXY_kTy.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/GxQbXY_kTy.dsk...
+Writing command line to /tmp/TRfRzYdt7d.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put pt-write-code2 put sample.txt run pt-write-code2
@@ -26,20 +26,14 @@ Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0106e8c
  esi=080480a0 edi=080480a0 esp=c011292c ebp=c011eed4
  cs=0008 ds=0010 es=0010 ss=0092
 Kernel PANIC at ../../userprog/exception.c:104 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc011edc8Page fault at 0x68: not present error reading page in kernel context.
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0105652
- cr2=00000068 error=00000000
- eax=00000068 ebx=00000068 ecx=c011ecf4 edx=000003d4
- esi=c010e193 edi=c010fba5 esp=c010f437 ebp=c011ed88
- cs=0008 ds=0010 es=0010 ss=edc8
-Kernel PANIC recursion at ../../userprog/exception.c:104 in kill().
-Timer: 419 ticks
-Thread: 0 idle ticks, 291 kernel ticks, 128 user ticks
+Call stack: 0xc011edc8Kernel PANIC recursion at ../../lib/kernel/hash.c:272 in hash_bytes().
+Timer: 380 ticks
+Thread: 0 idle ticks, 291 kernel ticks, 89 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 91 reads, 224 writes
 hd1:0: 107 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1762 characters output
+Console: 1466 characters output
 Keyboard: 0 keys pressed
 Exception: 2 page faults
 Powering off...

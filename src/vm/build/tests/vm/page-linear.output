@@ -1,5 +1,5 @@
-Copying tests/vm/page-linear into /tmp/rOBRr0i1kA.dsk...
-Writing command line to /tmp/k6TnTlJ1kH.dsk...
+Copying tests/vm/page-linear into /tmp/eTJGcLCSTB.dsk...
+Writing command line to /tmp/5t7OKij6Io.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put page-linear run page-linear
@@ -15,15 +15,15 @@ Formatting file system...done.
 Boot complete.
 Putting 'page-linear' into the file system...
 Executing 'page-linear':
-vm_frame_alloc: WE HAVE TO EVICT SOME FRAME
-Execution of 'page-linear' complete.
-Timer: 2291 ticks
-Thread: 0 idle ticks, 269 kernel ticks, 2025 user ticks
+Kernel PANIC at ../../vm/frame.c:70 in vm_frame_evict(): assertion `victim != NULL' failed.
+Call stack: 0xc011ee70Kernel PANIC recursion at ../../lib/kernel/hash.c:272 in hash_bytes().
+Timer: 2273 ticks
+Thread: 0 idle ticks, 262 kernel ticks, 2011 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 228 writes
 hd1:0: 110 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 917 characters output
+Console: 1021 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 1 page faults
 Powering off...

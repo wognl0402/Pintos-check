@@ -1,5 +1,5 @@
-Copying tests/userprog/bad-jump into /tmp/tkHgvMIoL9.dsk...
-Writing command line to /tmp/hsFZft6uC_.dsk...
+Copying tests/userprog/bad-jump into /tmp/DdQ1GeROMo.dsk...
+Writing command line to /tmp/SmpNN5ZsDr.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put bad-jump run bad-jump
@@ -16,22 +16,15 @@ Boot complete.
 Putting 'bad-jump' into the file system...
 Executing 'bad-jump':
 (bad-jump) begin
-Page fault at 0: not present error reading page in user context.
-bad-jump: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0
- cr2=00000000 error=00000004
- eax=00000000 ebx=00000000 ecx=000000ad edx=0000000e
- esi=00000000 edi=00000000 esp=bfffffac ebp=bfffffb8
- cs=001b ds=0023 es=0023 ss=0023
-bad-jump: exit(-1)
-Execution of 'bad-jump' complete.
-Timer: 357 ticks
-Thread: 0 idle ticks, 270 kernel ticks, 93 user ticks
+Kernel PANIC at ../../lib/kernel/hash.c:272 in hash_bytes(): assertion `buf != NULL' failed.
+Call stack: 0xc011ee94Kernel PANIC recursion at ../../lib/kernel/hash.c:272 in hash_bytes().
+Timer: 295 ticks
+Thread: 0 idle ticks, 258 kernel ticks, 37 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 216 writes
 hd1:0: 104 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1241 characters output
+Console: 1024 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 2 page faults
 Powering off...

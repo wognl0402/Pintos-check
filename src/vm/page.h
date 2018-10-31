@@ -35,7 +35,8 @@ void vm_spt_destroy (struct hash *);
 struct spt_entry *vm_get_spt_entry (struct hash *, void *);
 bool vm_is_in_spt (struct hash *, void *);
 bool vm_put_spt_entry (struct hash *, void *, void *);
-
+bool vm_spt_reclaim (struct hash *, struct spt_entry *);
+bool vm_set_swap (struct hash *, void *, int);
 void vm_stack_grow (struct hash *, void *);
 
 unsigned spt_hash_func (const struct hash_elem *, void *);

@@ -1,6 +1,6 @@
-Copying tests/vm/page-merge-par into /tmp/boVsaPmaoB.dsk...
-Copying tests/vm/child-sort into /tmp/boVsaPmaoB.dsk...
-Writing command line to /tmp/hsBjpUij1t.dsk...
+Copying tests/vm/page-merge-par into /tmp/jHKVQXRvbX.dsk...
+Copying tests/vm/child-sort into /tmp/jHKVQXRvbX.dsk...
+Writing command line to /tmp/Dg45Krz2yC.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put page-merge-par put child-sort run page-merge-par
@@ -17,15 +17,15 @@ Boot complete.
 Putting 'page-merge-par' into the file system...
 Putting 'child-sort' into the file system...
 Executing 'page-merge-par':
-vm_frame_alloc: WE HAVE TO EVICT SOME FRAME
-Execution of 'page-merge-par' complete.
-Timer: 2399 ticks
-Thread: 0 idle ticks, 377 kernel ticks, 2029 user ticks
+Kernel PANIC at ../../vm/frame.c:70 in vm_frame_evict(): assertion `victim != NULL' failed.
+Call stack: 0xc011ee70Kernel PANIC recursion at ../../lib/kernel/hash.c:272 in hash_bytes().
+Timer: 2380 ticks
+Thread: 0 idle ticks, 368 kernel ticks, 2012 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 87 reads, 450 writes
 hd1:0: 220 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 992 characters output
+Console: 1093 characters output
 Keyboard: 0 keys pressed
-Exception: 0 page faults
+Exception: 1 page faults
 Powering off...

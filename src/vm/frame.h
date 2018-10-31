@@ -26,6 +26,9 @@ struct list frt;
 
 void vm_frt_init (void);
 void *vm_frame_alloc (enum palloc_flags);
+struct frt_entry *vm_frame_evict (void);
+struct frt_entry *vm_evict_SC (void);
+
 void vm_frame_set (void *, void *);
 void vm_frame_free (void *);
 void vm_frame_destroy (void *);
