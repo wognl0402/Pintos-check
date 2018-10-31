@@ -32,6 +32,7 @@
 #endif
 #ifdef VM
 #include "vm/frame.h"
+#include "vm/swap.h"
 #endif
 #ifdef FILESYS
 #include "devices/disk.h"
@@ -95,6 +96,7 @@ main (void)
   paging_init ();
 #ifdef VM
   vm_frt_init ();
+  //vm_swt_init ();
 #endif
   /* Segmentation. */
 #ifdef USERPROG
@@ -125,7 +127,9 @@ main (void)
   disk_init ();
   filesys_init (format_filesys);
 #endif
-
+#ifdef VM
+  vm_swt_init ();
+#endif
   printf ("Boot complete.\n");
   
   /* Run actions specified on kernel command line. */

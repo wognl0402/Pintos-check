@@ -1,11 +1,11 @@
-Copying tests/vm/mmap-overlap into /tmp/6PHC_msMAL.dsk...
-Copying tests/vm/zeros into /tmp/6PHC_msMAL.dsk...
-Writing command line to /tmp/WAhgdK7imm.dsk...
+Copying tests/vm/mmap-overlap into /tmp/EvEchWSUAp.dsk...
+Copying tests/vm/zeros into /tmp/EvEchWSUAp.dsk...
+Writing command line to /tmp/fY8gvfJgNp.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put mmap-overlap put zeros run mmap-overlap
 Pintos booting with 4,096 kB RAM...
-374 pages available in kernel pool.
+373 pages available in kernel pool.
 373 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
@@ -22,8 +22,8 @@ Executing 'mmap-overlap':
 (mmap-overlap) mmap "zeros"
 mmap-overlap: exit(-1)
 Execution of 'mmap-overlap' complete.
-Timer: 365 ticks
-Thread: 0 idle ticks, 311 kernel ticks, 57 user ticks
+Timer: 375 ticks
+Thread: 0 idle ticks, 313 kernel ticks, 65 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 97 reads, 248 writes
 hd1:0: 119 reads, 0 writes

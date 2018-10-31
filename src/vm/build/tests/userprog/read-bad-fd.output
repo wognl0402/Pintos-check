@@ -1,10 +1,10 @@
-Copying tests/userprog/read-bad-fd into /tmp/PwC8NP0fx1.dsk...
-Writing command line to /tmp/10DguNkmnN.dsk...
+Copying tests/userprog/read-bad-fd into /tmp/RLc0IjVhOk.dsk...
+Writing command line to /tmp/crZ5AhbTZP.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put read-bad-fd run read-bad-fd
 Pintos booting with 4,096 kB RAM...
-374 pages available in kernel pool.
+373 pages available in kernel pool.
 373 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
@@ -18,8 +18,8 @@ Executing 'read-bad-fd':
 (read-bad-fd) begin
 read-bad-fd: exit(-1)
 Execution of 'read-bad-fd' complete.
-Timer: 309 ticks
-Thread: 0 idle ticks, 271 kernel ticks, 41 user ticks
+Timer: 319 ticks
+Thread: 0 idle ticks, 274 kernel ticks, 48 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 216 writes
 hd1:0: 104 reads, 0 writes

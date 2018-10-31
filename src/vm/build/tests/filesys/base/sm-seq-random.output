@@ -1,10 +1,10 @@
-Copying tests/filesys/base/sm-seq-random into /tmp/wcKyq_akIL.dsk...
-Writing command line to /tmp/ApGXFdb5xs.dsk...
+Copying tests/filesys/base/sm-seq-random into /tmp/KIJ8rIkeKY.dsk...
+Writing command line to /tmp/WphT5vYhtu.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put sm-seq-random run sm-seq-random
 Pintos booting with 4,096 kB RAM...
-374 pages available in kernel pool.
+373 pages available in kernel pool.
 373 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
@@ -26,8 +26,8 @@ Executing 'sm-seq-random':
 (sm-seq-random) end
 sm-seq-random: exit(0)
 Execution of 'sm-seq-random' complete.
-Timer: 425 ticks
-Thread: 0 idle ticks, 272 kernel ticks, 156 user ticks
+Timer: 438 ticks
+Thread: 0 idle ticks, 277 kernel ticks, 164 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 117 reads, 260 writes
 hd1:0: 108 reads, 0 writes

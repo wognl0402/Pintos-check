@@ -1,11 +1,11 @@
-Copying tests/vm/pt-write-code2 into /tmp/h_DxbfhBON.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/h_DxbfhBON.dsk...
-Writing command line to /tmp/SAwq386BMP.dsk...
+Copying tests/vm/pt-write-code2 into /tmp/zi6qQlmb1x.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/zi6qQlmb1x.dsk...
+Writing command line to /tmp/b80uEvanYB.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put pt-write-code2 put sample.txt run pt-write-code2
 Pintos booting with 4,096 kB RAM...
-374 pages available in kernel pool.
+373 pages available in kernel pool.
 373 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
@@ -22,19 +22,19 @@ Executing 'pt-write-code2':
 Page fault at 0x80480a0: rights violation error writing page in kernel context.
 Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0106e8c
  cr2=080480a0 error=00000003
- eax=0000003d ebx=00000001 ecx=c011920c edx=00000000
- esi=080480a0 edi=080480a0 esp=c011192c ebp=c011ced4
+ eax=0000003d ebx=00000001 ecx=c011a20c edx=00000000
+ esi=080480a0 edi=080480a0 esp=c011292c ebp=c011eed4
  cs=0008 ds=0010 es=0010 ss=0092
-Kernel PANIC at ../../userprog/exception.c:101 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc011cdc8Page fault at 0x65: not present error reading page in kernel context.
+Kernel PANIC at ../../userprog/exception.c:104 in kill(): Kernel bug - unexpected interrupt in kernel
+Call stack: 0xc011edc8Page fault at 0x68: not present error reading page in kernel context.
 Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0105652
- cr2=00000065 error=00000000
- eax=00000065 ebx=00000065 ecx=c011ccf4 edx=000003d4
- esi=c010dc53 edi=c010f63d esp=c010eedf ebp=c011cd88
- cs=0008 ds=0010 es=0010 ss=cdc8
-Kernel PANIC recursion at ../../userprog/exception.c:101 in kill().
-Timer: 408 ticks
-Thread: 0 idle ticks, 282 kernel ticks, 126 user ticks
+ cr2=00000068 error=00000000
+ eax=00000068 ebx=00000068 ecx=c011ecf4 edx=000003d4
+ esi=c010e053 edi=c010fa59 esp=c010f2eb ebp=c011ed88
+ cs=0008 ds=0010 es=0010 ss=edc8
+Kernel PANIC recursion at ../../userprog/exception.c:104 in kill().
+Timer: 419 ticks
+Thread: 0 idle ticks, 291 kernel ticks, 128 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 91 reads, 224 writes
 hd1:0: 107 reads, 0 writes

@@ -20,6 +20,7 @@
 #include "threads/thread.h"
 #include "threads/vaddr.h"
 #include "vm/frame.h"
+#include "vm/page.h"
 
 #define MAX_ARG 64
 #define MAX_COM 128
@@ -239,6 +240,13 @@ process_exit (void)
   //printf("IT'S exiting\n");
   /* Destroy the current process's page directory and switch back
      to the kernel-only page directory. */
+#ifdef VM
+  vm_spt_destroy (&curr->spt);
+  //free (&curr->spt);
+  //curr->spt= NULL;
+  //printf ("spt destruction done\n");
+#endif
+   
   pd = curr->pagedir;
   if (pd != NULL) 
     {
@@ -253,6 +261,9 @@ process_exit (void)
       pagedir_activate (NULL);
       pagedir_destroy (pd);
     }
+#ifdef VM
+  //vm_spt_destroy (&curr->spt);
+#endif
 }
 
 /* Sets up the CPU for running user code in the current
@@ -394,10 +405,18 @@ load (const char *f_name, void (**eip) (void), void **esp)
 */
   /* Allocate and activate page directory. */
   t->pagedir = pagedir_create ();
+  
   if (t->pagedir == NULL){
     printf("NULLPAGEDIR\n");	
     goto done;
   }
+#ifdef VM
+  if (!vm_spt_init ()){
+	printf("vm_spt_init error\n");
+	goto done;
+  }
+#endif
+
   process_activate ();
   
   /* Open executable file. */
@@ -737,7 +756,8 @@ install_page (void *upage, void *kpage, bool writable)
   /* Verify that there's not already a page at that virtual
      address, then map our page there. */
   return (pagedir_get_page (t->pagedir, upage) == NULL
-          && pagedir_set_page (t->pagedir, upage, kpage, writable));
+          && pagedir_set_page (t->pagedir, upage, kpage, writable)
+		  && vm_put_spt_entry (&t->spt, upage, kpage));
 }
 
 void test_stack (int *t)

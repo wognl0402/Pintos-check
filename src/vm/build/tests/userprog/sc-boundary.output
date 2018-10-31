@@ -1,10 +1,10 @@
-Copying tests/userprog/sc-boundary into /tmp/GQctWtfdYY.dsk...
-Writing command line to /tmp/ksDbiOtDtE.dsk...
+Copying tests/userprog/sc-boundary into /tmp/g5db2acJfD.dsk...
+Writing command line to /tmp/Ja5rTtfKtT.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put sc-boundary run sc-boundary
 Pintos booting with 4,096 kB RAM...
-374 pages available in kernel pool.
+373 pages available in kernel pool.
 373 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
@@ -18,8 +18,8 @@ Executing 'sc-boundary':
 (sc-boundary) begin
 sc-boundary: exit(42)
 Execution of 'sc-boundary' complete.
-Timer: 315 ticks
-Thread: 0 idle ticks, 272 kernel ticks, 46 user ticks
+Timer: 324 ticks
+Thread: 0 idle ticks, 273 kernel ticks, 54 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 220 writes
 hd1:0: 106 reads, 0 writes

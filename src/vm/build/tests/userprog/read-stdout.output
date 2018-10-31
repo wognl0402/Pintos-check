@@ -1,10 +1,10 @@
-Copying tests/userprog/read-stdout into /tmp/LXM2LThMXR.dsk...
-Writing command line to /tmp/_z_SpHGIAw.dsk...
+Copying tests/userprog/read-stdout into /tmp/2ObKCCrx7Y.dsk...
+Writing command line to /tmp/ggx_l5jPnq.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put read-stdout run read-stdout
 Pintos booting with 4,096 kB RAM...
-374 pages available in kernel pool.
+373 pages available in kernel pool.
 373 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
@@ -18,8 +18,8 @@ Executing 'read-stdout':
 (read-stdout) begin
 read-stdout: exit(-1)
 Execution of 'read-stdout' complete.
-Timer: 306 ticks
-Thread: 0 idle ticks, 269 kernel ticks, 40 user ticks
+Timer: 319 ticks
+Thread: 0 idle ticks, 274 kernel ticks, 48 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 216 writes
 hd1:0: 104 reads, 0 writes

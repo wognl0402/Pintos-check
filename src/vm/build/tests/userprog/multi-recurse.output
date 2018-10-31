@@ -1,10 +1,10 @@
-Copying tests/userprog/multi-recurse into /tmp/OVU7s2u9vU.dsk...
-Writing command line to /tmp/qeuAqs3zvM.dsk...
+Copying tests/userprog/multi-recurse into /tmp/AHQAJIhpF_.dsk...
+Writing command line to /tmp/Gdq4wJQ9So.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put multi-recurse run 'multi-recurse 15'
 Pintos booting with 4,096 kB RAM...
-374 pages available in kernel pool.
+373 pages available in kernel pool.
 373 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
@@ -79,8 +79,8 @@ multi-recurse: exit(14)
 (multi-recurse) end 15
 multi-recurse: exit(15)
 Execution of 'multi-recurse 15' complete.
-Timer: 1530 ticks
-Thread: 0 idle ticks, 652 kernel ticks, 885 user ticks
+Timer: 1618 ticks
+Thread: 0 idle ticks, 664 kernel ticks, 964 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 639 reads, 240 writes
 hd1:0: 116 reads, 0 writes

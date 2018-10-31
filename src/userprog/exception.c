@@ -4,6 +4,9 @@
 #include "userprog/gdt.h"
 #include "threads/interrupt.h"
 #include "threads/thread.h"
+#include "vm/page.h"
+
+#define STACK_MAX 0x800000
 
 /* Number of page faults processed. */
 static long long page_fault_cnt;
@@ -149,6 +152,48 @@ page_fault (struct intr_frame *f)
   not_present = (f->error_code & PF_P) == 0;
   write = (f->error_code & PF_W) != 0;
   user = (f->error_code & PF_U) != 0;
+/*
+  struct thread *t = thread_current ();
+  struct hash *h = &t->spt;
+  void *fault_page = (void *) pg_round_down (fault_addr);
+  //vm_is_in_spt (h, fault_page);
+  struct spt_entry *e = vm_get_spt_entry (h, fault_page);
+ */
+
+  /*
+  if (!not_present || !is_user_vaddr (fault_addr) || fault_addr == NULL)
+	exit_ (-1);
+
+  //printf("LOOK WHO IS HERE\n");
+  struct thread *t = thread_current ();
+  struct hash *h = &t->spt;//printf("?!?!\n");
+  if (vm_is_in_spt (h, pg_round_down (fault_addr))){
+	exit_ (3);
+	//printf("GO SWAP\n");
+  //else{
+	//printf("....\n");
+  }
+  else if (f->esp <= fault_addr &&
+	  fault_addr >= (f->esp - 32) &&
+	  fault_addr < STACK_MAX){
+	exit_ (2);
+	//vm_stack_grow (&t->spt, fault_addr);
+	//printf("Go GROW\n");
+  }
+  else{
+	printf("Go... where?\n");
+*/  
+  /*
+  if (not_present){
+	if (vm_is_in_spt(&t->spt, fault_addr)){
+	  //printf("GO TO SWAPPING!!!!!!!!!!!!!\n");
+	}else{	  
+	  if ( fault_addr >= (f->esp -32) &&
+		  fault_addr <= PHYS_BASE - STACK_MAX)
+		vm_stack_grow (fault_addr);
+ 
+	}
+  }*/
 
   /* To implement virtual memory, delete the rest of the function
      body, and replace it with code that brings in the page to
@@ -159,5 +204,7 @@ page_fault (struct intr_frame *f)
           write ? "writing" : "reading",
           user ? "user" : "kernel");
   kill (f);
+  //}
+
 }
 

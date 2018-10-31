@@ -1,11 +1,11 @@
-Copying tests/vm/page-parallel into /tmp/cuNTiGDT35.dsk...
-Copying tests/vm/child-linear into /tmp/cuNTiGDT35.dsk...
-Writing command line to /tmp/RRgutzLkcB.dsk...
+Copying tests/vm/page-parallel into /tmp/CcwaDGc6HB.dsk...
+Copying tests/vm/child-linear into /tmp/CcwaDGc6HB.dsk...
+Writing command line to /tmp/EnzyFljMhE.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put page-parallel put child-linear run page-parallel
 Pintos booting with 4,096 kB RAM...
-374 pages available in kernel pool.
+373 pages available in kernel pool.
 373 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
@@ -24,8 +24,8 @@ vm_frame_alloc: WE HAVE TO EVICT SOME FRAME
 (page-parallel) exec "child-linear": FAILED
 page-parallel: exit(1)
 Execution of 'page-parallel' complete.
-Timer: 2517 ticks
-Thread: 0 idle ticks, 401 kernel ticks, 2119 user ticks
+Timer: 2923 ticks
+Thread: 0 idle ticks, 379 kernel ticks, 2547 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 160 reads, 434 writes
 hd1:0: 212 reads, 0 writes

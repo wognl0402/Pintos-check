@@ -69,9 +69,29 @@ void vm_frame_free (void *frame)
   list_remove (&f->frt_elem);
   free (f);
   //Free the frame
+  //printf("vm_frame_palloc?\n");
   palloc_free_page (frame);
 
   release_frt_lock ();
+  return;
+}
+
+void vm_frame_destroy (void *frame)
+{
+  struct frt_entry *f = get_frt_entry (frame);
+  if(f == NULL){
+	printf ("vm_frame_free: NO SUCH FRAME EXIST\n");
+	return;
+  }
+  //Remove frt_entry from the frt
+  acquire_frt_lock ();
+  list_remove (&f->frt_elem);
+  free (f);
+  //Free the frame
+  //printf("vm_frame_palloc?\n");
+  release_frt_lock ();
+  //palloc_free_page (frame);
+
   return;
 }
 //HELP TO ACCESS frt, frt_lock 

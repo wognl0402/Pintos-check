@@ -1,10 +1,10 @@
-Copying tests/vm/mmap-write into /tmp/MVKTb7dL2e.dsk...
-Writing command line to /tmp/Fd5dx5ub1k.dsk...
+Copying tests/vm/mmap-write into /tmp/9jrstOtsmX.dsk...
+Writing command line to /tmp/nNFwRpEQfr.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put mmap-write run mmap-write
 Pintos booting with 4,096 kB RAM...
-374 pages available in kernel pool.
+373 pages available in kernel pool.
 373 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
@@ -21,8 +21,8 @@ Executing 'mmap-write':
 (mmap-write) mmap "sample.txt"
 mmap-write: exit(-1)
 Execution of 'mmap-write' complete.
-Timer: 346 ticks
-Thread: 0 idle ticks, 269 kernel ticks, 83 user ticks
+Timer: 361 ticks
+Thread: 0 idle ticks, 273 kernel ticks, 91 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 94 reads, 228 writes
 hd1:0: 107 reads, 0 writes
