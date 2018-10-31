@@ -30,18 +30,20 @@ void *vm_frame_alloc (enum palloc_flags flags){
 	//printf("vm_frame_alloc: WE HAVE TO EVICT SOME FRAME\n");
 	struct frt_entry *victim  = vm_frame_evict ();
 	//ASSERT (temp != NULL);
-
+    ASSERT (victim != NULL);
 	struct thread *t = get_thread (victim->tid);
 	ASSERT (t != NULL);
-	
+	if (pg_ofs (victim->upage) != 0)
+	  PANIC ("WHY NOW?");
 	int swap_index = vm_swap_out (victim->frame);
-	
+	ASSERT (pg_ofs (victim->upage) == 0);
 	pagedir_clear_page (t->pagedir, victim->upage);
 
 	if (!vm_set_swap (&t->spt, victim->upage, swap_index))
 	  PANIC ("vm_set_swap: NO SUCH spt entry");
 	
 	//frame = victim->kpage;
+	//PANIC ("WE WHOULD EVICT!!!");
 	vm_frame_free (victim->frame);
 
 	frame = palloc_get_page (flags);
@@ -52,7 +54,7 @@ void *vm_frame_alloc (enum palloc_flags flags){
   struct frt_entry *f;
   f = malloc (sizeof (*f));
   if (f == NULL){
-	printf("vm_frame_alloc: CAN'T MAKE NEW frt_entry\n");
+	PANIC ("vm_frame_alloc: CAN'T MAKE NEW frt_entry");
 	return NULL;
   }
   f->frame = frame;
@@ -90,15 +92,18 @@ SCAN:
   for (e = list_begin (&frt);
 	  e != list_end (&frt);
 	  e = list_next (e)){
+	
 	f = list_entry (e, struct frt_entry, frt_elem);
+	ASSERT (pg_ofs (f->upage) == 0);
+	
 	if (f->in_use)
-	  //continue;
+	  continue;
+	
 	//msg ("[%d] directory checked", f->tid);
 	//printf ("[%d] directory checked", f->tid);
+	
 	t = get_thread (f->tid);
-
-	return f;
-	/*
+	
 	if (pagedir_is_accessed (t->pagedir, f->upage)){
 	  if (second)
 		printf("CAN'T be happend\n");
@@ -108,11 +113,11 @@ SCAN:
 	  return f;
 	  //break;
 	}
-	*/
+	
   }
 
   if (!second){
-	printf("FUCKYOU\n");
+//	printf("FUCKYOU\n");
 	second = true;
 	goto SCAN;
   }else{

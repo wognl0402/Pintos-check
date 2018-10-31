@@ -1,6 +1,6 @@
-Copying tests/vm/page-merge-stk into /tmp/CE0wHPVyvR.dsk...
-Copying tests/vm/child-qsort into /tmp/CE0wHPVyvR.dsk...
-Writing command line to /tmp/86KP9qsT9_.dsk...
+Copying tests/vm/page-merge-stk into /tmp/T1fbXcmmq_.dsk...
+Copying tests/vm/child-qsort into /tmp/T1fbXcmmq_.dsk...
+Writing command line to /tmp/uRuHHFk8YW.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put page-merge-stk put child-qsort run page-merge-stk
@@ -17,15 +17,31 @@ Boot complete.
 Putting 'page-merge-stk' into the file system...
 Putting 'child-qsort' into the file system...
 Executing 'page-merge-stk':
-Kernel PANIC at ../../vm/frame.c:70 in vm_frame_evict(): assertion `victim != NULL' failed.
-Call stack: 0xc011ee70Kernel PANIC recursion at ../../lib/kernel/hash.c:272 in hash_bytes().
-Timer: 2385 ticks
-Thread: 0 idle ticks, 374 kernel ticks, 2011 user ticks
+(page-merge-stk) begin
+(page-merge-stk) init
+(page-merge-stk) sort chunk 0
+(page-merge-stk) sort chunk 1
+Page fault at 0xbffe0000: not present error writing page in kernel context.
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc01044c0
+ cr2=bffe0000 error=00000002
+ eax=c0112920 ebx=c0112920 ecx=000000d4 edx=000001f0
+ esi=c0112990 edi=bffe0000 esp=c011292c ebp=c012dea4
+ cs=0008 ds=0010 es=0010 ss=ded4
+Kernel PANIC at ../../userprog/exception.c:104 in kill(): Kernel bug - unexpected interrupt in kernel
+Call stack: 0xc012ddacPage fault at 0x68: not present error reading page in kernel context.
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0105652
+ cr2=00000068 error=00000000
+ eax=00000068 ebx=00000068 ecx=c012dcd8 edx=000003d4
+ esi=c010e61e edi=c0110075 esp=c010f907 ebp=c012dd6c
+ cs=0008 ds=0010 es=0010 ss=ddac
+Kernel PANIC recursion at ../../userprog/exception.c:104 in kill().
+Timer: 10640 ticks
+Thread: 0 idle ticks, 377 kernel ticks, 10263 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 87 reads, 460 writes
+hd0:1: 189 reads, 1492 writes
 hd1:0: 225 reads, 0 writes
-hd1:1: 0 reads, 0 writes
-Console: 1095 characters output
+hd1:1: 2088 reads, 3304 writes
+Console: 1819 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 264 page faults
 Powering off...

@@ -1,5 +1,5 @@
-Copying tests/vm/page-linear into /tmp/eTJGcLCSTB.dsk...
-Writing command line to /tmp/5t7OKij6Io.dsk...
+Copying tests/vm/page-linear into /tmp/zWEZoAnqt_.dsk...
+Writing command line to /tmp/TkP7mPFosd.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put page-linear run page-linear
@@ -15,15 +15,22 @@ Formatting file system...done.
 Boot complete.
 Putting 'page-linear' into the file system...
 Executing 'page-linear':
-Kernel PANIC at ../../vm/frame.c:70 in vm_frame_evict(): assertion `victim != NULL' failed.
-Call stack: 0xc011ee70Kernel PANIC recursion at ../../lib/kernel/hash.c:272 in hash_bytes().
-Timer: 2273 ticks
-Thread: 0 idle ticks, 262 kernel ticks, 2011 user ticks
+(page-linear) begin
+(page-linear) initialize
+(page-linear) read pass
+(page-linear) read/modify/write pass one
+(page-linear) read/modify/write pass two
+(page-linear) read pass
+(page-linear) end
+page-linear: exit(0)
+Execution of 'page-linear' complete.
+Timer: 48959 ticks
+Thread: 0 idle ticks, 273 kernel ticks, 48689 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 59 reads, 228 writes
+hd0:1: 60 reads, 228 writes
 hd1:0: 110 reads, 0 writes
-hd1:1: 0 reads, 0 writes
-Console: 1021 characters output
+hd1:1: 20720 reads, 21880 writes
+Console: 1097 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 2590 page faults
 Powering off...

@@ -1,6 +1,6 @@
-Copying tests/userprog/exec-arg into /tmp/tUDfOoP3ib.dsk...
-Copying tests/userprog/child-args into /tmp/tUDfOoP3ib.dsk...
-Writing command line to /tmp/7S4GtEk5gY.dsk...
+Copying tests/userprog/exec-arg into /tmp/_k11r77ipI.dsk...
+Copying tests/userprog/child-args into /tmp/_k11r77ipI.dsk...
+Writing command line to /tmp/3zha1ErW64.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put exec-arg put child-args run exec-arg
@@ -28,8 +28,8 @@ child-args: exit(0)
 (exec-arg) end
 exec-arg: exit(0)
 Execution of 'exec-arg' complete.
-Timer: 496 ticks
-Thread: 0 idle ticks, 389 kernel ticks, 118 user ticks
+Timer: 505 ticks
+Thread: 0 idle ticks, 395 kernel ticks, 121 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 116 reads, 422 writes
 hd1:0: 206 reads, 0 writes

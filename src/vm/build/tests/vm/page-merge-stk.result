@@ -1,5 +1,5 @@
 FAIL
-Kernel panic in run: PANIC at ../../vm/frame.c:70 in vm_frame_evict(): assertion `victim != NULL' failed.
-Call stack: 0xc011ee70
+Kernel panic in run: PANIC at ../../userprog/exception.c:104 in kill(): Kernel bug - unexpected interrupt in kernel
+Call stack: 0xc012ddac
 Translation of call stack:
-0xc011ee70: (unknown)
+0xc012ddac: (unknown)

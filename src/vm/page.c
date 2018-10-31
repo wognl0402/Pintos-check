@@ -33,9 +33,9 @@ struct spt_entry *vm_get_spt_entry (struct hash *h, void *upage){
   struct spt_entry spte;
 
   spte.upage = upage;
+  //PANIC("DURING vm_get");
   struct hash_elem *e = hash_find (h, &spte.spt_elem);
   
-  //PANIC("DURING vm_get");
   if (e == NULL)
 	return NULL;
   
@@ -85,7 +85,7 @@ bool vm_spt_reclaim (struct hash *h, struct spt_entry *spte){
 	return false;
   }
 
-  vm_swap_in (spte->swap_index, spte->upage);
+  vm_swap_in (spte->swap_index, kpage);
   
   spte->kpage = kpage;
   spte->status = ON_FRAME;
@@ -109,7 +109,7 @@ void vm_stack_grow (struct hash *h, void *fault_page){
   void *frame = vm_frame_alloc (PAL_USER | PAL_ZERO);
   if (frame == NULL){
 	PANIC ("NO FRAME FOR GROW");
-	
+	//frame = 
 	//printf("Still no eviction...\n");
   }//else{
 
@@ -148,7 +148,7 @@ unsigned spt_hash_func (const struct hash_elem *h, void *aux){
   //Hash the vaddr
   struct spt_entry *temp;
   temp = hash_entry (h, struct spt_entry, spt_elem);
-  return hash_bytes (temp->upage, sizeof (temp->upage));
+  return hash_bytes (&temp->upage, sizeof (temp->upage));
   //return;
 }
 

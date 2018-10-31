@@ -1,5 +1,5 @@
 FAIL
-Kernel panic in run: PANIC at ../../vm/frame.c:70 in vm_frame_evict(): assertion `victim != NULL' failed.
-Call stack: 0xc0125e70
+Kernel panic in run: PANIC at ../../userprog/pagedir.c:152 in pagedir_clear_page(): assertion `pg_ofs (upage) == 0' failed.
+Call stack: 0xc011feb4
 Translation of call stack:
-0xc0125e70: (unknown)
+0xc011feb4: (unknown)

@@ -158,23 +158,34 @@ page_fault (struct intr_frame *f)
   void *fault_page = (void *) pg_round_down (fault_addr);
   ASSERT (pg_ofs (fault_page) == 0);
   if (not_present){
+	/*
 	if (fault_addr >= f->esp -32 
-		&&PHYS_BASE - fault_page <= STACK_MAX){
+		&&PHYS_BASE - fault_addr <= STACK_MAX){
 	  vm_stack_grow (&t->spt, fault_page);
 	  return;
-	}
+	}*/
 	//PANIC ("panic thre");
+	
 	if (vm_is_in_spt (&t->spt, fault_page)){
-	  PANIC ("PANIC here");
+	  //return;
+	  //PANIC ("PANIC here");
 	  struct spt_entry *s = vm_get_spt_entry (&t->spt, fault_page);
 		//ssss
 	  if (!vm_spt_reclaim (&t->spt, s)){
+		
 		PANIC ("CAN'T RECALIM");
 	  }else{
-		PANIC ("DID I?");
+		//PANIC ("DID I?");
 		return;
 	  }
+	}else{
+	  if (fault_addr >= f->esp -32 
+		&&PHYS_BASE - fault_addr <= STACK_MAX){
+	  vm_stack_grow (&t->spt, fault_page);
+	  return;
 	}
+	}
+	
   }
   /*
   struct thread *t = thread_current ();

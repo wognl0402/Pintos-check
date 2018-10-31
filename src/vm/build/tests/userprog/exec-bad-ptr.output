@@ -1,5 +1,5 @@
-Copying tests/userprog/exec-bad-ptr into /tmp/EC_NY49nFr.dsk...
-Writing command line to /tmp/IxyMCGzqNB.dsk...
+Copying tests/userprog/exec-bad-ptr into /tmp/5v95daX8fg.dsk...
+Writing command line to /tmp/4NUmEyuxoG.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put exec-bad-ptr run exec-bad-ptr
@@ -18,8 +18,8 @@ Executing 'exec-bad-ptr':
 (exec-bad-ptr) begin
 exec-bad-ptr: exit(-1)
 Execution of 'exec-bad-ptr' complete.
-Timer: 314 ticks
-Thread: 0 idle ticks, 272 kernel ticks, 45 user ticks
+Timer: 318 ticks
+Thread: 0 idle ticks, 274 kernel ticks, 47 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 214 writes
 hd1:0: 103 reads, 0 writes

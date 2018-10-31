@@ -1,5 +1,2 @@
 FAIL
-Kernel panic in run: PANIC at ../../vm/frame.c:70 in vm_frame_evict(): assertion `victim != NULL' failed.
-Call stack: 0xc011ee70
-Translation of call stack:
-0xc011ee70: (unknown)
+run: wait for child 0: FAILED

@@ -1,5 +1,5 @@
-Copying tests/vm/pt-bad-addr into /tmp/otXL3Xys0K.dsk...
-Writing command line to /tmp/DCmNPBVmj_.dsk...
+Copying tests/vm/pt-bad-addr into /tmp/6KogYcD1U1.dsk...
+Writing command line to /tmp/Bxfti5BnRj.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put pt-bad-addr run pt-bad-addr
@@ -16,15 +16,22 @@ Boot complete.
 Putting 'pt-bad-addr' into the file system...
 Executing 'pt-bad-addr':
 (pt-bad-addr) begin
-Kernel PANIC at ../../userprog/pagedir.c:114 in pagedir_set_page(): assertion `(*pte & PTE_P) == 0' failed.
-Call stack: 0xc011ed88Kernel PANIC recursion at ../../lib/kernel/hash.c:272 in hash_bytes().
-Timer: 301 ticks
-Thread: 0 idle ticks, 257 kernel ticks, 44 user ticks
+Page fault at 0x4000000: not present error reading page in user context.
+pt-bad-addr: dying due to interrupt 0x0e (#PF Page-Fault Exception).
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x80480a6
+ cr2=04000000 error=00000004
+ eax=00000027 ebx=00000000 ecx=000000ad edx=0000000e
+ esi=00000000 edi=00000000 esp=bfffffb0 ebp=bfffffb8
+ cs=001b ds=0023 es=0023 ss=0023
+pt-bad-addr: exit(-1)
+Execution of 'pt-bad-addr' complete.
+Timer: 367 ticks
+Thread: 0 idle ticks, 273 kernel ticks, 97 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 216 writes
 hd1:0: 104 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1054 characters output
+Console: 1281 characters output
 Keyboard: 0 keys pressed
-Exception: 4 page faults
+Exception: 1 page faults
 Powering off...

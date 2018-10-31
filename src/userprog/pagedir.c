@@ -115,7 +115,7 @@ pagedir_set_page (uint32_t *pd, void *upage, void *kpage, bool writable)
       *pte = pte_create_user (kpage, writable);
 	  //P3
 	  /* My Imp */
-	  // vm_frame_set (kpage, upage);
+	  vm_frame_set (kpage, upage);
 	  return true;
     }
   else

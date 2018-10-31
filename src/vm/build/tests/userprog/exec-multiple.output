@@ -1,6 +1,6 @@
-Copying tests/userprog/exec-multiple into /tmp/YMDujiMug8.dsk...
-Copying tests/userprog/child-simple into /tmp/YMDujiMug8.dsk...
-Writing command line to /tmp/wLehDAu3UV.dsk...
+Copying tests/userprog/exec-multiple into /tmp/Dh45v5w4P8.dsk...
+Copying tests/userprog/child-simple into /tmp/Dh45v5w4P8.dsk...
+Writing command line to /tmp/9KjylpPfSe.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put exec-multiple put child-simple run exec-multiple
@@ -29,8 +29,8 @@ child-simple: exit(81)
 (exec-multiple) end
 exec-multiple: exit(0)
 Execution of 'exec-multiple' complete.
-Timer: 706 ticks
-Thread: 0 idle ticks, 466 kernel ticks, 247 user ticks
+Timer: 711 ticks
+Thread: 0 idle ticks, 460 kernel ticks, 254 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 230 reads, 424 writes
 hd1:0: 207 reads, 0 writes

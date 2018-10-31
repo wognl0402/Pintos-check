@@ -1,6 +1,6 @@
-Copying tests/vm/page-merge-mm into /tmp/Ib_B5xcuTY.dsk...
-Copying tests/vm/child-qsort-mm into /tmp/Ib_B5xcuTY.dsk...
-Writing command line to /tmp/IXLunPXpxN.dsk...
+Copying tests/vm/page-merge-mm into /tmp/VnSGPSPeWp.dsk...
+Copying tests/vm/child-qsort-mm into /tmp/VnSGPSPeWp.dsk...
+Writing command line to /tmp/8GfOKVbj4t.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put page-merge-mm put child-qsort-mm run page-merge-mm
@@ -17,15 +17,35 @@ Boot complete.
 Putting 'page-merge-mm' into the file system...
 Putting 'child-qsort-mm' into the file system...
 Executing 'page-merge-mm':
-Kernel PANIC at ../../vm/frame.c:70 in vm_frame_evict(): assertion `victim != NULL' failed.
-Call stack: 0xc011ee70Kernel PANIC recursion at ../../lib/kernel/hash.c:272 in hash_bytes().
-Timer: 2385 ticks
-Thread: 0 idle ticks, 374 kernel ticks, 2011 user ticks
+(page-merge-mm) begin
+(page-merge-mm) init
+(page-merge-mm) sort chunk 0
+child-qsort-mm: exit(-1)
+(page-merge-mm) sort chunk 1
+child-qsort-mm: exit(-1)
+(page-merge-mm) sort chunk 2
+child-qsort-mm: exit(-1)
+(page-merge-mm) sort chunk 3
+(page-merge-mm) sort chunk 4
+child-qsort-mm: exit(-1)
+child-qsort-mm: exit(-1)
+(page-merge-mm) sort chunk 5
+child-qsort-mm: exit(-1)
+(page-merge-mm) sort chunk 6
+child-qsort-mm: exit(-1)
+(page-merge-mm) sort chunk 7
+child-qsort-mm: exit(-1)
+(page-merge-mm) wait for child 0
+(page-merge-mm) wait for child 0: FAILED
+page-merge-mm: exit(1)
+Execution of 'page-merge-mm' complete.
+Timer: 12375 ticks
+Thread: 0 idle ticks, 561 kernel ticks, 11817 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 87 reads, 460 writes
+hd0:1: 740 reads, 4588 writes
 hd1:0: 225 reads, 0 writes
-hd1:1: 0 reads, 0 writes
-Console: 1097 characters output
+hd1:1: 2088 reads, 3304 writes
+Console: 1533 characters output
 Keyboard: 0 keys pressed
-Exception: 1 page faults
+Exception: 261 page faults
 Powering off...

@@ -1,5 +1,1 @@
-FAIL
-Kernel panic in run: PANIC at ../../lib/kernel/hash.c:272 in hash_bytes(): assertion `buf != NULL' failed.
-Call stack: 0xc011ee94
-Translation of call stack:
-0xc011ee94: (unknown)
+PASS
