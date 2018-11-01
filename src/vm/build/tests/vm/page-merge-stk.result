@@ -1,5 +1,1 @@
-FAIL
-Kernel panic in run: PANIC at ../../userprog/exception.c:104 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc012ddac
-Translation of call stack:
-0xc012ddac: (unknown)
+PASS

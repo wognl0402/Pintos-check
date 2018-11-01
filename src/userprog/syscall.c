@@ -8,6 +8,7 @@
 #include "threads/malloc.h"
 #include "devices/input.h"
 #include "userprog/pagedir.h"
+#include "vm/page.h"
 
 #define PHYS_TOP ((void *) 0x08048000)
 
@@ -257,9 +258,53 @@ static int syscall_read_ (struct intr_frame *f){
   //valid_usrptr (* (uint32_t *) (f->esp+8));
   int fd = * (int *) (f->esp+4);
   char *buffer = * (char **) (f->esp+8);
-  //printf("CHECK BUF\n");
-  valid_usrptr ((const uint8_t *) buffer);
   unsigned size = * (unsigned *) (f->esp+12);
+  //printf("CHECK BUF\n");
+
+  //P3
+  //original
+  //valid_usrptr ((const uint8_t *) buffer);
+  //page implementabion//
+  void *buffer_tmp = buffer;
+  int size_temp = size;
+  struct thread *t = thread_current ();
+  while (buffer_tmp != NULL){
+	if (!is_user_vaddr (buffer_tmp))
+	  exit_ (-1);
+	
+    //printf ("buffer_tmp = [%x]\n", pg_round_down (buffer_tmp));
+	  //printf(
+	//PANIC ("here?");
+	if (pagedir_get_page (t->pagedir, buffer_tmp) == NULL){
+	  //PANIC ("here?");
+	  if (vm_is_in_spt (&t->spt, pg_round_down (buffer_tmp))){
+	    struct spt_entry *s = vm_get_spt_entry (&t->spt, pg_round_down (buffer_tmp));
+		if (!vm_spt_reclaim (&t->spt, s)){
+		  PANIC ("SC: CAN't RECLAIM");
+		}else{
+		  
+		}
+	  }else{
+		if (buffer_tmp >= (f->esp - 32))
+		  vm_stack_grow (&t->spt, pg_round_down (buffer_tmp));
+	    else
+		  exit_ (-1);
+	  }
+	}
+
+	if (size_temp == 0)
+	  buffer_tmp = NULL;
+	else if (size_temp  > PGSIZE){
+	  buffer_tmp += PGSIZE;
+	  size_temp -= PGSIZE;
+	}else{
+	  buffer_tmp = buffer+size-1;
+	  size_temp = 0;
+	}
+  }
+
+  //============//
+  
   //printf("[%d]......TRYINg TO READ fd[%d]\n", thread_current ()->tid, fd);
   
   //acquire_filesys_lock ();
@@ -309,10 +354,63 @@ static int syscall_read_ (struct intr_frame *f){
 
 static int syscall_write_ (struct intr_frame *f){
   valid_multiple (f->esp, 3);
-  valid_usrptr (* (uint32_t *) (f->esp+8));
+  //valid_usrptr (* (uint32_t *) (f->esp+8));
   int fd = *(int *) (f->esp+4);
   char *buffer = * (char **) (f->esp+8);
+  //char *buffer = (char *) (f->esp+8);
   unsigned size = *(unsigned *) (f->esp+12);
+  
+  //P3
+  //original
+  //valid_usrptr ((const uint8_t *) buffer);
+  //page implementabion//
+  void *buffer_tmp = buffer;
+  int size_temp = size;
+  struct thread *t = thread_current ();
+  while (buffer_tmp != NULL){
+	if (!is_user_vaddr (buffer_tmp))
+	  exit_ (-1);
+    //printf ("buffer_tmp = [%x]\n", buffer_tmp);
+	//PANIC ("check 1");
+	if (pagedir_get_page (t->pagedir, buffer_tmp) == NULL){
+	   // PANIC ("CHECK 1");	
+	  if (vm_is_in_spt (&t->spt, pg_round_down (buffer_tmp))){
+	    struct spt_entry *s = vm_get_spt_entry (&t->spt, pg_round_down (buffer_tmp));
+		if (!s->writable){
+		 // exit_ (-1);
+		}
+		if (!vm_spt_reclaim (&t->spt, s)){
+		  PANIC ("SC: CAN't RECLAIM");
+		}else{
+		  
+		}
+	  }else{
+	/*
+	 * if (buffer_tmp >= (f->esp - 32))
+		  vm_stack_grow (&t->spt, pg_round_down (buffer_tmp));
+	    else
+		  exit_ (-1);
+*/	       
+		exit_ (-1);
+	  }
+	  
+	}
+    
+	if (size_temp == 0)
+	  buffer_tmp = NULL;
+	else if (size_temp > PGSIZE){
+	  buffer_tmp += PGSIZE;
+	  size_temp -= PGSIZE;
+	}else{
+	  buffer_tmp = buffer+size-1;
+	  size_temp = 0;
+	  //buffer_size = 0;
+	}
+  }
+
+  //============//
+  
+  
 
   if (fd==1){
 	acquire_filesys_lock ();
@@ -520,10 +618,11 @@ static void valid_usrptr (const void *uaddr){
 	return;
   }
   /*
-  if (uaddr < PHYS_TOP){
+  if (uaddr <= PHYS_TOP){
 	exit_(-1);
 	return;
-  }*/
+  }
+  */
   if (uaddr == NULL){
 	//printf("CASE2!\n");
 	exit_(-1);

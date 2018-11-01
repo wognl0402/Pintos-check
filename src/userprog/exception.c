@@ -157,6 +157,10 @@ page_fault (struct intr_frame *f)
 
   void *fault_page = (void *) pg_round_down (fault_addr);
   ASSERT (pg_ofs (fault_page) == 0);
+  
+  if (! is_user_vaddr (fault_addr) || fault_addr < (void *) 0x08048000)
+	exit_ (-1);
+
   if (not_present){
 	/*
 	if (fault_addr >= f->esp -32 

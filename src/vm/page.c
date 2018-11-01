@@ -51,6 +51,7 @@ bool vm_is_in_spt (struct hash *h, void *upage){
   return true;
 }
 
+//bool vm_put_spt_entry (struct hash *h, void *upage, void *kpage, bool writable){
 bool vm_put_spt_entry (struct hash *h, void *upage, void *kpage){
   struct spt_entry *spte;
   spte = malloc (sizeof *spte);
@@ -64,6 +65,7 @@ bool vm_put_spt_entry (struct hash *h, void *upage, void *kpage){
   spte->kpage = kpage;
   spte->swap_index = -1;
   spte->status = ON_FRAME;
+  //spte->writable = writable;
 
   struct hash_elem *e = hash_insert (h, &spte->spt_elem);
   if (e == NULL){
@@ -125,6 +127,7 @@ void vm_stack_grow (struct hash *h, void *fault_page){
 	PANIC ("WHILE GROW, ALREADY IN PAGEDIR");
   if (!pagedir_set_page (t->pagedir, fault_page, frame, true))
 	PANIC ("CANNOT SET PAGEDIR");
+  //if (!vm_put_spt_entry (&t->spt, fault_page, frame, true))
   if (!vm_put_spt_entry (&t->spt, fault_page, frame))
 	PANIC ("CANNOT PUT INTO SPT");
   

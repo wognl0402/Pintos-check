@@ -761,8 +761,9 @@ install_page (void *upage, void *kpage, bool writable)
   /* Verify that there's not already a page at that virtual
      address, then map our page there. */
   return (pagedir_get_page (t->pagedir, upage) == NULL
-          && pagedir_set_page (t->pagedir, upage, kpage, writable)
+          && pagedir_set_page (t->pagedir, upage, kpage, writable) 
 		  && vm_put_spt_entry (&t->spt, upage, kpage));
+		  //&& vm_put_spt_entry (&t->spt, upage, kpage, writable));
 }
 
 void test_stack (int *t)

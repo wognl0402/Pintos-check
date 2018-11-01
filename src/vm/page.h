@@ -25,6 +25,7 @@ struct spt_entry
   void* kpage;  /*do we need this?*/
   enum spt_status status;
   int swap_index;
+  bool writable;
 
   struct hash_elem spt_elem;
 };
@@ -35,6 +36,7 @@ void vm_spt_destroy (struct hash *);
 struct spt_entry *vm_get_spt_entry (struct hash *, void *);
 bool vm_is_in_spt (struct hash *, void *);
 bool vm_put_spt_entry (struct hash *, void *, void *);
+//bool vm_put_spt_entry (struct hash *, void *, void *, bool);
 bool vm_spt_reclaim (struct hash *, struct spt_entry *);
 bool vm_set_swap (struct hash *, void *, int);
 void vm_stack_grow (struct hash *, void *);

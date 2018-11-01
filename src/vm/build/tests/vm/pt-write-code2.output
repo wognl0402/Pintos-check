@@ -1,6 +1,6 @@
-Copying tests/vm/pt-write-code2 into /tmp/FZ6_sppcKA.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/FZ6_sppcKA.dsk...
-Writing command line to /tmp/HUd4gBqCgF.dsk...
+Copying tests/vm/pt-write-code2 into /tmp/USiaG47Qiu.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/USiaG47Qiu.dsk...
+Writing command line to /tmp/ueAPzQ7vyw.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put pt-write-code2 put sample.txt run pt-write-code2
@@ -23,23 +23,18 @@ Page fault at 0x80480a0: rights violation error writing page in kernel context.
 Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0106e8c
  cr2=080480a0 error=00000003
  eax=0000003d ebx=00000001 ecx=c011a20c edx=00000000
- esi=080480a0 edi=080480a0 esp=c011292c ebp=c011eed4
- cs=0008 ds=0010 es=0010 ss=0092
+ esi=080480a0 edi=080480a0 esp=c011292c ebp=c011eeb4
+ cs=0008 ds=0010 es=0010 ss=0096
 Kernel PANIC at ../../userprog/exception.c:104 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc011edb8Page fault at 0x68: not present error reading page in kernel context.
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0105652
- cr2=00000068 error=00000000
- eax=00000068 ebx=00000068 ecx=c011ece4 edx=000003d4
- esi=c010e67e edi=c01100d5 esp=c010f967 ebp=c011ed78
- cs=0008 ds=0010 es=0010 ss=edb8
-Kernel PANIC recursion at ../../userprog/exception.c:104 in kill().
-Timer: 419 ticks
-Thread: 0 idle ticks, 292 kernel ticks, 127 user ticks
+Call stack: 0xc011ed98pt-write-code2: exit(-1)
+Kernel PANIC recursion at ../../threads/synch.c:238 in lock_acquire().
+Timer: 384 ticks
+Thread: 0 idle ticks, 292 kernel ticks, 92 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 91 reads, 224 writes
 hd1:0: 107 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1762 characters output
+Console: 1491 characters output
 Keyboard: 0 keys pressed
 Exception: 2 page faults
 Powering off...

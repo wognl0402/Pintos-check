@@ -1,6 +1,6 @@
-Copying tests/vm/page-merge-par into /tmp/60M6j_BQ1d.dsk...
-Copying tests/vm/child-sort into /tmp/60M6j_BQ1d.dsk...
-Writing command line to /tmp/GVWQ1CwQtW.dsk...
+Copying tests/vm/page-merge-par into /tmp/51nD_NDzXI.dsk...
+Copying tests/vm/child-sort into /tmp/51nD_NDzXI.dsk...
+Writing command line to /tmp/P6jdUsDl3C.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put page-merge-par put child-sort run page-merge-par
@@ -33,15 +33,15 @@ child-sort: exit(123)
 (page-merge-par) sort chunk 6
 child-sort: exit(123)
 (page-merge-par) sort chunk 7
-child-sort: exit(123)
 (page-merge-par) wait for child 0
 (page-merge-par) wait for child 1
 (page-merge-par) wait for child 2
-child-sort: exit(123)
 (page-merge-par) wait for child 3
+child-sort: exit(123)
 (page-merge-par) wait for child 4
 (page-merge-par) wait for child 5
 (page-merge-par) wait for child 6
+child-sort: exit(123)
 (page-merge-par) wait for child 7
 (page-merge-par) merge
 (page-merge-par) verify
@@ -49,13 +49,13 @@ child-sort: exit(123)
 (page-merge-par) end
 page-merge-par: exit(0)
 Execution of 'page-merge-par' complete.
-Timer: 29900 ticks
-Thread: 0 idle ticks, 1124 kernel ticks, 28779 user ticks
+Timer: 29899 ticks
+Thread: 0 idle ticks, 1122 kernel ticks, 28780 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 4882 reads, 6626 writes
+hd0:1: 4881 reads, 6626 writes
 hd1:0: 220 reads, 0 writes
-hd1:1: 4584 reads, 5752 writes
+hd1:1: 4576 reads, 5736 writes
 Console: 1829 characters output
 Keyboard: 0 keys pressed
-Exception: 573 page faults
+Exception: 572 page faults
 Powering off...

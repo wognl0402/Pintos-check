@@ -10,4 +10,4 @@ userprog/syscall.o: ../../userprog/syscall.c ../../userprog/syscall.h \
   ../../threads/interrupt.h ../../userprog/process.h ../../filesys/file.h \
   ../../filesys/off_t.h ../../filesys/filesys.h ../../lib/syscall-nr.h \
   ../../threads/vaddr.h ../../threads/init.h ../../threads/malloc.h \
-  ../../devices/input.h ../../userprog/pagedir.h
+  ../../devices/input.h ../../userprog/pagedir.h ../../vm/page.h

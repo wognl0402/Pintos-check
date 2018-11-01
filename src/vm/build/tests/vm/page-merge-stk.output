@@ -1,6 +1,6 @@
-Copying tests/vm/page-merge-stk into /tmp/rLs55Ym9F6.dsk...
-Copying tests/vm/child-qsort into /tmp/rLs55Ym9F6.dsk...
-Writing command line to /tmp/iT9olm5khQ.dsk...
+Copying tests/vm/page-merge-stk into /tmp/Tl2Yjnk8d6.dsk...
+Copying tests/vm/child-qsort into /tmp/Tl2Yjnk8d6.dsk...
+Writing command line to /tmp/GbA6TQTHZd.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put page-merge-stk put child-qsort run page-merge-stk
@@ -21,27 +21,41 @@ Executing 'page-merge-stk':
 (page-merge-stk) init
 (page-merge-stk) sort chunk 0
 (page-merge-stk) sort chunk 1
-Page fault at 0xbffe0000: not present error writing page in kernel context.
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc01044c0
- cr2=bffe0000 error=00000002
- eax=c0112920 ebx=c0112920 ecx=000000d4 edx=000001f0
- esi=c0112990 edi=bffe0000 esp=c011292c ebp=c012dea4
- cs=0008 ds=0010 es=0010 ss=ded4
-Kernel PANIC at ../../userprog/exception.c:104 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc012ddacPage fault at 0x68: not present error reading page in kernel context.
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0105652
- cr2=00000068 error=00000000
- eax=00000068 ebx=00000068 ecx=c012dcd8 edx=000003d4
- esi=c010e67e edi=c01100d5 esp=c010f967 ebp=c012dd6c
- cs=0008 ds=0010 es=0010 ss=ddac
-Kernel PANIC recursion at ../../userprog/exception.c:104 in kill().
-Timer: 10440 ticks
-Thread: 0 idle ticks, 377 kernel ticks, 10063 user ticks
+(page-merge-stk) sort chunk 2
+(page-merge-stk) sort chunk 3
+(page-merge-stk) sort chunk 4
+(page-merge-stk) sort chunk 5
+child-qsort: exit(72)
+(page-merge-stk) sort chunk 6
+(page-merge-stk) sort chunk 7
+child-qsort: exit(72)
+(page-merge-stk) wait for child 0
+child-qsort: exit(72)
+(page-merge-stk) wait for child 1
+(page-merge-stk) wait for child 2
+child-qsort: exit(72)
+(page-merge-stk) wait for child 3
+child-qsort: exit(72)
+(page-merge-stk) wait for child 4
+(page-merge-stk) wait for child 5
+child-qsort: exit(72)
+(page-merge-stk) wait for child 6
+child-qsort: exit(72)
+(page-merge-stk) wait for child 7
+child-qsort: exit(72)
+(page-merge-stk) merge
+(page-merge-stk) verify
+(page-merge-stk) success, buf_idx=1,048,576
+(page-merge-stk) end
+page-merge-stk: exit(0)
+Execution of 'page-merge-stk' complete.
+Timer: 55825 ticks
+Thread: 0 idle ticks, 1137 kernel ticks, 54691 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 189 reads, 1492 writes
+hd0:1: 4897 reads, 6636 writes
 hd1:0: 225 reads, 0 writes
-hd1:1: 2088 reads, 3304 writes
-Console: 1819 characters output
+hd1:1: 6104 reads, 7280 writes
+Console: 1831 characters output
 Keyboard: 0 keys pressed
-Exception: 264 page faults
+Exception: 599 page faults
 Powering off...

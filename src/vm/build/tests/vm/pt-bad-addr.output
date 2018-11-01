@@ -1,5 +1,5 @@
-Copying tests/vm/pt-bad-addr into /tmp/1faa0grmQZ.dsk...
-Writing command line to /tmp/u2NSAENoS3.dsk...
+Copying tests/vm/pt-bad-addr into /tmp/xvld1oTJTz.dsk...
+Writing command line to /tmp/zi8JAcpVWV.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put pt-bad-addr run pt-bad-addr
@@ -16,22 +16,15 @@ Boot complete.
 Putting 'pt-bad-addr' into the file system...
 Executing 'pt-bad-addr':
 (pt-bad-addr) begin
-Page fault at 0x4000000: not present error reading page in user context.
-pt-bad-addr: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x80480a6
- cr2=04000000 error=00000004
- eax=00000027 ebx=00000000 ecx=000000ad edx=0000000e
- esi=00000000 edi=00000000 esp=bfffffb0 ebp=bfffffb8
- cs=001b ds=0023 es=0023 ss=0023
 pt-bad-addr: exit(-1)
 Execution of 'pt-bad-addr' complete.
-Timer: 367 ticks
-Thread: 0 idle ticks, 274 kernel ticks, 96 user ticks
+Timer: 319 ticks
+Thread: 0 idle ticks, 274 kernel ticks, 48 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 216 writes
 hd1:0: 104 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1281 characters output
+Console: 912 characters output
 Keyboard: 0 keys pressed
 Exception: 1 page faults
 Powering off...
