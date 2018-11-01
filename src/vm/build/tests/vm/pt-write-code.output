@@ -1,5 +1,5 @@
-Copying tests/vm/pt-write-code into /tmp/sGjHeXea7x.dsk...
-Writing command line to /tmp/kz29FlUoI8.dsk...
+Copying tests/vm/pt-write-code into /tmp/HiIS8RdIL2.dsk...
+Writing command line to /tmp/OUMWhmBw88.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put pt-write-code run pt-write-code
@@ -16,22 +16,15 @@ Boot complete.
 Putting 'pt-write-code' into the file system...
 Executing 'pt-write-code':
 (pt-write-code) begin
-Page fault at 0x80480a0: rights violation error writing page in user context.
-pt-write-code: dying due to interrupt 0x0e (#PF Page-Fault Exception).
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x80480a6
- cr2=080480a0 error=00000007
- eax=00000027 ebx=00000000 ecx=000000ad edx=0000000e
- esi=00000000 edi=00000000 esp=bfffffa0 ebp=bfffffa8
- cs=001b ds=0023 es=0023 ss=0023
 pt-write-code: exit(-1)
 Execution of 'pt-write-code' complete.
-Timer: 371 ticks
-Thread: 0 idle ticks, 276 kernel ticks, 98 user ticks
+Timer: 319 ticks
+Thread: 0 idle ticks, 274 kernel ticks, 48 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 216 writes
 hd1:0: 104 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1302 characters output
+Console: 926 characters output
 Keyboard: 0 keys pressed
 Exception: 1 page faults
 Powering off...

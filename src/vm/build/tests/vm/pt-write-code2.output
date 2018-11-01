@@ -1,6 +1,6 @@
-Copying tests/vm/pt-write-code2 into /tmp/USiaG47Qiu.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/USiaG47Qiu.dsk...
-Writing command line to /tmp/ueAPzQ7vyw.dsk...
+Copying tests/vm/pt-write-code2 into /tmp/HYB2QNpnxR.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/HYB2QNpnxR.dsk...
+Writing command line to /tmp/MplveGZ8NQ.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put pt-write-code2 put sample.txt run pt-write-code2
@@ -19,22 +19,15 @@ Putting 'sample.txt' into the file system...
 Executing 'pt-write-code2':
 (pt-write-code2) begin
 (pt-write-code2) open "sample.txt"
-Page fault at 0x80480a0: rights violation error writing page in kernel context.
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0106e8c
- cr2=080480a0 error=00000003
- eax=0000003d ebx=00000001 ecx=c011a20c edx=00000000
- esi=080480a0 edi=080480a0 esp=c011292c ebp=c011eeb4
- cs=0008 ds=0010 es=0010 ss=0096
-Kernel PANIC at ../../userprog/exception.c:104 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc011ed98pt-write-code2: exit(-1)
-Kernel PANIC recursion at ../../threads/synch.c:238 in lock_acquire().
-Timer: 384 ticks
-Thread: 0 idle ticks, 292 kernel ticks, 92 user ticks
+pt-write-code2: exit(-1)
+Execution of 'pt-write-code2' complete.
+Timer: 365 ticks
+Thread: 0 idle ticks, 308 kernel ticks, 60 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 91 reads, 224 writes
 hd1:0: 107 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1491 characters output
+Console: 1028 characters output
 Keyboard: 0 keys pressed
-Exception: 2 page faults
+Exception: 1 page faults
 Powering off...

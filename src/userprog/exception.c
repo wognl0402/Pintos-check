@@ -186,11 +186,14 @@ page_fault (struct intr_frame *f)
 	  if (fault_addr >= f->esp -32 
 		&&PHYS_BASE - fault_addr <= STACK_MAX){
 	  vm_stack_grow (&t->spt, fault_page);
-	  return;
-	}
+		return;
+	  }else
+		exit_ (-1);
+
 	}
 	
-  }
+  }else
+	exit_ (-1);
   /*
   struct thread *t = thread_current ();
   struct hash *h = &t->spt;

@@ -1,5 +1,1 @@
-FAIL
-Kernel panic in run: PANIC at ../../userprog/exception.c:104 in kill(): Kernel bug - unexpected interrupt in kernel
-Call stack: 0xc011ed98
-Translation of call stack:
-0xc011ed98: (unknown)
+PASS
