@@ -95,7 +95,7 @@ process_execute (const char *file_name)
   db->user_kill = false;
   db->used = false;
   db->alive = true;
-
+  //printf ("child tid [%d] created \n", tid);
   list_push_back (&thread_current ()->ch_list, &db->ch_elem);
   
   //printf("sema_down done\n");
@@ -155,6 +155,7 @@ start_process (void *f_name)
 int
 process_wait (tid_t child_tid) 
 {
+  //printf("wait for somth\n");
   if (child_tid == TID_ERROR)
 	return TID_ERROR;
 
@@ -162,6 +163,7 @@ process_wait (tid_t child_tid)
   struct dead_body *temp;
   int child_status = 0;
   struct thread *cur = thread_current ();
+  lock_acquire (&cur->ch_lock);
   for (e=list_begin (&cur->ch_list);
 	  e!=list_end (&cur->ch_list);
 	  e=list_next(e)){
@@ -181,10 +183,11 @@ process_wait (tid_t child_tid)
 	}
 
   }
+  //printf("???\n");
   if (temp == NULL)
 	return -1;
 
-  lock_acquire (&cur->ch_lock);
+  //lock_acquire (&cur->ch_lock);
   //cur->wait_tid = child_tid;
   if (temp->alive){
   //while (get_thread (child_tid) != NULL ){
@@ -260,7 +263,9 @@ process_exit (void)
       curr->pagedir = NULL;
       pagedir_activate (NULL);
       pagedir_destroy (pd);
-    }
+
+	}
+  //printf ("child tid [%d] exit \n", thread_current ()->tid);
 #ifdef VM
   //vm_spt_destroy (&curr->spt);
 #endif

@@ -98,7 +98,7 @@ bool vm_set_swap (struct hash *h, void *upage, int swap_index){
   if (spte == NULL)
 	return false;
 	//PANIC ("vm_set_swap: NO SUCH spt entry");
-
+  spte->kpage = NULL;
   spte->status = ON_SWAP;
   spte->swap_index = swap_index;
   return true;
@@ -148,7 +148,7 @@ unsigned spt_hash_func (const struct hash_elem *h, void *aux){
   //Hash the vaddr
   struct spt_entry *temp;
   temp = hash_entry (h, struct spt_entry, spt_elem);
-  return hash_bytes (&temp->upage, sizeof (temp->upage));
+  return hash_bytes (&temp->upage, sizeof temp->upage);
   //return;
 }
 
@@ -165,6 +165,8 @@ bool spt_hash_less_func (const struct hash_elem *a,
 void vm_spt_free (struct hash_elem *e, void *aux UNUSED){
   struct spt_entry *spte;
   spte = hash_entry (e, struct spt_entry, spt_elem);
+  acquire_frt_lock ();
+
   if (spte->kpage != NULL){
 	//PANIC ("WHY ARE YOU STILL HERE!!!\n");
 	//vm_frame_free (spte->kpage);
@@ -176,5 +178,6 @@ void vm_spt_free (struct hash_elem *e, void *aux UNUSED){
   }
 
   free (spte);
+  release_frt_lock ();
 }
 

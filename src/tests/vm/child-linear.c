@@ -29,8 +29,11 @@ main (int argc, char *argv[])
 
   /* Check that it's all zeros. */
   for (i = 0; i < SIZE; i++)
-    if (buf[i] != '\0')
-      fail ("byte %zu != 0", i);
+    if (buf[i] != '\0'){
+    // msg ("byte is [%x]", buf[i]);
+	  fail ("byte %zu != 0", i);
+	}
 
+  //msg ("I'm done!");
   return 0x42;
 }

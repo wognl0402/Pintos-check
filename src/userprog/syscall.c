@@ -119,6 +119,7 @@ static int syscall_exec_ (struct intr_frame *f){
 static int syscall_wait_ (struct intr_frame *f){
   valid_multiple (f->esp, 1);
   tid_t child_tid = * (int *) (f->esp+4);
+  //printf("child_tid [%d] \n",child_tid);
   f->eax = process_wait(child_tid);
   return 0;
 }

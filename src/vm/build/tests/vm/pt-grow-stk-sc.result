@@ -12,6 +12,7 @@ Acceptable output:
   (pt-grow-stk-sc) end
 Differences in `diff -u' format:
   (pt-grow-stk-sc) begin
++ (pt-grow-stk-sc) sample length = 794
   (pt-grow-stk-sc) create "sample.txt"
   (pt-grow-stk-sc) open "sample.txt"
   (pt-grow-stk-sc) write "sample.txt"

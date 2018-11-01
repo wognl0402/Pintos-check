@@ -1,4 +1,4 @@
-TOTAL TESTING SCORE: 61.1%
+TOTAL TESTING SCORE: 67.1%
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -6,13 +6,13 @@ SUMMARY BY TEST SET
 
 Test Set                                      Pts Max  % Ttl  % Max
 --------------------------------------------- --- --- ------ ------
-tests/vm/Rubric.functionality                  21/ 55  19.1%/ 50.0%
+tests/vm/Rubric.functionality                  28/ 55  25.5%/ 50.0%
 tests/vm/Rubric.robustness                     13/ 28   7.0%/ 15.0%
 tests/userprog/Rubric.functionality           108/108  10.0%/ 10.0%
-tests/userprog/Rubric.robustness               88/ 88   5.0%/  5.0%
+tests/userprog/Rubric.robustness               83/ 88   4.7%/  5.0%
 tests/filesys/base/Rubric                      30/ 30  20.0%/ 20.0%
 --------------------------------------------- --- --- ------ ------
-Total                                                  61.1%/100.0%
+Total                                                  67.1%/100.0%
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -27,10 +27,10 @@ Functionality of virtual memory subsystem (tests/vm/Rubric.functionality):
 
 	- Test paging behavior.
 	     3/ 3 tests/vm/page-linear
-	  ** 0/ 3 tests/vm/page-parallel
+	     3/ 3 tests/vm/page-parallel
 	     3/ 3 tests/vm/page-shuffle
 	     4/ 4 tests/vm/page-merge-seq
-	  ** 0/ 4 tests/vm/page-merge-par
+	     4/ 4 tests/vm/page-merge-par
 	  ** 0/ 4 tests/vm/page-merge-mm
 	  ** 0/ 4 tests/vm/page-merge-stk
 
@@ -50,8 +50,8 @@ Functionality of virtual memory subsystem (tests/vm/Rubric.functionality):
 	  ** 0/ 2 tests/vm/mmap-remove
 
 	- Section summary.
-	      7/ 20 tests passed
-	     21/ 55 points subtotal
+	      9/ 20 tests passed
+	     28/ 55 points subtotal
 
 Robustness of virtual memory subsystem (tests/vm/Rubric.robustness):
 	- Test robustness of page table support.
@@ -174,7 +174,7 @@ Robustness of system calls (tests/userprog/Rubric.robustness):
 
 	- Test robustness of "exec" and "wait" system calls.
 	     5/ 5 tests/userprog/exec-missing
-	     5/ 5 tests/userprog/wait-bad-pid
+	  ** 0/ 5 tests/userprog/wait-bad-pid
 	     5/ 5 tests/userprog/wait-killed
 
 	- Test robustness of exception handling.
@@ -186,8 +186,8 @@ Robustness of system calls (tests/userprog/Rubric.robustness):
 	     1/ 1 tests/userprog/bad-jump2
 
 	- Section summary.
-	     34/ 34 tests passed
-	     88/ 88 points subtotal
+	     33/ 34 tests passed
+	     83/ 88 points subtotal
 
 Functionality of base file system (tests/filesys/base/Rubric):
 	- Test basic support for small files.
@@ -243,8 +243,8 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/vm/pt-grow-stk-sc:
 
-Copying tests/vm/pt-grow-stk-sc into /tmp/6vP20odNcV.dsk...
-Writing command line to /tmp/QwudN_sggQ.dsk...
+Copying tests/vm/pt-grow-stk-sc into /tmp/PnFp7lcZQU.dsk...
+Writing command line to /tmp/vrozSTK2OF.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put pt-grow-stk-sc run pt-grow-stk-sc
@@ -269,7 +269,7 @@ Executing 'pt-grow-stk-sc':
 pt-grow-stk-sc: exit(-1)
 Execution of 'pt-grow-stk-sc' complete.
 Timer: 389 ticks
-Thread: 0 idle ticks, 275 kernel ticks, 117 user ticks
+Thread: 0 idle ticks, 277 kernel ticks, 115 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 99 reads, 230 writes
 hd1:0: 107 reads, 0 writes
@@ -281,188 +281,15 @@ Powering off...
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-DETAILS OF tests/vm/page-parallel FAILURE:
-
-Kernel panic in run: PANIC at ../../userprog/pagedir.c:152 in pagedir_clear_page(): assertion `pg_ofs (upage) == 0' failed.
-Call stack: 0xc011feb4
-Translation of call stack:
-0xc011feb4: (unknown)
-
-OUTPUT FROM tests/vm/page-parallel:
-
-Copying tests/vm/page-parallel into /tmp/cjt0B1WT3d.dsk...
-Copying tests/vm/child-linear into /tmp/cjt0B1WT3d.dsk...
-Writing command line to /tmp/ILNbO0RqRb.dsk...
-warning: can't find squish-pty, so terminal input will fail
-bochs -q
-Kernel command line: -q -f put page-parallel put child-linear run page-parallel
-Pintos booting with 4,096 kB RAM...
-373 pages available in kernel pool.
-373 pages available in user pool.
-Calibrating timer...  204,600 loops/s.
-hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
-hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
-hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
-hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
-Formatting file system...done.
-Boot complete.
-Putting 'page-parallel' into the file system...
-Putting 'child-linear' into the file system...
-Executing 'page-parallel':
-(page-parallel) begin
-(page-parallel) exec "child-linear"
-(page-parallel) exec "child-linear"
-Kernel PANIC at ../../userprog/pagedir.c:152 in pagedir_clear_page(): assertion `pg_ofs (upage) == 0' failed.
-Call stack: 0xc011feb4Page fault at 0x98: not present error reading page in kernel context.
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0105652
- cr2=00000098 error=00000000
- eax=00000098 ebx=00000098 ecx=c011fde0 edx=000003d4
- esi=c010e5ce edi=c010ff83 esp=c010f907 ebp=c011fe74
- cs=0008 ds=0010 es=0010 ss=feb4
-Kernel PANIC recursion at ../../userprog/exception.c:104 in kill().
-Timer: 5942 ticks
-Thread: 0 idle ticks, 368 kernel ticks, 5574 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 160 reads, 434 writes
-hd1:0: 212 reads, 0 writes
-hd1:1: 32 reads, 957 writes
-Console: 1504 characters output
-Keyboard: 0 keys pressed
-Exception: 6 page faults
-Powering off...
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
-DETAILS OF tests/vm/page-merge-par FAILURE:
-
-Test output failed to match any acceptable form.
-
-Acceptable output:
-  (page-merge-par) begin
-  (page-merge-par) init
-  (page-merge-par) sort chunk 0
-  (page-merge-par) sort chunk 1
-  (page-merge-par) sort chunk 2
-  (page-merge-par) sort chunk 3
-  (page-merge-par) sort chunk 4
-  (page-merge-par) sort chunk 5
-  (page-merge-par) sort chunk 6
-  (page-merge-par) sort chunk 7
-  (page-merge-par) wait for child 0
-  (page-merge-par) wait for child 1
-  (page-merge-par) wait for child 2
-  (page-merge-par) wait for child 3
-  (page-merge-par) wait for child 4
-  (page-merge-par) wait for child 5
-  (page-merge-par) wait for child 6
-  (page-merge-par) wait for child 7
-  (page-merge-par) merge
-  (page-merge-par) verify
-  (page-merge-par) success, buf_idx=1,048,576
-  (page-merge-par) end
-Differences in `diff -u' format:
-  (page-merge-par) begin
-  (page-merge-par) init
-  (page-merge-par) sort chunk 0
-  (page-merge-par) sort chunk 1
-  (page-merge-par) sort chunk 2
-  (page-merge-par) sort chunk 3
-  (page-merge-par) sort chunk 4
-  (page-merge-par) sort chunk 5
-+ vm_frame_free: NO SUCH FRAME EXIST
-  (page-merge-par) sort chunk 6
-  (page-merge-par) sort chunk 7
-  (page-merge-par) wait for child 0
-  (page-merge-par) wait for child 1
-  (page-merge-par) wait for child 2
-  (page-merge-par) wait for child 3
-  (page-merge-par) wait for child 4
-  (page-merge-par) wait for child 5
-  (page-merge-par) wait for child 6
-  (page-merge-par) wait for child 7
-  (page-merge-par) merge
-  (page-merge-par) verify
-  (page-merge-par) success, buf_idx=1,048,576
-  (page-merge-par) end
-
-(Process exit codes are excluded for matching purposes.)
-
-OUTPUT FROM tests/vm/page-merge-par:
-
-Copying tests/vm/page-merge-par into /tmp/i6Z3K1RGDd.dsk...
-Copying tests/vm/child-sort into /tmp/i6Z3K1RGDd.dsk...
-Writing command line to /tmp/rQRu6rPlov.dsk...
-warning: can't find squish-pty, so terminal input will fail
-bochs -q
-Kernel command line: -q -f put page-merge-par put child-sort run page-merge-par
-Pintos booting with 4,096 kB RAM...
-373 pages available in kernel pool.
-373 pages available in user pool.
-Calibrating timer...  204,600 loops/s.
-hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
-hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
-hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
-hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
-Formatting file system...done.
-Boot complete.
-Putting 'page-merge-par' into the file system...
-Putting 'child-sort' into the file system...
-Executing 'page-merge-par':
-(page-merge-par) begin
-(page-merge-par) init
-(page-merge-par) sort chunk 0
-(page-merge-par) sort chunk 1
-child-sort: exit(123)
-(page-merge-par) sort chunk 2
-(page-merge-par) sort chunk 3
-child-sort: exit(123)
-child-sort: exit(123)
-(page-merge-par) sort chunk 4
-child-sort: exit(123)
-(page-merge-par) sort chunk 5
-vm_frame_free: NO SUCH FRAME EXIST
-child-sort: exit(123)
-(page-merge-par) sort chunk 6
-child-sort: exit(123)
-(page-merge-par) sort chunk 7
-child-sort: exit(123)
-(page-merge-par) wait for child 0
-(page-merge-par) wait for child 1
-(page-merge-par) wait for child 2
-(page-merge-par) wait for child 3
-(page-merge-par) wait for child 4
-(page-merge-par) wait for child 5
-(page-merge-par) wait for child 6
-(page-merge-par) wait for child 7
-child-sort: exit(123)
-(page-merge-par) merge
-(page-merge-par) verify
-(page-merge-par) success, buf_idx=1,048,576
-(page-merge-par) end
-page-merge-par: exit(0)
-Execution of 'page-merge-par' complete.
-Timer: 30361 ticks
-Thread: 0 idle ticks, 1125 kernel ticks, 29239 user ticks
-hd0:0: 0 reads, 0 writes
-hd0:1: 4881 reads, 6626 writes
-hd1:0: 220 reads, 0 writes
-hd1:1: 4608 reads, 5776 writes
-Console: 1864 characters output
-Keyboard: 0 keys pressed
-Exception: 576 page faults
-Powering off...
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-
 DETAILS OF tests/vm/page-merge-mm FAILURE:
 
 run: wait for child 0: FAILED
 
 OUTPUT FROM tests/vm/page-merge-mm:
 
-Copying tests/vm/page-merge-mm into /tmp/VnSGPSPeWp.dsk...
-Copying tests/vm/child-qsort-mm into /tmp/VnSGPSPeWp.dsk...
-Writing command line to /tmp/8GfOKVbj4t.dsk...
+Copying tests/vm/page-merge-mm into /tmp/xubBi8eDbc.dsk...
+Copying tests/vm/child-qsort-mm into /tmp/xubBi8eDbc.dsk...
+Writing command line to /tmp/EZI_jHejSZ.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put page-merge-mm put child-qsort-mm run page-merge-mm
@@ -488,10 +315,10 @@ child-qsort-mm: exit(-1)
 (page-merge-mm) sort chunk 2
 child-qsort-mm: exit(-1)
 (page-merge-mm) sort chunk 3
+child-qsort-mm: exit(-1)
 (page-merge-mm) sort chunk 4
-child-qsort-mm: exit(-1)
-child-qsort-mm: exit(-1)
 (page-merge-mm) sort chunk 5
+child-qsort-mm: exit(-1)
 child-qsort-mm: exit(-1)
 (page-merge-mm) sort chunk 6
 child-qsort-mm: exit(-1)
@@ -501,12 +328,12 @@ child-qsort-mm: exit(-1)
 (page-merge-mm) wait for child 0: FAILED
 page-merge-mm: exit(1)
 Execution of 'page-merge-mm' complete.
-Timer: 12375 ticks
-Thread: 0 idle ticks, 561 kernel ticks, 11817 user ticks
+Timer: 12197 ticks
+Thread: 0 idle ticks, 564 kernel ticks, 11636 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 740 reads, 4588 writes
+hd0:1: 739 reads, 4588 writes
 hd1:0: 225 reads, 0 writes
-hd1:1: 2088 reads, 3304 writes
+hd1:1: 2088 reads, 3344 writes
 Console: 1533 characters output
 Keyboard: 0 keys pressed
 Exception: 261 page faults
@@ -523,9 +350,9 @@ Translation of call stack:
 
 OUTPUT FROM tests/vm/page-merge-stk:
 
-Copying tests/vm/page-merge-stk into /tmp/T1fbXcmmq_.dsk...
-Copying tests/vm/child-qsort into /tmp/T1fbXcmmq_.dsk...
-Writing command line to /tmp/uRuHHFk8YW.dsk...
+Copying tests/vm/page-merge-stk into /tmp/aqHx2meZ65.dsk...
+Copying tests/vm/child-qsort into /tmp/aqHx2meZ65.dsk...
+Writing command line to /tmp/PjQE8nt_kG.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put page-merge-stk put child-qsort run page-merge-stk
@@ -557,11 +384,11 @@ Call stack: 0xc012ddacPage fault at 0x68: not present error reading page in kern
 Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0105652
  cr2=00000068 error=00000000
  eax=00000068 ebx=00000068 ecx=c012dcd8 edx=000003d4
- esi=c010e61e edi=c0110075 esp=c010f907 ebp=c012dd6c
+ esi=c010e69e edi=c01100f5 esp=c010f987 ebp=c012dd6c
  cs=0008 ds=0010 es=0010 ss=ddac
 Kernel PANIC recursion at ../../userprog/exception.c:104 in kill().
-Timer: 10640 ticks
-Thread: 0 idle ticks, 377 kernel ticks, 10263 user ticks
+Timer: 10440 ticks
+Thread: 0 idle ticks, 377 kernel ticks, 10063 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 189 reads, 1492 writes
 hd1:0: 225 reads, 0 writes
@@ -592,9 +419,9 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/vm/mmap-read:
 
-Copying tests/vm/mmap-read into /tmp/7HedzMqovv.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/7HedzMqovv.dsk...
-Writing command line to /tmp/qN2iIb_nZa.dsk...
+Copying tests/vm/mmap-read into /tmp/me_PFkT19Y.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/me_PFkT19Y.dsk...
+Writing command line to /tmp/Zcg6kw_d0F.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put mmap-read put sample.txt run mmap-read
@@ -617,7 +444,7 @@ Executing 'mmap-read':
 mmap-read: exit(-1)
 Execution of 'mmap-read' complete.
 Timer: 364 ticks
-Thread: 0 idle ticks, 304 kernel ticks, 66 user ticks
+Thread: 0 idle ticks, 306 kernel ticks, 65 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 99 reads, 230 writes
 hd1:0: 110 reads, 0 writes
@@ -652,8 +479,8 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/vm/mmap-write:
 
-Copying tests/vm/mmap-write into /tmp/PucFfA9GOe.dsk...
-Writing command line to /tmp/iOeWrlOfbw.dsk...
+Copying tests/vm/mmap-write into /tmp/2uId8ZSBR5.dsk...
+Writing command line to /tmp/vpIIX86ZjP.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put mmap-write run mmap-write
@@ -675,8 +502,8 @@ Executing 'mmap-write':
 (mmap-write) mmap "sample.txt"
 mmap-write: exit(-1)
 Execution of 'mmap-write' complete.
-Timer: 357 ticks
-Thread: 0 idle ticks, 271 kernel ticks, 92 user ticks
+Timer: 360 ticks
+Thread: 0 idle ticks, 274 kernel ticks, 92 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 94 reads, 228 writes
 hd1:0: 107 reads, 0 writes
@@ -731,8 +558,8 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/vm/mmap-shuffle:
 
-Copying tests/vm/mmap-shuffle into /tmp/xTxszKnSo5.dsk...
-Writing command line to /tmp/8wye_ueK0a.dsk...
+Copying tests/vm/mmap-shuffle into /tmp/2r3xfCCZ7P.dsk...
+Writing command line to /tmp/jLxaL4J5Ef.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put mmap-shuffle run mmap-shuffle
@@ -755,7 +582,7 @@ Executing 'mmap-shuffle':
 mmap-shuffle: exit(-1)
 Execution of 'mmap-shuffle' complete.
 Timer: 426 ticks
-Thread: 0 idle ticks, 279 kernel ticks, 150 user ticks
+Thread: 0 idle ticks, 280 kernel ticks, 149 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 88 reads, 496 writes
 hd1:0: 114 reads, 0 writes
@@ -794,9 +621,9 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/vm/mmap-twice:
 
-Copying tests/vm/mmap-twice into /tmp/FZu2f4Mgkr.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/FZu2f4Mgkr.dsk...
-Writing command line to /tmp/Oy_i1CnIj1.dsk...
+Copying tests/vm/mmap-twice into /tmp/ason_ycjqg.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/ason_ycjqg.dsk...
+Writing command line to /tmp/Hxb0Znolkt.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put mmap-twice put sample.txt run mmap-twice
@@ -818,8 +645,8 @@ Executing 'mmap-twice':
 (mmap-twice) mmap "sample.txt" #0 at 0x10000000
 mmap-twice: exit(-1)
 Execution of 'mmap-twice' complete.
-Timer: 368 ticks
-Thread: 0 idle ticks, 305 kernel ticks, 69 user ticks
+Timer: 365 ticks
+Thread: 0 idle ticks, 304 kernel ticks, 67 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 98 reads, 230 writes
 hd1:0: 110 reads, 0 writes
@@ -837,9 +664,9 @@ run: wait for child (should return 0): FAILED
 
 OUTPUT FROM tests/vm/mmap-exit:
 
-Copying tests/vm/mmap-exit into /tmp/AwgyVsVisc.dsk...
-Copying tests/vm/child-mm-wrt into /tmp/AwgyVsVisc.dsk...
-Writing command line to /tmp/ICG12y_zFJ.dsk...
+Copying tests/vm/mmap-exit into /tmp/u1kmGlweqH.dsk...
+Copying tests/vm/child-mm-wrt into /tmp/u1kmGlweqH.dsk...
+Writing command line to /tmp/hl_Myh0xX4.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put mmap-exit put child-mm-wrt run mmap-exit
@@ -865,8 +692,8 @@ child-mm-wrt: exit(-1)
 (mmap-exit) wait for child (should return 0): FAILED
 mmap-exit: exit(1)
 Execution of 'mmap-exit' complete.
-Timer: 536 ticks
-Thread: 0 idle ticks, 394 kernel ticks, 153 user ticks
+Timer: 535 ticks
+Thread: 0 idle ticks, 396 kernel ticks, 150 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 160 reads, 440 writes
 hd1:0: 212 reads, 0 writes
@@ -907,9 +734,9 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/vm/mmap-clean:
 
-Copying tests/vm/mmap-clean into /tmp/8ypWGMfWyB.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/8ypWGMfWyB.dsk...
-Writing command line to /tmp/imluVUHzQR.dsk...
+Copying tests/vm/mmap-clean into /tmp/aE3FDqUsvI.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/aE3FDqUsvI.dsk...
+Writing command line to /tmp/aKcj1WiKaD.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put mmap-clean put sample.txt run mmap-clean
@@ -932,7 +759,7 @@ Executing 'mmap-clean':
 mmap-clean: exit(-1)
 Execution of 'mmap-clean' complete.
 Timer: 365 ticks
-Thread: 0 idle ticks, 305 kernel ticks, 66 user ticks
+Thread: 0 idle ticks, 306 kernel ticks, 65 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 100 reads, 232 writes
 hd1:0: 111 reads, 0 writes
@@ -963,9 +790,9 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/vm/mmap-close:
 
-Copying tests/vm/mmap-close into /tmp/dzdSFP7Tr9.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/dzdSFP7Tr9.dsk...
-Writing command line to /tmp/sFy_UEsVFH.dsk...
+Copying tests/vm/mmap-close into /tmp/dLJJVvCxaf.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/dLJJVvCxaf.dsk...
+Writing command line to /tmp/ZkCNDWxwkl.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put mmap-close put sample.txt run mmap-close
@@ -987,8 +814,8 @@ Executing 'mmap-close':
 (mmap-close) mmap "sample.txt"
 mmap-close: exit(-1)
 Execution of 'mmap-close' complete.
-Timer: 365 ticks
-Thread: 0 idle ticks, 306 kernel ticks, 65 user ticks
+Timer: 364 ticks
+Thread: 0 idle ticks, 304 kernel ticks, 66 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 98 reads, 228 writes
 hd1:0: 109 reads, 0 writes
@@ -1025,9 +852,9 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/vm/mmap-remove:
 
-Copying tests/vm/mmap-remove into /tmp/DhA1cp10B4.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/DhA1cp10B4.dsk...
-Writing command line to /tmp/73NLqv7Fq6.dsk...
+Copying tests/vm/mmap-remove into /tmp/D4rnCc_7He.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/D4rnCc_7He.dsk...
+Writing command line to /tmp/d9VzVbfnkb.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put mmap-remove put sample.txt run mmap-remove
@@ -1049,8 +876,8 @@ Executing 'mmap-remove':
 (mmap-remove) mmap "sample.txt"
 mmap-remove: exit(-1)
 Execution of 'mmap-remove' complete.
-Timer: 371 ticks
-Thread: 0 idle ticks, 309 kernel ticks, 65 user ticks
+Timer: 370 ticks
+Thread: 0 idle ticks, 308 kernel ticks, 65 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 99 reads, 230 writes
 hd1:0: 110 reads, 0 writes
@@ -1071,9 +898,9 @@ Translation of call stack:
 
 OUTPUT FROM tests/vm/pt-write-code2:
 
-Copying tests/vm/pt-write-code2 into /tmp/VdCVJ0gscw.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/VdCVJ0gscw.dsk...
-Writing command line to /tmp/PR9mGumhzo.dsk...
+Copying tests/vm/pt-write-code2 into /tmp/5mnk92A5fr.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/5mnk92A5fr.dsk...
+Writing command line to /tmp/B60T4XiFSH.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put pt-write-code2 put sample.txt run pt-write-code2
@@ -1103,11 +930,11 @@ Call stack: 0xc011edb8Page fault at 0x68: not present error reading page in kern
 Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0105652
  cr2=00000068 error=00000000
  eax=00000068 ebx=00000068 ecx=c011ece4 edx=000003d4
- esi=c010e61e edi=c0110075 esp=c010f907 ebp=c011ed78
+ esi=c010e69e edi=c01100f5 esp=c010f987 ebp=c011ed78
  cs=0008 ds=0010 es=0010 ss=edb8
 Kernel PANIC recursion at ../../userprog/exception.c:104 in kill().
-Timer: 420 ticks
-Thread: 0 idle ticks, 291 kernel ticks, 129 user ticks
+Timer: 419 ticks
+Thread: 0 idle ticks, 292 kernel ticks, 127 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 91 reads, 224 writes
 hd1:0: 107 reads, 0 writes
@@ -1149,10 +976,10 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/vm/mmap-inherit:
 
-Copying tests/vm/mmap-inherit into /tmp/mXuR1jCbqc.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/mXuR1jCbqc.dsk...
-Copying tests/vm/child-inherit into /tmp/mXuR1jCbqc.dsk...
-Writing command line to /tmp/W3zBry4S7p.dsk...
+Copying tests/vm/mmap-inherit into /tmp/UqrEFM_2Ej.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/UqrEFM_2Ej.dsk...
+Copying tests/vm/child-inherit into /tmp/UqrEFM_2Ej.dsk...
+Writing command line to /tmp/nciSdNRMb9.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put mmap-inherit put sample.txt put child-inherit run mmap-inherit
@@ -1175,8 +1002,8 @@ Executing 'mmap-inherit':
 (mmap-inherit) mmap "sample.txt"
 mmap-inherit: exit(-1)
 Execution of 'mmap-inherit' complete.
-Timer: 478 ticks
-Thread: 0 idle ticks, 415 kernel ticks, 66 user ticks
+Timer: 477 ticks
+Thread: 0 idle ticks, 414 kernel ticks, 66 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 128 reads, 444 writes
 hd1:0: 216 reads, 0 writes
@@ -1207,9 +1034,9 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/vm/mmap-null:
 
-Copying tests/vm/mmap-null into /tmp/GGIURsMQiL.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/GGIURsMQiL.dsk...
-Writing command line to /tmp/brhvTyuzNg.dsk...
+Copying tests/vm/mmap-null into /tmp/VCHVO6R0Il.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/VCHVO6R0Il.dsk...
+Writing command line to /tmp/A78EcMRll6.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put mmap-null put sample.txt run mmap-null
@@ -1232,7 +1059,7 @@ Executing 'mmap-null':
 mmap-null: exit(-1)
 Execution of 'mmap-null' complete.
 Timer: 362 ticks
-Thread: 0 idle ticks, 302 kernel ticks, 66 user ticks
+Thread: 0 idle ticks, 303 kernel ticks, 65 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 90 reads, 224 writes
 hd1:0: 107 reads, 0 writes
@@ -1263,9 +1090,9 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/vm/mmap-misalign:
 
-Copying tests/vm/mmap-misalign into /tmp/QqAR3w6Do6.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/QqAR3w6Do6.dsk...
-Writing command line to /tmp/Ng4BrpXjmN.dsk...
+Copying tests/vm/mmap-misalign into /tmp/EfCDzO0YCA.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/EfCDzO0YCA.dsk...
+Writing command line to /tmp/9LoWtGxVlq.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put mmap-misalign put sample.txt run mmap-misalign
@@ -1287,8 +1114,8 @@ Executing 'mmap-misalign':
 (mmap-misalign) try to mmap at misaligned address
 mmap-misalign: exit(-1)
 Execution of 'mmap-misalign' complete.
-Timer: 373 ticks
-Thread: 0 idle ticks, 309 kernel ticks, 67 user ticks
+Timer: 372 ticks
+Thread: 0 idle ticks, 308 kernel ticks, 67 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 90 reads, 224 writes
 hd1:0: 107 reads, 0 writes
@@ -1319,9 +1146,9 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/vm/mmap-over-code:
 
-Copying tests/vm/mmap-over-code into /tmp/p9wvtDUFrX.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/p9wvtDUFrX.dsk...
-Writing command line to /tmp/_TQ0MADTSs.dsk...
+Copying tests/vm/mmap-over-code into /tmp/VL98agQdFO.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/VL98agQdFO.dsk...
+Writing command line to /tmp/hvim64FIh_.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put mmap-over-code put sample.txt run mmap-over-code
@@ -1343,8 +1170,8 @@ Executing 'mmap-over-code':
 (mmap-over-code) try to mmap over code segment
 mmap-over-code: exit(-1)
 Execution of 'mmap-over-code' complete.
-Timer: 372 ticks
-Thread: 0 idle ticks, 307 kernel ticks, 68 user ticks
+Timer: 373 ticks
+Thread: 0 idle ticks, 310 kernel ticks, 66 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 90 reads, 224 writes
 hd1:0: 107 reads, 0 writes
@@ -1375,9 +1202,9 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/vm/mmap-over-data:
 
-Copying tests/vm/mmap-over-data into /tmp/grlAtle2eL.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/grlAtle2eL.dsk...
-Writing command line to /tmp/YQoxS1iSM9.dsk...
+Copying tests/vm/mmap-over-data into /tmp/uTZvIyYcOG.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/uTZvIyYcOG.dsk...
+Writing command line to /tmp/VU3uEGmFu6.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put mmap-over-data put sample.txt run mmap-over-data
@@ -1399,8 +1226,8 @@ Executing 'mmap-over-data':
 (mmap-over-data) try to mmap over data segment
 mmap-over-data: exit(-1)
 Execution of 'mmap-over-data' complete.
-Timer: 372 ticks
-Thread: 0 idle ticks, 307 kernel ticks, 68 user ticks
+Timer: 373 ticks
+Thread: 0 idle ticks, 310 kernel ticks, 66 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 90 reads, 224 writes
 hd1:0: 107 reads, 0 writes
@@ -1431,9 +1258,9 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/vm/mmap-over-stk:
 
-Copying tests/vm/mmap-over-stk into /tmp/AgOOKflsjP.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/AgOOKflsjP.dsk...
-Writing command line to /tmp/SLvuZq3xcw.dsk...
+Copying tests/vm/mmap-over-stk into /tmp/rpjyMQPacg.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/rpjyMQPacg.dsk...
+Writing command line to /tmp/gqOmJAZXVW.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put mmap-over-stk put sample.txt run mmap-over-stk
@@ -1455,8 +1282,8 @@ Executing 'mmap-over-stk':
 (mmap-over-stk) try to mmap over stack segment
 mmap-over-stk: exit(-1)
 Execution of 'mmap-over-stk' complete.
-Timer: 369 ticks
-Thread: 0 idle ticks, 306 kernel ticks, 66 user ticks
+Timer: 372 ticks
+Thread: 0 idle ticks, 309 kernel ticks, 66 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 90 reads, 224 writes
 hd1:0: 107 reads, 0 writes
@@ -1491,9 +1318,9 @@ Differences in `diff -u' format:
 
 OUTPUT FROM tests/vm/mmap-overlap:
 
-Copying tests/vm/mmap-overlap into /tmp/5gDwYfeYxZ.dsk...
-Copying tests/vm/zeros into /tmp/5gDwYfeYxZ.dsk...
-Writing command line to /tmp/vXrx4lpj74.dsk...
+Copying tests/vm/mmap-overlap into /tmp/Lku73L26h4.dsk...
+Copying tests/vm/zeros into /tmp/Lku73L26h4.dsk...
+Writing command line to /tmp/RL1NWFoOQB.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put mmap-overlap put zeros run mmap-overlap
@@ -1516,7 +1343,7 @@ Executing 'mmap-overlap':
 mmap-overlap: exit(-1)
 Execution of 'mmap-overlap' complete.
 Timer: 375 ticks
-Thread: 0 idle ticks, 312 kernel ticks, 66 user ticks
+Thread: 0 idle ticks, 313 kernel ticks, 65 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 97 reads, 248 writes
 hd1:0: 119 reads, 0 writes
@@ -1524,4 +1351,58 @@ hd1:1: 0 reads, 0 writes
 Console: 1030 characters output
 Keyboard: 0 keys pressed
 Exception: 0 page faults
+Powering off...
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+DETAILS OF tests/userprog/wait-bad-pid FAILURE:
+
+Kernel panic in run: PANIC at ../../userprog/exception.c:104 in kill(): Kernel bug - unexpected interrupt in kernel
+Call stack: 0xc011ee18
+Translation of call stack:
+0xc011ee18: (unknown)
+
+OUTPUT FROM tests/userprog/wait-bad-pid:
+
+Copying tests/userprog/wait-bad-pid into /tmp/9lLL2SJwLu.dsk...
+Writing command line to /tmp/ptfF_ojSl6.dsk...
+warning: can't find squish-pty, so terminal input will fail
+bochs -q
+Kernel command line: -q -f put wait-bad-pid run wait-bad-pid
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+373 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'wait-bad-pid' into the file system...
+Executing 'wait-bad-pid':
+(wait-bad-pid) begin
+Page fault at 0x11: not present error reading page in kernel context.
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc010950a
+ cr2=00000011 error=00000000
+ eax=00000008 ebx=c011e098 ecx=c011e068 edx=c011e03c
+ esi=0c020301 edi=c011e050 esp=c011e050 ebp=c011ef34
+ cs=0008 ds=0010 es=0010 ss=ff94
+Kernel PANIC at ../../userprog/exception.c:104 in kill(): Kernel bug - unexpected interrupt in kernel
+Call stack: 0xc011ee18Page fault at 0x68: not present error reading page in kernel context.
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0105652
+ cr2=00000068 error=00000000
+ eax=00000068 ebx=00000068 ecx=c011ed44 edx=000003d4
+ esi=c010e69e edi=c01100f5 esp=c010f987 ebp=c011edd8
+ cs=0008 ds=0010 es=0010 ss=ee18
+Kernel PANIC recursion at ../../userprog/exception.c:104 in kill().
+Timer: 371 ticks
+Thread: 0 idle ticks, 257 kernel ticks, 114 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 59 reads, 214 writes
+hd1:0: 103 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1647 characters output
+Keyboard: 0 keys pressed
+Exception: 2 page faults
 Powering off...

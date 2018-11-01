@@ -1,6 +1,6 @@
-Copying tests/vm/page-merge-stk into /tmp/T1fbXcmmq_.dsk...
-Copying tests/vm/child-qsort into /tmp/T1fbXcmmq_.dsk...
-Writing command line to /tmp/uRuHHFk8YW.dsk...
+Copying tests/vm/page-merge-stk into /tmp/rLs55Ym9F6.dsk...
+Copying tests/vm/child-qsort into /tmp/rLs55Ym9F6.dsk...
+Writing command line to /tmp/iT9olm5khQ.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put page-merge-stk put child-qsort run page-merge-stk
@@ -32,11 +32,11 @@ Call stack: 0xc012ddacPage fault at 0x68: not present error reading page in kern
 Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0105652
  cr2=00000068 error=00000000
  eax=00000068 ebx=00000068 ecx=c012dcd8 edx=000003d4
- esi=c010e61e edi=c0110075 esp=c010f907 ebp=c012dd6c
+ esi=c010e67e edi=c01100d5 esp=c010f967 ebp=c012dd6c
  cs=0008 ds=0010 es=0010 ss=ddac
 Kernel PANIC recursion at ../../userprog/exception.c:104 in kill().
-Timer: 10640 ticks
-Thread: 0 idle ticks, 377 kernel ticks, 10263 user ticks
+Timer: 10440 ticks
+Thread: 0 idle ticks, 377 kernel ticks, 10063 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 189 reads, 1492 writes
 hd1:0: 225 reads, 0 writes

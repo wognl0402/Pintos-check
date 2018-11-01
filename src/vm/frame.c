@@ -23,6 +23,7 @@ void vm_frt_init (void){
 
 
 void *vm_frame_alloc (enum palloc_flags flags){
+  acquire_frt_lock ();
   void *page;
   void *frame = palloc_get_page (flags);
   if (frame == NULL){
@@ -32,25 +33,48 @@ void *vm_frame_alloc (enum palloc_flags flags){
 	//ASSERT (temp != NULL);
     ASSERT (victim != NULL);
 	struct thread *t = get_thread (victim->tid);
+	
+	//pagedir_clear_page (t->pagedir, victim->upage);
+	//if (!vm_is_in_spt (&t->spt, victim->upage))
+	//  PANIC ("line 40 \n");
+	//printf ("upage: [%x], tid: [%d]\n", victim->upage, t->tid);
+	
 	ASSERT (t != NULL);
 	if (pg_ofs (victim->upage) != 0)
 	  PANIC ("WHY NOW?");
 	int swap_index = vm_swap_out (victim->frame);
 	ASSERT (pg_ofs (victim->upage) == 0);
-	pagedir_clear_page (t->pagedir, victim->upage);
-
-	if (!vm_set_swap (&t->spt, victim->upage, swap_index))
-	  PANIC ("vm_set_swap: NO SUCH spt entry");
 	
+	//ASSERT (vm_is_in_spt (&t->spt, victim->upage));
+	
+	if (!vm_set_swap (&t->spt, victim->upage, swap_index)){
+	  //printf ("upage: [%x], tid: [%d]\n", victim->upage, t->tid);
+	  PANIC ("vm_set_swap: NO SUCH spt entry");
+	}
+	pagedir_clear_page (t->pagedir, victim->upage);
 	//frame = victim->kpage;
 	//PANIC ("WE WHOULD EVICT!!!");
-	vm_frame_free (victim->frame);
+	vm_frame_free_no_lock (victim->frame);
+	/*
+	struct frt_entry *temp;
+	struct list_elem *e;
+	for (e= list_begin (&frt);
+		e!= list_end (&frt); e=list_next (e)){
+	  temp = list_entry (e, struct frt_entry, frt_elem);
+	  if (temp->frame == victim->frame){
+		list_remove (e);
+		free (temp);
+		break;
+	  }
+	}
+	*/
 
-	frame = palloc_get_page (flags);
+    frame = palloc_get_page (flags);
 	if (frame == NULL)
 	  PANIC ("Eviction failed again");
   }
 
+  //acquire_frt_lock ();
   struct frt_entry *f;
   f = malloc (sizeof (*f));
   if (f == NULL){
@@ -60,7 +84,6 @@ void *vm_frame_alloc (enum palloc_flags flags){
   f->frame = frame;
   f->tid = thread_current ()->tid;
   f->in_use = true;
-  acquire_frt_lock ();
   list_push_back (&frt, &f->frt_elem);
   release_frt_lock ();
   return frame;
@@ -69,12 +92,12 @@ struct frt_entry *vm_frame_evict (void){
 
   struct frt_entry *victim;
 
-  lock_acquire (&frt_evict_lock);
+  //lock_acquire (&frt_evict_lock);
 
   victim = vm_evict_SC ();
   ASSERT (victim != NULL);
 
-  lock_release (&frt_evict_lock);
+  //lock_release (&frt_evict_lock);
   return victim;
 }
 
@@ -127,14 +150,14 @@ SCAN:
 }
 
 void vm_frame_set (void *kpage, void*upage){
-
+  acquire_frt_lock ();
   struct frt_entry *f = get_frt_entry (kpage);
   
   ASSERT (f->tid == thread_current ()->tid);
   ASSERT (f->in_use);
 
   ASSERT (pg_ofs (upage) == 0);
-  acquire_frt_lock ();
+  //acquire_frt_lock ();
   
   f->upage = upage;
   f->in_use = false;
@@ -143,7 +166,13 @@ void vm_frame_set (void *kpage, void*upage){
   return;
 }
 
-void vm_frame_free (void *frame)
+void vm_frame_free (void *frame){
+  acquire_frt_lock ();
+  vm_frame_free_no_lock (frame);
+  release_frt_lock ();
+}
+
+void vm_frame_free_no_lock (void *frame)
 {
   struct frt_entry *f = get_frt_entry (frame);
   if(f == NULL){
@@ -151,31 +180,32 @@ void vm_frame_free (void *frame)
 	return;
   }
   //Remove frt_entry from the frt
-  acquire_frt_lock ();
+  //acquire_frt_lock ();
   list_remove (&f->frt_elem);
   free (f);
   //Free the frame
   //printf("vm_frame_palloc?\n");
   palloc_free_page (frame);
 
-  release_frt_lock ();
+  //release_frt_lock ();
   return;
 }
 
 void vm_frame_destroy (void *frame)
 {
+  //acquire_frt_lock ();
   struct frt_entry *f = get_frt_entry (frame);
   if(f == NULL){
-	printf ("vm_frame_free: NO SUCH FRAME EXIST\n");
+	printf ("vm_frame_destroy: NO SUCH FRAME EXIST\n");
 	return;
   }
   //Remove frt_entry from the frt
-  acquire_frt_lock ();
+  //acquire_frt_lock ();
   list_remove (&f->frt_elem);
   free (f);
   //Free the frame
   //printf("vm_frame_palloc?\n");
-  release_frt_lock ();
+  //release_frt_lock ();
   //palloc_free_page (frame);
 
   return;
@@ -194,15 +224,15 @@ struct frt_entry *get_frt_entry (void *frame){
   struct list_elem *e;
   struct frt_entry *temp;
 
-  acquire_frt_lock ();
+  //acquire_frt_lock ();
   for (e=list_begin (&frt); e!=list_end (&frt); e=list_next (e)){
 	temp = list_entry (e, struct frt_entry, frt_elem);
 	if (temp->frame == frame){
-	  release_frt_lock ();
+	  //release_frt_lock ();
 	  return temp;
 	}
   }
-  release_frt_lock ();
+  //release_frt_lock ();
   return NULL;
 }
 

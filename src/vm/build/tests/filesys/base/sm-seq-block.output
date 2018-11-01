@@ -1,5 +1,5 @@
-Copying tests/filesys/base/sm-seq-block into /tmp/7SO4gbjE2Y.dsk...
-Writing command line to /tmp/gpaTL8Es3x.dsk...
+Copying tests/filesys/base/sm-seq-block into /tmp/XWfLipKueO.dsk...
+Writing command line to /tmp/bcbXvdpY32.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put sm-seq-block run sm-seq-block
@@ -27,7 +27,7 @@ Executing 'sm-seq-block':
 sm-seq-block: exit(0)
 Execution of 'sm-seq-block' complete.
 Timer: 442 ticks
-Thread: 0 idle ticks, 275 kernel ticks, 170 user ticks
+Thread: 0 idle ticks, 276 kernel ticks, 169 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 124 reads, 263 writes
 hd1:0: 108 reads, 0 writes

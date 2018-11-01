@@ -1,6 +1,6 @@
-Copying tests/vm/pt-bad-read into /tmp/2i7g9wz5X0.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/2i7g9wz5X0.dsk...
-Writing command line to /tmp/IrW45e6A8s.dsk...
+Copying tests/vm/pt-bad-read into /tmp/ENJZJwMnhB.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/ENJZJwMnhB.dsk...
+Writing command line to /tmp/niBWN3oATE.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put pt-bad-read put sample.txt run pt-bad-read
@@ -21,8 +21,8 @@ Executing 'pt-bad-read':
 (pt-bad-read) open "sample.txt"
 pt-bad-read: exit(-1)
 Execution of 'pt-bad-read' complete.
-Timer: 363 ticks
-Thread: 0 idle ticks, 305 kernel ticks, 61 user ticks
+Timer: 364 ticks
+Thread: 0 idle ticks, 308 kernel ticks, 59 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 90 reads, 224 writes
 hd1:0: 107 reads, 0 writes

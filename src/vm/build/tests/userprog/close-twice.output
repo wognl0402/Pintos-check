@@ -1,6 +1,6 @@
-Copying tests/userprog/close-twice into /tmp/As3NI_hGr_.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/As3NI_hGr_.dsk...
-Writing command line to /tmp/tXx7diVQsI.dsk...
+Copying tests/userprog/close-twice into /tmp/Z1aIUyFMwY.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/Z1aIUyFMwY.dsk...
+Writing command line to /tmp/fqJHrlll33.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put close-twice put sample.txt run close-twice
@@ -23,8 +23,8 @@ Executing 'close-twice':
 (close-twice) close "sample.txt" again
 close-twice: exit(-1)
 Execution of 'close-twice' complete.
-Timer: 375 ticks
-Thread: 0 idle ticks, 307 kernel ticks, 71 user ticks
+Timer: 371 ticks
+Thread: 0 idle ticks, 304 kernel ticks, 70 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 90 reads, 222 writes
 hd1:0: 106 reads, 0 writes

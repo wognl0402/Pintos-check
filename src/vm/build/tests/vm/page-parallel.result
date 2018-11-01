@@ -1,5 +1,1 @@
-FAIL
-Kernel panic in run: PANIC at ../../userprog/pagedir.c:152 in pagedir_clear_page(): assertion `pg_ofs (upage) == 0' failed.
-Call stack: 0xc011feb4
-Translation of call stack:
-0xc011feb4: (unknown)
+PASS

@@ -31,6 +31,7 @@ struct frt_entry *vm_evict_SC (void);
 
 void vm_frame_set (void *, void *);
 void vm_frame_free (void *);
+void vm_frame_free_no_lock (void *);
 void vm_frame_destroy (void *);
 
 void acquire_frt_lock (void);

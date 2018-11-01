@@ -1,6 +1,6 @@
-Copying tests/vm/page-parallel into /tmp/cjt0B1WT3d.dsk...
-Copying tests/vm/child-linear into /tmp/cjt0B1WT3d.dsk...
-Writing command line to /tmp/ILNbO0RqRb.dsk...
+Copying tests/vm/page-parallel into /tmp/83g8_Kcqhl.dsk...
+Copying tests/vm/child-linear into /tmp/83g8_Kcqhl.dsk...
+Writing command line to /tmp/44tr0Yenin.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put page-parallel put child-linear run page-parallel
@@ -20,21 +20,26 @@ Executing 'page-parallel':
 (page-parallel) begin
 (page-parallel) exec "child-linear"
 (page-parallel) exec "child-linear"
-Kernel PANIC at ../../userprog/pagedir.c:152 in pagedir_clear_page(): assertion `pg_ofs (upage) == 0' failed.
-Call stack: 0xc011feb4Page fault at 0x98: not present error reading page in kernel context.
-Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0105652
- cr2=00000098 error=00000000
- eax=00000098 ebx=00000098 ecx=c011fde0 edx=000003d4
- esi=c010e5ce edi=c010ff83 esp=c010f907 ebp=c011fe74
- cs=0008 ds=0010 es=0010 ss=feb4
-Kernel PANIC recursion at ../../userprog/exception.c:104 in kill().
-Timer: 5942 ticks
-Thread: 0 idle ticks, 368 kernel ticks, 5574 user ticks
+(page-parallel) exec "child-linear"
+(page-parallel) exec "child-linear"
+(page-parallel) wait for child 0
+child-linear: exit(66)
+(page-parallel) wait for child 1
+child-linear: exit(66)
+(page-parallel) wait for child 2
+child-linear: exit(66)
+(page-parallel) wait for child 3
+child-linear: exit(66)
+(page-parallel) end
+page-parallel: exit(0)
+Execution of 'page-parallel' complete.
+Timer: 65149 ticks
+Thread: 0 idle ticks, 1256 kernel ticks, 63896 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 160 reads, 434 writes
+hd0:1: 235 reads, 434 writes
 hd1:0: 212 reads, 0 writes
-hd1:1: 32 reads, 957 writes
-Console: 1504 characters output
+hd1:1: 19904 reads, 23128 writes
+Console: 1392 characters output
 Keyboard: 0 keys pressed
-Exception: 6 page faults
+Exception: 2488 page faults
 Powering off...

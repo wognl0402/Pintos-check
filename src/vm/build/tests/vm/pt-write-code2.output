@@ -1,6 +1,6 @@
-Copying tests/vm/pt-write-code2 into /tmp/VdCVJ0gscw.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/VdCVJ0gscw.dsk...
-Writing command line to /tmp/PR9mGumhzo.dsk...
+Copying tests/vm/pt-write-code2 into /tmp/FZ6_sppcKA.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/FZ6_sppcKA.dsk...
+Writing command line to /tmp/HUd4gBqCgF.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put pt-write-code2 put sample.txt run pt-write-code2
@@ -30,11 +30,11 @@ Call stack: 0xc011edb8Page fault at 0x68: not present error reading page in kern
 Interrupt 0x0e (#PF Page-Fault Exception) at eip=0xc0105652
  cr2=00000068 error=00000000
  eax=00000068 ebx=00000068 ecx=c011ece4 edx=000003d4
- esi=c010e61e edi=c0110075 esp=c010f907 ebp=c011ed78
+ esi=c010e67e edi=c01100d5 esp=c010f967 ebp=c011ed78
  cs=0008 ds=0010 es=0010 ss=edb8
 Kernel PANIC recursion at ../../userprog/exception.c:104 in kill().
-Timer: 420 ticks
-Thread: 0 idle ticks, 291 kernel ticks, 129 user ticks
+Timer: 419 ticks
+Thread: 0 idle ticks, 292 kernel ticks, 127 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 91 reads, 224 writes
 hd1:0: 107 reads, 0 writes
