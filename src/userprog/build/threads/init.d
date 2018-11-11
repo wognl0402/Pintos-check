@@ -8,7 +8,11 @@ threads/init.o: ../../threads/init.c ../../threads/init.h \
   ../../threads/interrupt.h ../../threads/io.h ../../threads/loader.h \
   ../../threads/malloc.h ../../threads/palloc.h ../../threads/pte.h \
   ../../threads/vaddr.h ../../threads/thread.h ../../lib/kernel/list.h \
-  ../../threads/synch.h ../../userprog/process.h ../../threads/thread.h \
+  ../../lib/kernel/hash.h ../../lib/kernel/list.h ../../threads/synch.h \
+  ../../vm/page.h ../../lib/kernel/list.h ../../lib/kernel/hash.h \
+  ../../threads/malloc.h ../../threads/synch.h ../../threads/palloc.h \
+  ../../threads/thread.h ../../threads/pte.h ../../userprog/pagedir.h \
+  ../../userprog/process.h ../../threads/thread.h \
   ../../userprog/exception.h ../../userprog/gdt.h ../../threads/loader.h \
   ../../userprog/syscall.h ../../threads/interrupt.h \
   ../../userprog/process.h ../../filesys/file.h ../../filesys/off_t.h \

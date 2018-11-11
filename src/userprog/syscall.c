@@ -294,8 +294,10 @@ static int syscall_read_ (struct intr_frame *f){
 	  }
 	}
 
-	if (size_temp == 0)
+	if (size_temp == 0){
 	  buffer_tmp = NULL;
+	  break;
+	}
 	else if (size_temp  > PGSIZE){
 	  buffer_tmp += PGSIZE;
 	  size_temp -= PGSIZE;
@@ -379,7 +381,7 @@ static int syscall_write_ (struct intr_frame *f){
 	  if (vm_is_in_spt (&t->spt, pg_round_down (buffer_tmp))){
 	    struct spt_entry *s = vm_get_spt_entry (&t->spt, pg_round_down (buffer_tmp));
 		if (!s->writable){
-		 // exit_ (-1);
+		 exit_ (-1);
 		}
 		if (!vm_spt_reclaim (&t->spt, s)){
 		  PANIC ("SC: CAN't RECLAIM");
@@ -398,8 +400,10 @@ static int syscall_write_ (struct intr_frame *f){
 	  
 	}
     
-	if (size_temp == 0)
+	if (size_temp == 0){
 	  buffer_tmp = NULL;
+	  break;
+	}
 	else if (size_temp > PGSIZE){
 	  buffer_tmp += PGSIZE;
 	  size_temp -= PGSIZE;
