@@ -147,7 +147,8 @@ SCAN:
 	f = list_entry (e, struct frt_entry, frt_elem);
 	if (f->in_use)
 	  continue;
-	
+    if (f->reclaiming)
+	  continue;
     /*	
 	if (pg_ofs (f->upage) != 0){
 	  printf("upage value: %x / owner: %d / accessed by : %d  \n", (f->upage), f->tid, thread_current ()->tid);
@@ -250,6 +251,27 @@ void vm_frame_destroy (void *frame)
   return;
 }
 //HELP TO ACCESS frt, frt_lock 
+
+void vm_frame_reclaiming (void *frame){
+  acquire_frt_lock ();
+  
+  struct frt_entry *f = get_frt_entry (frame);
+  f->reclaiming = true;
+  
+  release_frt_lock ();
+
+  return;
+}
+void vm_frame_reclaimed (void *frame){
+  acquire_frt_lock ();
+  
+  struct frt_entry *f = get_frt_entry (frame);
+  f->reclaiming = false;
+  
+  release_frt_lock ();
+  
+  return;
+}
 
 void acquire_frt_lock (void){
   lock_acquire (&frt_lock);

@@ -1,12 +1,12 @@
-Copying tests/vm/pt-bad-read into /tmp/qix2XOUpK2.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/qix2XOUpK2.dsk...
-Writing command line to /tmp/dyswonHMEY.dsk...
+Copying tests/vm/pt-bad-read into /tmp/OEtl7UJCiw.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/OEtl7UJCiw.dsk...
+Writing command line to /tmp/yUVWxGApeQ.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put pt-bad-read put sample.txt run pt-bad-read
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
-373 pages available in user pool.
+372 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -22,7 +22,7 @@ Executing 'pt-bad-read':
 pt-bad-read: exit(-1)
 Execution of 'pt-bad-read' complete.
 Timer: 363 ticks
-Thread: 0 idle ticks, 306 kernel ticks, 60 user ticks
+Thread: 0 idle ticks, 305 kernel ticks, 61 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 90 reads, 224 writes
 hd1:0: 107 reads, 0 writes

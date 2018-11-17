@@ -138,8 +138,17 @@ bool vm_spt_reclaim (struct hash *h, struct spt_entry *spte){
 
 done:
   spte->is_in_disk = true;
+  
   return true;
 }
+/*
+void vm_spt_reclaim_start (struct hash *h, struct spt_entry *spte){
+  
+}
+void vm_spt_reclaim_done (struct hash *h, struct spt_entry *spte){
+  
+}*/
+
 bool vm_spt_reclaim_mmf (struct hash *h, struct spt_entry *spte){
   void *kpage = vm_frame_alloc (PAL_USER);
 
@@ -150,6 +159,9 @@ bool vm_spt_reclaim_swap (struct hash *h, struct spt_entry *spte){
   //acquire_frt_lock ();
   if (kpage == NULL)
 	PANIC ("HAVE YOU IMPLEMENTED EVCITION?");
+
+  //P3-2
+  vm_frame_reclaiming (kpage);
 
   spte->kpage = kpage;
   vm_swap_in (spte->swap_index, kpage);
@@ -219,6 +231,8 @@ void vm_stack_grow (struct hash *h, void *fault_page){
   //spte->upage = fault_page;
   //spte->kpage = frame;
   //spte->status = CLEARED;
+  //P3-2
+  vm_frame_reclaiming (frame);
 
   struct thread *t = thread_current ();
   if (pagedir_get_page (t->pagedir, fault_page) != NULL)

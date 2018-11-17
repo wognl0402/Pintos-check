@@ -1,13 +1,13 @@
-Copying tests/userprog/multi-child-fd into /tmp/dCOih0LWsy.dsk...
-Copying ../../tests/userprog/sample.txt into /tmp/dCOih0LWsy.dsk...
-Copying tests/userprog/child-close into /tmp/dCOih0LWsy.dsk...
-Writing command line to /tmp/R9Pmdwonad.dsk...
+Copying tests/userprog/multi-child-fd into /tmp/uUHPZr8IPU.dsk...
+Copying ../../tests/userprog/sample.txt into /tmp/uUHPZr8IPU.dsk...
+Copying tests/userprog/child-close into /tmp/uUHPZr8IPU.dsk...
+Writing command line to /tmp/eVk0UbVhci.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put multi-child-fd put sample.txt put child-close run multi-child-fd
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
-373 pages available in user pool.
+372 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -28,8 +28,8 @@ child-close: exit(-1)
 (multi-child-fd) end
 multi-child-fd: exit(0)
 Execution of 'multi-child-fd' complete.
-Timer: 565 ticks
-Thread: 0 idle ticks, 444 kernel ticks, 124 user ticks
+Timer: 566 ticks
+Thread: 0 idle ticks, 445 kernel ticks, 124 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 168 reads, 456 writes
 hd1:0: 222 reads, 0 writes

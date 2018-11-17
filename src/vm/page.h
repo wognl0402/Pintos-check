@@ -41,7 +41,7 @@ struct spt_entry
   bool is_in_disk;
   //P3-2
   struct spt_file file;
-/*
+  /*
   struct file *file;
   off_t ofs;
   uint32_t read_bytes;

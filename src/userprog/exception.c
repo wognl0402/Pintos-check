@@ -177,8 +177,10 @@ page_fault (struct intr_frame *f)
 		//ssss
 	  if (!vm_spt_reclaim (&t->spt, s))
 		PANIC ("Can't be reached");
-	  else
+	  else{
+		vm_frame_reclaimed (s->kpage);
 		return;
+	  }
 
 	  /*
 	  if (s->status == ON_FILE){
@@ -199,7 +201,9 @@ page_fault (struct intr_frame *f)
 	}else{
 	  if (fault_addr >= f->esp -32 
 		&&PHYS_BASE - fault_addr <= STACK_MAX){
-	  vm_stack_grow (&t->spt, fault_page);
+	    vm_stack_grow (&t->spt, fault_page);
+		struct spt_entry *ss = vm_get_spt_entry (&t->spt, fault_page);
+		vm_frame_reclaimed ( ss->kpage);
 		return;
 	  }else
 		exit_ (-1);

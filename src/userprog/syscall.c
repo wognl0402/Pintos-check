@@ -263,6 +263,22 @@ static int syscall_read_ (struct intr_frame *f){
   unsigned size = * (unsigned *) (f->esp+12);
   //printf("CHECK BUF\n");
   acquire_filesys_lock ();
+  /*
+   * if (fd == 0)
+	goto std_in;
+  else{
+	struct file_desc *temp = fd_find (fd);
+	if (temp == NULL || temp->file ==NULL){
+		f->eax = -1;
+		release_filesys_lock ();
+		return 0;
+	}
+
+	while (buffer_tmp != NULL){
+	}
+  }
+  */
+
   //P3
   //original
   //valid_usrptr ((const uint8_t *) buffer);
@@ -284,7 +300,7 @@ static int syscall_read_ (struct intr_frame *f){
 		if (!vm_spt_reclaim (&t->spt, s)){
 			PANIC ("SC: can't reclaim");
 	    }else{
-
+		  //vm_frame_reclaimed (s->kpage);
 		}
 		/*	
 		if (s->status == ON_FILE){
@@ -347,25 +363,47 @@ static int syscall_read_ (struct intr_frame *f){
 	  if (fd==temp->fd){
 		if (temp->file == NULL){
 		  f->eax = -1;
-		  release_filesys_lock ();
-		  //goto finish;
-		  return 0;
+		  //release_filesys_lock ();
+		  goto finish;
+		  //return 0;
 		}
 		//acquire_filesys_lock ();
 		//printf("read_attemp\n");
 		f->eax=file_read (temp->file, buffer, size);
 		//printf("read_done.....[size:%d], [f->eax:%d]\n", size, f->eax);
-		release_filesys_lock ();
-		//goto finish;
-		return 0;
+		//release_filesys_lock ();
+		goto finish;
+		//return 0;
 	  }
 	}
   }
-   
-  //return -1;
-  finish:
+//can't be reached   
   release_filesys_lock ();
+  f->eax = -1;
   return -1;
+  
+finish:
+  
+  //make sure all the page now can be evicted
+  buffer_tmp = buffer;
+  size_temp = size;
+  while (buffer_tmp != NULL){
+	struct spt_entry *ss = vm_get_spt_entry (&t->spt, pg_round_down (buffer_tmp));
+	vm_frame_reclaimed (ss->kpage);
+	if (size_temp == 0){
+	  buffer_tmp = NULL;
+	  break;
+	}
+	else if (size_temp >PGSIZE){
+	  buffer_tmp += PGSIZE;
+	  size_temp -= PGSIZE;
+	}else{
+	  buffer_tmp = buffer+size-1;
+	  size_temp =0;
+	}
+  }
+  release_filesys_lock ();
+  return 0;
 }
 
 static int syscall_write_ (struct intr_frame *f){
@@ -375,7 +413,7 @@ static int syscall_write_ (struct intr_frame *f){
   char *buffer = * (char **) (f->esp+8);
   //char *buffer = (char *) (f->esp+8);
   unsigned size = *(unsigned *) (f->esp+12);
-  
+  acquire_filesys_lock ();
   //P3
   //original
   //valid_usrptr ((const uint8_t *) buffer);
@@ -442,7 +480,7 @@ static int syscall_write_ (struct intr_frame *f){
   
 
   if (fd==1){
-	acquire_filesys_lock ();
+	//acquire_filesys_lock ();
 	putbuf(buffer ,size);
 	f->eax = (int) size;
 	release_filesys_lock ();
@@ -455,14 +493,39 @@ static int syscall_write_ (struct intr_frame *f){
 		e=list_next(e)){
 	  temp = list_entry (e, struct file_desc, fd_elem);
 	  if (fd==temp->fd){
-		acquire_filesys_lock ();
+		//acquire_filesys_lock ();
 		f->eax=file_write(temp->file, buffer, size);
-		release_filesys_lock ();
-		return 0;
+		goto finish_;
+		//release_filesys_lock ();
+		//return 0;
 	  }
 	}
   }
+  release_filesys_lock ();
   return -1;
+
+finish_:
+  buffer_tmp = buffer;
+  size_temp = size;
+  while (buffer_tmp != NULL){
+	struct spt_entry *ss = vm_get_spt_entry (&t->spt, pg_round_down (buffer_tmp));
+	vm_frame_reclaimed (ss->kpage);
+	if (size_temp == 0){
+	  buffer_tmp = NULL;
+	  break;
+	}
+	else if (size_temp >PGSIZE){
+	  buffer_tmp += PGSIZE;
+	  size_temp -= PGSIZE;
+	}else{
+	  buffer_tmp = buffer+size-1;
+	  size_temp =0;
+	}
+  }
+
+
+  release_filesys_lock ();
+  return 0;
 }
 
 static int syscall_seek_ (struct intr_frame *f){
