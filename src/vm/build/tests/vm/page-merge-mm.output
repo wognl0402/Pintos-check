@@ -1,12 +1,12 @@
-Copying tests/vm/page-merge-mm into /tmp/cDBx60Rmiu.dsk...
-Copying tests/vm/child-qsort-mm into /tmp/cDBx60Rmiu.dsk...
-Writing command line to /tmp/L__4sc5yos.dsk...
+Copying tests/vm/page-merge-mm into /tmp/Dgo01tXFMN.dsk...
+Copying tests/vm/child-qsort-mm into /tmp/Dgo01tXFMN.dsk...
+Writing command line to /tmp/cH4IyIz0zl.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put page-merge-mm put child-qsort-mm run page-merge-mm
 Pintos booting with 4,096 kB RAM...
 373 pages available in kernel pool.
-373 pages available in user pool.
+372 pages available in user pool.
 Calibrating timer...  204,600 loops/s.
 hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
 hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
@@ -38,14 +38,13 @@ child-qsort-mm: exit(-1)
 (page-merge-mm) wait for child 0: FAILED
 page-merge-mm: exit(1)
 Execution of 'page-merge-mm' complete.
-Timer: 6251 ticks
-Thread: 0 idle ticks, 530 kernel ticks, 5724 user ticks
+Timer: 6558 ticks
+Thread: 0 idle ticks, 531 kernel ticks, 6034 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 659 reads, 4588 writes
+hd0:1: 657 reads, 4588 writes
 hd1:0: 225 reads, 0 writes
 hd1:1: 0 reads, 0 writes
 Console: 1500 characters output
 Keyboard: 0 keys pressed
 Exception: 286 page faults
-child-qsort-mm: exit(-1)
 Powering off...

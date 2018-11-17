@@ -775,3 +775,5 @@ struct file_desc *fd_find (int fd){
   return NULL;
 
 }
+
+//struct mmf_desc *mmf_find (struct thread *t, mmapid_t mid)

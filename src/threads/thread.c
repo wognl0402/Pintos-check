@@ -552,6 +552,10 @@ init_thread (struct thread *t, const char *name, int priority)
   list_init(&t->ch_list);
   list_init(&t->fd_list);
   //t->exit_status = -1;
+  //P3 addition
+#ifdef VM
+  list_init (&t->mmf_list);
+#endif
   t->magic = THREAD_MAGIC;
 }
 

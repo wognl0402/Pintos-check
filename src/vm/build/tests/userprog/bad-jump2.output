@@ -1,5 +1,5 @@
-Copying tests/userprog/bad-jump2 into /tmp/s_titzs9b1.dsk...
-Writing command line to /tmp/avuVOfvP1O.dsk...
+Copying tests/userprog/bad-jump2 into /tmp/BnfISCPOlx.dsk...
+Writing command line to /tmp/zCG116b_1i.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put bad-jump2 run bad-jump2
@@ -19,7 +19,7 @@ Executing 'bad-jump2':
 bad-jump2: exit(-1)
 Execution of 'bad-jump2' complete.
 Timer: 313 ticks
-Thread: 0 idle ticks, 270 kernel ticks, 49 user ticks
+Thread: 0 idle ticks, 272 kernel ticks, 49 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 216 writes
 hd1:0: 104 reads, 0 writes

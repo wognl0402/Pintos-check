@@ -115,9 +115,9 @@ struct thread
     /* Owned by userprog/process.c. */
     uint32_t *pagedir;                  /* Page directory. */
 #endif
-
 	//P3
 #ifdef VM
+	struct list mmf_list;
 	struct hash spt;
 #endif
 

@@ -1,5 +1,5 @@
-Copying tests/vm/pt-grow-bad into /tmp/xxVU5yK_nh.dsk...
-Writing command line to /tmp/MYIrVqO6uY.dsk...
+Copying tests/vm/pt-grow-bad into /tmp/C21XbiS5_H.dsk...
+Writing command line to /tmp/nINECxTMPC.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put pt-grow-bad run pt-grow-bad
@@ -19,7 +19,7 @@ Executing 'pt-grow-bad':
 pt-grow-bad: exit(-1)
 Execution of 'pt-grow-bad' complete.
 Timer: 315 ticks
-Thread: 0 idle ticks, 272 kernel ticks, 46 user ticks
+Thread: 0 idle ticks, 273 kernel ticks, 45 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 216 writes
 hd1:0: 104 reads, 0 writes

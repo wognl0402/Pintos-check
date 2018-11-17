@@ -20,10 +20,10 @@ bool vm_spt_init (void){
 }
 
 void vm_spt_destroy (struct hash *h){
-  //acquire_frt_lock ();
+  acquire_frt_lock ();
   hash_destroy (h, vm_spt_free);
   //free (h);
-  //release_frt_lock ();
+  release_frt_lock ();
 }
 
 //bool hash_init ();

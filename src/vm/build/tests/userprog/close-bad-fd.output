@@ -1,5 +1,5 @@
-Copying tests/userprog/close-bad-fd into /tmp/kYQpjUc215.dsk...
-Writing command line to /tmp/nXiOz6CnYQ.dsk...
+Copying tests/userprog/close-bad-fd into /tmp/YOSVbd_qBb.dsk...
+Writing command line to /tmp/jcW4w_ky33.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put close-bad-fd run close-bad-fd
@@ -19,7 +19,7 @@ Executing 'close-bad-fd':
 close-bad-fd: exit(-1)
 Execution of 'close-bad-fd' complete.
 Timer: 318 ticks
-Thread: 0 idle ticks, 275 kernel ticks, 46 user ticks
+Thread: 0 idle ticks, 276 kernel ticks, 45 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 214 writes
 hd1:0: 103 reads, 0 writes

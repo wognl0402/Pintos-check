@@ -108,6 +108,7 @@ bool vm_frame_save (struct frt_entry *f){
   
 
   if (!vm_set_swap (&t->spt, f->upage, swap_index)){
+	printf("owner: %d, trier: %d\n", f->tid, thread_current ()->tid);
 	PANIC ("vm_frame_save - vm_set_swap: NO SUCH spt");
   }
 
@@ -233,7 +234,7 @@ void vm_frame_free_no_lock (void *frame)
 
 void vm_frame_destroy (void *frame)
 {
-  acquire_frt_lock ();
+  //acquire_frt_lock ();
   struct frt_entry *f = get_frt_entry (frame);
   if(f == NULL){
 	printf ("vm_frame_destroy: NO SUCH FRAME EXIST\n");
@@ -245,7 +246,7 @@ void vm_frame_destroy (void *frame)
   free (f);
   //Free the frame
   //printf("vm_frame_palloc?\n");
-  release_frt_lock ();
+  //release_frt_lock ();
   //palloc_free_page (frame);
 
   return;
