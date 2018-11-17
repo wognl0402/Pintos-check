@@ -20,9 +20,10 @@ bool vm_spt_init (void){
 }
 
 void vm_spt_destroy (struct hash *h){
-  acquire_frt_lock ();
+  //acquire_frt_lock ();
   hash_destroy (h, vm_spt_free);
-  release_frt_lock ();
+  //free (h);
+  //release_frt_lock ();
 }
 
 //bool hash_init ();
@@ -92,7 +93,7 @@ bool vm_put_spt_file (struct file *file, off_t ofs, uint8_t *upage, uint32_t rea
   spte->kpage = NULL;
   spte->swap_index = -1;
   spte->status = ON_FILE;
-  
+  spte->is_in_disk = false;  
   spte->writable = writable;
  
   spte->file.file = file;
@@ -118,21 +119,49 @@ bool vm_put_spt_file (struct file *file, off_t ofs, uint8_t *upage, uint32_t rea
 }
 
 bool vm_spt_reclaim (struct hash *h, struct spt_entry *spte){
+  if (spte->status == ON_FILE){
+	if(!vm_spt_reclaim_file (h, spte)){
+	  PANIC ("Can't reclaim file");
+	}
+	goto done;
+  }
+
+  if (spte->status == ON_MMF){
+	goto done;
+  }
+
+  if (!vm_spt_reclaim_swap (h, spte)){
+	PANIC ("Can't reclaim swap");
+    goto done;
+  }
+
+
+done:
+  spte->is_in_disk = true;
+  return true;
+}
+bool vm_spt_reclaim_mmf (struct hash *h, struct spt_entry *spte){
   void *kpage = vm_frame_alloc (PAL_USER);
 
+  return true;
+}
+bool vm_spt_reclaim_swap (struct hash *h, struct spt_entry *spte){
+  void *kpage = vm_frame_alloc (PAL_USER);
+  //acquire_frt_lock ();
   if (kpage == NULL)
 	PANIC ("HAVE YOU IMPLEMENTED EVCITION?");
 
+  spte->kpage = kpage;
+  vm_swap_in (spte->swap_index, kpage);
   if (!pagedir_set_page (thread_current ()->pagedir, spte->upage, kpage, true)){
 	vm_frame_free (kpage);
 	return false;
   }
 
-  vm_swap_in (spte->swap_index, kpage);
   
-  spte->kpage = kpage;
-  spte->status = ON_FRAME;
-
+  //spte->status = ON_FRAME;
+  //spte->is_in_disk = true;
+  //release_frt_lock ();
   return true;
 }
 

@@ -17,7 +17,8 @@ enum spt_status{
   CLEARED,
   ON_FRAME,
   ON_SWAP,
-  ON_FILE
+  ON_FILE,
+  ON_MMF
 };
 
 struct spt_file{
@@ -37,7 +38,7 @@ struct spt_entry
   enum spt_status status;
   int swap_index;
   bool writable;
-
+  bool is_in_disk;
   //P3-2
   struct spt_file file;
 /*
@@ -59,8 +60,11 @@ bool vm_put_spt_entry (struct hash *, void *, void *);
 
 bool vm_put_spt_file (struct file *, off_t, uint8_t *, uint32_t, uint32_t, bool);
 
+
 bool vm_spt_reclaim (struct hash *, struct spt_entry *);
+bool vm_spt_reclaim_swap (struct hash *, struct spt_entry *);
 bool vm_spt_reclaim_file (struct hash *, struct spt_entry *);
+bool vm_spt_reclaim_mmf (struct hash *, struct spt_entry *);
 
 bool vm_set_swap (struct hash *, void *, int);
 void vm_stack_grow (struct hash *, void *);

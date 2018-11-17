@@ -7,7 +7,8 @@ userprog/syscall.o: ../../userprog/syscall.c ../../userprog/syscall.h \
   ../../lib/kernel/hash.h ../../threads/malloc.h ../../threads/synch.h \
   ../../threads/palloc.h ../../threads/thread.h ../../threads/pte.h \
   ../../threads/vaddr.h ../../threads/loader.h ../../userprog/pagedir.h \
-  ../../threads/interrupt.h ../../userprog/process.h ../../filesys/file.h \
-  ../../filesys/off_t.h ../../filesys/filesys.h ../../lib/syscall-nr.h \
-  ../../threads/vaddr.h ../../threads/init.h ../../threads/malloc.h \
-  ../../devices/input.h ../../userprog/pagedir.h ../../vm/page.h
+  ../../filesys/file.h ../../filesys/off_t.h ../../threads/interrupt.h \
+  ../../userprog/process.h ../../filesys/file.h ../../filesys/filesys.h \
+  ../../lib/syscall-nr.h ../../threads/vaddr.h ../../threads/init.h \
+  ../../threads/malloc.h ../../devices/input.h ../../userprog/pagedir.h \
+  ../../vm/page.h

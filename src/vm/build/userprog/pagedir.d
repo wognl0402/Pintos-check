@@ -7,4 +7,5 @@ userprog/pagedir.o: ../../userprog/pagedir.c ../../userprog/pagedir.h \
   ../../threads/palloc.h ../../threads/thread.h ../../lib/kernel/hash.h \
   ../../lib/kernel/list.h ../../threads/synch.h ../../vm/page.h \
   ../../lib/stdio.h ../../lib/stdarg.h ../../lib/kernel/stdio.h \
-  ../../lib/kernel/hash.h ../../threads/pte.h ../../userprog/pagedir.h
+  ../../lib/kernel/hash.h ../../threads/pte.h ../../userprog/pagedir.h \
+  ../../filesys/file.h ../../filesys/off_t.h

@@ -262,7 +262,7 @@ static int syscall_read_ (struct intr_frame *f){
   char *buffer = * (char **) (f->esp+8);
   unsigned size = * (unsigned *) (f->esp+12);
   //printf("CHECK BUF\n");
-
+  acquire_filesys_lock ();
   //P3
   //original
   //valid_usrptr ((const uint8_t *) buffer);
@@ -281,6 +281,12 @@ static int syscall_read_ (struct intr_frame *f){
 	  //PANIC ("here?");
 	  if (vm_is_in_spt (&t->spt, pg_round_down (buffer_tmp))){
 	    struct spt_entry *s = vm_get_spt_entry (&t->spt, pg_round_down (buffer_tmp));
+		if (!vm_spt_reclaim (&t->spt, s)){
+			PANIC ("SC: can't reclaim");
+	    }else{
+
+		}
+		/*	
 		if (s->status == ON_FILE){
 		  if (!vm_spt_reclaim_file (&t->spt, s)){
 			PANIC ("SC: _read_:reclaim_file");
@@ -290,6 +296,7 @@ static int syscall_read_ (struct intr_frame *f){
 		}else{
 		  
 		}
+		*/
 	  }else{
 		if (buffer_tmp >= (f->esp - 32))
 		  vm_stack_grow (&t->spt, pg_round_down (buffer_tmp));
@@ -317,7 +324,7 @@ static int syscall_read_ (struct intr_frame *f){
   
   //acquire_filesys_lock ();
   if (fd==0){
-	acquire_filesys_lock ();
+	//acquire_filesys_lock ();
 	int i = 0;
 	while(i< (int) size){
 	  * (buffer + i) = input_getc();
@@ -340,10 +347,11 @@ static int syscall_read_ (struct intr_frame *f){
 	  if (fd==temp->fd){
 		if (temp->file == NULL){
 		  f->eax = -1;
+		  release_filesys_lock ();
 		  //goto finish;
 		  return 0;
 		}
-		acquire_filesys_lock ();
+		//acquire_filesys_lock ();
 		//printf("read_attemp\n");
 		f->eax=file_read (temp->file, buffer, size);
 		//printf("read_done.....[size:%d], [f->eax:%d]\n", size, f->eax);
@@ -355,8 +363,8 @@ static int syscall_read_ (struct intr_frame *f){
   }
    
   //return -1;
-  //finish:
-  //release_filesys_lock ();
+  finish:
+  release_filesys_lock ();
   return -1;
 }
 
@@ -387,6 +395,12 @@ static int syscall_write_ (struct intr_frame *f){
 		//if (!s->writable){
 		// exit_ (-1);
 		//}
+		if (!vm_spt_reclaim (&t->spt, s)){
+		  PANIC("SC: can't reclaim");
+		}else{
+		
+		}
+		/*
 		if (s->status == ON_FILE){
 		  if (!vm_spt_reclaim_file (&t->spt, s)){
 			PANIC("_write_: reclaim_file");
@@ -396,6 +410,7 @@ static int syscall_write_ (struct intr_frame *f){
 		}else{
 		  
 		}
+		*/
 	  }else{
 	/*
 	 * if (buffer_tmp >= (f->esp - 32))

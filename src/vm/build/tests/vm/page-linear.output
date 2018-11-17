@@ -1,5 +1,5 @@
-Copying tests/vm/page-linear into /tmp/iBhTROm64i.dsk...
-Writing command line to /tmp/ZawbXQZIov.dsk...
+Copying tests/vm/page-linear into /tmp/FlwvktckeC.dsk...
+Writing command line to /tmp/0YdAYWZsfB.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put page-linear run page-linear
@@ -24,13 +24,13 @@ Executing 'page-linear':
 (page-linear) end
 page-linear: exit(0)
 Execution of 'page-linear' complete.
-Timer: 47971 ticks
-Thread: 0 idle ticks, 273 kernel ticks, 47701 user ticks
+Timer: 41639 ticks
+Thread: 0 idle ticks, 273 kernel ticks, 41369 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 60 reads, 228 writes
 hd1:0: 110 reads, 0 writes
-hd1:1: 20720 reads, 21880 writes
+hd1:1: 16600 reads, 17760 writes
 Console: 1097 characters output
 Keyboard: 0 keys pressed
-Exception: 2590 page faults
+Exception: 2592 page faults
 Powering off...
