@@ -281,7 +281,11 @@ static int syscall_read_ (struct intr_frame *f){
 	  //PANIC ("here?");
 	  if (vm_is_in_spt (&t->spt, pg_round_down (buffer_tmp))){
 	    struct spt_entry *s = vm_get_spt_entry (&t->spt, pg_round_down (buffer_tmp));
-		if (!vm_spt_reclaim (&t->spt, s)){
+		if (s->status == ON_FILE){
+		  if (!vm_spt_reclaim_file (&t->spt, s)){
+			PANIC ("SC: _read_:reclaim_file");
+		  }
+		}else if (!vm_spt_reclaim (&t->spt, s)){
 		  PANIC ("SC: CAN't RECLAIM");
 		}else{
 		  
@@ -380,10 +384,14 @@ static int syscall_write_ (struct intr_frame *f){
 	   // PANIC ("CHECK 1");	
 	  if (vm_is_in_spt (&t->spt, pg_round_down (buffer_tmp))){
 	    struct spt_entry *s = vm_get_spt_entry (&t->spt, pg_round_down (buffer_tmp));
-		if (!s->writable){
-		 exit_ (-1);
-		}
-		if (!vm_spt_reclaim (&t->spt, s)){
+		//if (!s->writable){
+		// exit_ (-1);
+		//}
+		if (s->status == ON_FILE){
+		  if (!vm_spt_reclaim_file (&t->spt, s)){
+			PANIC("_write_: reclaim_file");
+		  }
+		}else if (!vm_spt_reclaim (&t->spt, s)){
 		  PANIC ("SC: CAN't RECLAIM");
 		}else{
 		  

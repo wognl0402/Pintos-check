@@ -11,6 +11,7 @@
 #include "vm/frame.h"
 #include "vm/swap.h"
 #include "vm/page.h"
+#include "filesys/file.h"
 
 bool vm_spt_init (void){
   struct thread *t = thread_current ();
@@ -19,7 +20,9 @@ bool vm_spt_init (void){
 }
 
 void vm_spt_destroy (struct hash *h){
+  acquire_frt_lock ();
   hash_destroy (h, vm_spt_free);
+  release_frt_lock ();
 }
 
 //bool hash_init ();
@@ -76,6 +79,44 @@ bool vm_put_spt_entry (struct hash *h, void *upage, void *kpage){
   }
 }
 
+bool vm_put_spt_file (struct file *file, off_t ofs, uint8_t *upage, uint32_t read_bytes, uint32_t zero_bytes, bool writable){
+  struct thread *t = thread_current ();
+  struct spt_entry *spte;
+  spte = malloc (sizeof *spte);
+
+  if (spte == NULL){
+	PANIC ("vm_put_spt_file spte NULL error");
+  }
+
+  spte->upage = upage;
+  spte->kpage = NULL;
+  spte->swap_index = -1;
+  spte->status = ON_FILE;
+  
+  spte->writable = writable;
+ 
+  spte->file.file = file;
+  spte->file.ofs = ofs;
+  spte->file.read_bytes = read_bytes;
+  spte->file.zero_bytes = zero_bytes;
+  spte->file.writable = writable;
+  
+/*
+  spte->file = file;
+  spte->ofs = ofs;
+  spte->read_bytes = read_bytes;
+  spte->zero_bytes = zero_bytes;
+  //spte->writable = writable;
+*/
+  struct hash_elem *e = hash_insert (&t->spt, &spte->spt_elem);
+  if (e == NULL){
+	return true;
+  }else{
+	free (spte);
+	return false;
+  }
+}
+
 bool vm_spt_reclaim (struct hash *h, struct spt_entry *spte){
   void *kpage = vm_frame_alloc (PAL_USER);
 
@@ -94,6 +135,34 @@ bool vm_spt_reclaim (struct hash *h, struct spt_entry *spte){
 
   return true;
 }
+
+bool vm_spt_reclaim_file (struct hash *h, struct spt_entry *spte){
+  struct thread *t = thread_current ();
+
+  file_seek (spte->file.file, spte->file.ofs);
+  
+  uint8_t *kpage = vm_frame_alloc (PAL_USER);
+  
+  if (kpage == NULL){
+	PANIC ("CAN't make kapge at vm_spt_reclaim_file (page.c)");
+  }
+
+  if (file_read (spte->file.file, kpage, spte->file.read_bytes) != (int) spte->file.read_bytes){
+	vm_frame_free (kpage);
+	return false;
+  }
+  memset (kpage + spte->file.read_bytes, 0, spte->file.zero_bytes);
+
+  if (!pagedir_set_page (t->pagedir, spte->upage, kpage, spte->file.writable)){
+	vm_frame_free (kpage);
+	PANIC ("WTF?");
+	//return false;
+  }
+  spte->kpage = kpage;
+//  spte->status = ON_FRAME;
+  return true;
+}
+
 
 bool vm_set_swap (struct hash *h, void *upage, int swap_index){
   struct spt_entry *spte = vm_get_spt_entry (h, upage);
@@ -168,7 +237,7 @@ bool spt_hash_less_func (const struct hash_elem *a,
 void vm_spt_free (struct hash_elem *e, void *aux UNUSED){
   struct spt_entry *spte;
   spte = hash_entry (e, struct spt_entry, spt_elem);
-  acquire_frt_lock ();
+  //acquire_frt_lock ();
 
   if (spte->kpage != NULL){
 	//PANIC ("WHY ARE YOU STILL HERE!!!\n");
@@ -181,6 +250,6 @@ void vm_spt_free (struct hash_elem *e, void *aux UNUSED){
   }
 
   free (spte);
-  release_frt_lock ();
+  //release_frt_lock ();
 }
 

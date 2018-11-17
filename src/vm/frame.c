@@ -117,11 +117,17 @@ SCAN:
 	  e = list_next (e)){
 	
 	f = list_entry (e, struct frt_entry, frt_elem);
+	if (f->in_use)
+	continue;
+	
+    /*	
+	if (pg_ofs (f->upage) != 0){
+	  printf("upage value: %x / owner: %d / accessed by : %d  \n", (f->upage), f->tid, thread_current ()->tid);
+	}
+	*/
 	ASSERT (pg_ofs (f->upage) == 0);
 	
-	if (f->in_use)
-	  continue;
-	
+
 	//msg ("[%d] directory checked", f->tid);
 	//printf ("[%d] directory checked", f->tid);
 	
@@ -153,7 +159,12 @@ void vm_frame_set (void *kpage, void*upage){
   acquire_frt_lock ();
   struct frt_entry *f = get_frt_entry (kpage);
   
-  ASSERT (f->tid == thread_current ()->tid);
+//  ASSERT (f->tid == thread_current ()->tid);
+  if (f->tid != thread_current ()->tid){
+	printf("IN USE? %d \n", f->in_use);
+	printf(" [entry's tid: %d] while [current tid: %d]\n", f->tid, thread_current ()->tid);
+	PANIC ("TID error");
+  }
   ASSERT (f->in_use);
 
   ASSERT (pg_ofs (upage) == 0);
