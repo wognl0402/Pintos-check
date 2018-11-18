@@ -610,7 +610,31 @@ static int syscall_close_ (struct intr_frame *f){
 
 
 static int syscall_mmap_ (struct intr_frame *f){
-  return -1;
+  valid_multiple (f->esp, 2);
+  int fd = * (int *) (f->esp+4);
+  void *addr =  * (void **) (f->esp+8);
+  if (addr == NULL || addr == 0 || pg_ofs (addr) != 0){
+	f->eax = -1;
+	return 0;
+  }
+  acquire_filesys_lock ();
+
+  //struct file *file;
+  struct file_desc *temp = fd_find (fd);
+  if (temp == NULL || temp->file == NULL){
+	goto failed;
+  }
+  struct file *file = file_reopen (temp->file);
+  if (file_length (file) == 0)
+	goto failed;
+
+
+
+failed:
+
+  release_filesys_lock ();
+  f->eax = -1;
+  return 0;
 }
 
 

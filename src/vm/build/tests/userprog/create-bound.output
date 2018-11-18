@@ -1,5 +1,5 @@
-Copying tests/userprog/create-bound into /tmp/ftrO4lxo9f.dsk...
-Writing command line to /tmp/sbEDBIbIey.dsk...
+Copying tests/userprog/create-bound into /tmp/kKEklg6Muq.dsk...
+Writing command line to /tmp/PdWM0mTedN.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put create-bound run create-bound
@@ -20,8 +20,8 @@ Executing 'create-bound':
 (create-bound) end
 create-bound: exit(0)
 Execution of 'create-bound' complete.
-Timer: 356 ticks
-Thread: 0 idle ticks, 277 kernel ticks, 82 user ticks
+Timer: 352 ticks
+Thread: 0 idle ticks, 274 kernel ticks, 81 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 81 reads, 224 writes
 hd1:0: 106 reads, 0 writes

@@ -1,6 +1,6 @@
-Copying tests/vm/mmap-exit into /tmp/OcYcR11idx.dsk...
-Copying tests/vm/child-mm-wrt into /tmp/OcYcR11idx.dsk...
-Writing command line to /tmp/HFpxn7Ui8T.dsk...
+Copying tests/vm/mmap-exit into /tmp/t2SI7RCGcG.dsk...
+Copying tests/vm/child-mm-wrt into /tmp/t2SI7RCGcG.dsk...
+Writing command line to /tmp/ag3r3YPTdU.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put mmap-exit put child-mm-wrt run mmap-exit
@@ -22,17 +22,18 @@ Executing 'mmap-exit':
 (child-mm-wrt) create "sample.txt"
 (child-mm-wrt) open "sample.txt"
 (child-mm-wrt) mmap "sample.txt"
-child-mm-wrt: exit(-1)
+(child-mm-wrt) mmap "sample.txt": FAILED
+child-mm-wrt: exit(1)
 (mmap-exit) wait for child (should return 0): FAILED
 mmap-exit: exit(1)
 Execution of 'mmap-exit' complete.
-Timer: 539 ticks
-Thread: 0 idle ticks, 399 kernel ticks, 151 user ticks
+Timer: 543 ticks
+Thread: 0 idle ticks, 400 kernel ticks, 154 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 160 reads, 440 writes
 hd1:0: 212 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1161 characters output
+Console: 1201 characters output
 Keyboard: 0 keys pressed
 Exception: 10 page faults
 Powering off...

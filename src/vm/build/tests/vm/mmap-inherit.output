@@ -1,7 +1,7 @@
-Copying tests/vm/mmap-inherit into /tmp/fdMVvQGKIX.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/fdMVvQGKIX.dsk...
-Copying tests/vm/child-inherit into /tmp/fdMVvQGKIX.dsk...
-Writing command line to /tmp/P5jpIaSlch.dsk...
+Copying tests/vm/mmap-inherit into /tmp/Jcu8PiNNsc.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/Jcu8PiNNsc.dsk...
+Copying tests/vm/child-inherit into /tmp/Jcu8PiNNsc.dsk...
+Writing command line to /tmp/SV_v4f_ZfS.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put mmap-inherit put sample.txt put child-inherit run mmap-inherit
@@ -22,15 +22,16 @@ Executing 'mmap-inherit':
 (mmap-inherit) begin
 (mmap-inherit) open "sample.txt"
 (mmap-inherit) mmap "sample.txt"
-mmap-inherit: exit(-1)
+(mmap-inherit) mmap "sample.txt": FAILED
+mmap-inherit: exit(1)
 Execution of 'mmap-inherit' complete.
-Timer: 477 ticks
-Thread: 0 idle ticks, 414 kernel ticks, 66 user ticks
+Timer: 481 ticks
+Thread: 0 idle ticks, 415 kernel ticks, 69 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 128 reads, 444 writes
 hd1:0: 216 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1112 characters output
+Console: 1152 characters output
 Keyboard: 0 keys pressed
 Exception: 5 page faults
 Powering off...

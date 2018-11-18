@@ -1,6 +1,6 @@
-Copying tests/vm/page-merge-par into /tmp/EUcng0GXhY.dsk...
-Copying tests/vm/child-sort into /tmp/EUcng0GXhY.dsk...
-Writing command line to /tmp/YGWx8vFF2j.dsk...
+Copying tests/vm/page-merge-par into /tmp/yG7RQEoh_9.dsk...
+Copying tests/vm/child-sort into /tmp/yG7RQEoh_9.dsk...
+Writing command line to /tmp/qCbdpnhYCJ.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put page-merge-par put child-sort run page-merge-par
@@ -49,8 +49,8 @@ child-sort: exit(123)
 (page-merge-par) end
 page-merge-par: exit(0)
 Execution of 'page-merge-par' complete.
-Timer: 25247 ticks
-Thread: 0 idle ticks, 1115 kernel ticks, 24135 user ticks
+Timer: 25246 ticks
+Thread: 0 idle ticks, 1115 kernel ticks, 24134 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 4817 reads, 6626 writes
 hd1:0: 220 reads, 0 writes

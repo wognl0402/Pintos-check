@@ -59,6 +59,7 @@ bool vm_put_spt_entry (struct hash *, void *, void *);
 //bool vm_put_spt_entry (struct hash *, void *, void *, bool);
 
 bool vm_put_spt_file (struct file *, off_t, uint8_t *, uint32_t, uint32_t, bool);
+bool vm_put_spt_mmf (struct file *, off_t, uint8_t *, uint32_t, uint32_t, bool);
 
 
 bool vm_spt_reclaim (struct hash *, struct spt_entry *);

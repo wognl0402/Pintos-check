@@ -117,7 +117,10 @@ bool vm_put_spt_file (struct file *file, off_t ofs, uint8_t *upage, uint32_t rea
 	return false;
   }
 }
-
+bool vm_put_spt_mmf (struct file *file, off_t ofs, uint8_t *upage, uint32_t read_bytes, uint32_t zero_bytes, bool writable){
+ 
+  return true;
+}
 bool vm_spt_reclaim (struct hash *h, struct spt_entry *spte){
   if (spte->status == ON_FILE){
 	if(!vm_spt_reclaim_file (h, spte)){
