@@ -51,6 +51,7 @@ void exit_ (int status){
 		temp->user_kill = true;
 		temp->exit_status = status;
 		temp->alive = false;
+		//cond_signal (&parent->ch_cond, &parent->ch_lock);
 		lock_release (&parent->ch_lock);
 	  }
 	}
@@ -682,19 +683,22 @@ failed:
 bool munmap_ (int mapid){
 
   acquire_filesys_lock ();
-
+  
   struct mmf_desc *md = mmf_find (mapid);
   if (md == NULL)
 	goto failing;
 
   struct thread *t = thread_current ();
   int off = 0;
+
+ // acquire_frt_lock ();
   for (off = 0 ; off < md->size ; off += PGSIZE){
-	vm_del_spt_mmf (t, (md->addr) + off);
+	vm_del_spt_mmf (t, md->addr + off);
   }
+  //release_frt_lock ();
+  list_remove (&md->mmf_elem);
 
   file_close (md->file);
-  list_remove (&md->mmf_elem);
   free (md);
 
   release_filesys_lock ();
@@ -705,13 +709,15 @@ failing:
  
   //f->eax = 0; 
   release_filesys_lock ();
+  PANIC ("Oh... can't munmap_");
   return false;
 }
 static int syscall_munmap_ (struct intr_frame *f){
   valid_multiple (f->esp, 1);
   int mapid = * (int *) (f->esp+4);
-  
+  //acquire_frt_lock (); 
   f->eax = munmap_ (mapid);
+  //release_frt_lock ();
   return 0;
 
   

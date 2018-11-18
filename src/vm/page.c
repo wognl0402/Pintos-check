@@ -185,6 +185,9 @@ void vm_spt_reclaim_done (struct hash *h, struct spt_entry *spte){
 bool vm_spt_reclaim_mmf (struct hash *h, struct spt_entry *spte){
   //void *kpage = vm_frame_alloc (PAL_USER);
   struct thread *t = thread_current ();
+  
+  //acquire_filesys_lock ();
+
   file_seek (spte->file.file, spte->file.ofs);
   void *kpage = vm_frame_alloc (PAL_USER);
 
@@ -192,6 +195,7 @@ bool vm_spt_reclaim_mmf (struct hash *h, struct spt_entry *spte){
 	PANIC ("Can't make kpage at vm_spt_reclaim_mmf");
   }
 
+  vm_frame_reclaiming (kpage);
   if (file_read (spte->file.file, kpage, spte->file.read_bytes) 
 	  != (int) spte->file.read_bytes){
 	vm_frame_free (kpage);
@@ -199,12 +203,15 @@ bool vm_spt_reclaim_mmf (struct hash *h, struct spt_entry *spte){
   }
   memset (kpage + spte->file.read_bytes, 0, spte->file.zero_bytes);
 
+  //P3-2
+  
   if (!pagedir_set_page (t->pagedir, spte->upage, kpage, spte->file.writable)){
 	vm_frame_free (kpage);
 	return false;
   }
 
   spte->kpage =kpage;
+  //release_filesys_lock ();
   //PANIC ("FINE");
   return true;
 }
@@ -217,13 +224,13 @@ bool vm_spt_reclaim_swap (struct hash *h, struct spt_entry *spte){
   //P3-2
   vm_frame_reclaiming (kpage);
 
-  spte->kpage = kpage;
-  vm_swap_in (spte->swap_index, kpage);
   if (!pagedir_set_page (thread_current ()->pagedir, spte->upage, kpage, true)){
 	vm_frame_free (kpage);
 	return false;
   }
-
+   spte->kpage = kpage;
+  vm_swap_in (spte->swap_index, kpage);
+  
   
   //spte->status = ON_FRAME;
   //spte->is_in_disk = true;
@@ -234,6 +241,8 @@ bool vm_spt_reclaim_swap (struct hash *h, struct spt_entry *spte){
 bool vm_spt_reclaim_file (struct hash *h, struct spt_entry *spte){
   struct thread *t = thread_current ();
 
+  //acquire_filesys_lock ();
+
   file_seek (spte->file.file, spte->file.ofs);
   
   uint8_t *kpage = vm_frame_alloc (PAL_USER);
@@ -242,11 +251,15 @@ bool vm_spt_reclaim_file (struct hash *h, struct spt_entry *spte){
 	PANIC ("CAN't make kapge at vm_spt_reclaim_file (page.c)");
   }
 
+  vm_frame_reclaiming (kpage);
+  
   if (file_read (spte->file.file, kpage, spte->file.read_bytes) != (int) spte->file.read_bytes){
 	vm_frame_free (kpage);
 	return false;
   }
   memset (kpage + spte->file.read_bytes, 0, spte->file.zero_bytes);
+  
+  //P3-2
 
   if (!pagedir_set_page (t->pagedir, spte->upage, kpage, spte->file.writable)){
 	vm_frame_free (kpage);
@@ -255,6 +268,7 @@ bool vm_spt_reclaim_file (struct hash *h, struct spt_entry *spte){
   }
   spte->kpage = kpage;
 //  spte->status = ON_FRAME;
+  //release_filesys_lock ();
   return true;
 }
 
@@ -265,12 +279,14 @@ bool vm_del_spt_mmf (struct thread *t, void *upage){
   if (spte == NULL){
 	PANIC ("can't unmap - vm_del_spt_mmf");
   }
-  
+ 
+ 
   if (spte->is_in_disk){
+	ASSERT (spte->kpage != NULL);
 	if (pagedir_is_dirty (t->pagedir, spte->upage))
 		vm_frame_save_file (spte);
-	vm_frame_free_no_lock (spte->kpage);
     pagedir_clear_page (t->pagedir, spte->upage);
+	vm_frame_free_no_lock (spte->kpage);
   }
   hash_delete (&t->spt, &spte->spt_elem);
 	

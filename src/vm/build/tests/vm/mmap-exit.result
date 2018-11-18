@@ -1,5 +1,1 @@
-FAIL
-Kernel panic in run: PANIC at ../../threads/palloc.c:147 in palloc_free_multiple(): assertion `bitmap_all (pool->used_map, page_idx, page_cnt)' failed.
-Call stack: 0xc0125e54c
-Translation of call stack:
-0xc0125e54c: (unknown)
+PASS

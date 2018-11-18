@@ -1,5 +1,5 @@
-Copying tests/userprog/bad-write into /tmp/RX3Uodd1ar.dsk...
-Writing command line to /tmp/G4WqghYfI6.dsk...
+Copying tests/userprog/bad-write into /tmp/m6Azr3J47e.dsk...
+Writing command line to /tmp/dMpx8diwMq.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put bad-write run bad-write
@@ -19,7 +19,7 @@ Executing 'bad-write':
 bad-write: exit(-1)
 Execution of 'bad-write' complete.
 Timer: 313 ticks
-Thread: 0 idle ticks, 271 kernel ticks, 49 user ticks
+Thread: 0 idle ticks, 270 kernel ticks, 49 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 59 reads, 216 writes
 hd1:0: 104 reads, 0 writes

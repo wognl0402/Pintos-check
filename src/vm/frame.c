@@ -101,10 +101,12 @@ void *vm_frame_alloc (enum palloc_flags flags){
 bool vm_frame_save (struct frt_entry *f){
   struct thread *t = get_thread (f->tid);
   struct spt_entry *spte = vm_get_spt_entry (&t->spt, f->upage);
+  ASSERT (!f->in_use);
+  ASSERT (!f->reclaiming);
   if (spte->status == ON_MMF){
-	if (pagedir_is_dirty (t->pagedir, spte->upage)){
+	if (pagedir_is_dirty (t->pagedir, spte->upage))
 	  vm_frame_save_file (spte);
-	}
+	
 	goto saved;
   }
 

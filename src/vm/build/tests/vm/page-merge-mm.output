@@ -1,6 +1,6 @@
-Copying tests/vm/page-merge-mm into /tmp/TKQbCgdzUs.dsk...
-Copying tests/vm/child-qsort-mm into /tmp/TKQbCgdzUs.dsk...
-Writing command line to /tmp/6GII5IxVAw.dsk...
+Copying tests/vm/page-merge-mm into /tmp/XXjekPy5yi.dsk...
+Copying tests/vm/child-qsort-mm into /tmp/XXjekPy5yi.dsk...
+Writing command line to /tmp/sCLVKCFqHb.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put page-merge-mm put child-qsort-mm run page-merge-mm
@@ -30,18 +30,31 @@ Executing 'page-merge-mm':
 (page-merge-mm) wait for child 0
 child-qsort-mm: exit(80)
 child-qsort-mm: exit(80)
-Kernel PANIC at ../../threads/palloc.c:147 in palloc_free_multiple(): assertion `bitmap_all (pool->used_map, page_idx, page_cnt)' failed.
-Call stack: 0xc0131e54child-qsort-mm: exit(-1)
-IN USE? 0 
- [entry's tid: 10] while [current tid: 9]
-Kernel PANIC recursion at ../../vm/frame.c:224 in vm_frame_set().
-Timer: 19983 ticks
-Thread: 0 idle ticks, 418 kernel ticks, 19565 user ticks
+(page-merge-mm) wait for child 1
+child-qsort-mm: exit(80)
+(page-merge-mm) wait for child 2
+(page-merge-mm) wait for child 3
+child-qsort-mm: exit(80)
+child-qsort-mm: exit(80)
+(page-merge-mm) wait for child 4
+child-qsort-mm: exit(80)
+child-qsort-mm: exit(80)
+(page-merge-mm) wait for child 5
+(page-merge-mm) wait for child 6
+(page-merge-mm) wait for child 7
+child-qsort-mm: exit(80)
+(page-merge-mm) merge
+(page-merge-mm) verify
+(page-merge-mm) bad value 1 in byte 2571 (should be 0): FAILED
+page-merge-mm: exit(1)
+Execution of 'page-merge-mm' complete.
+Timer: 49507 ticks
+Thread: 0 idle ticks, 586 kernel ticks, 48924 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 2522 reads, 4844 writes
+hd0:1: 4830 reads, 6636 writes
 hd1:0: 225 reads, 0 writes
-hd1:1: 80 reads, 1320 writes
-Console: 1583 characters output
+hd1:1: 2680 reads, 3856 writes
+Console: 1832 characters output
 Keyboard: 0 keys pressed
-Exception: 532 page faults
+Exception: 895 page faults
 Powering off...
