@@ -17,6 +17,5 @@ Constant subroutine SIGVTALRM redefined at /home/20140496/pintos/src/utils//pint
 00000000000i[     ] using log file bochsout.txt
 ========================================================================
 Bochs is exiting with the following message:
-[     ] SIGNAL 2 caught
+[UNMP ] Shutdown port: shutdown requested
 ========================================================================
-Use of uninitialized value in numeric le (<=) at /home/20140496/pintos/src/utils//pintos line 769.

@@ -104,9 +104,10 @@ bool vm_frame_save (struct frt_entry *f){
   ASSERT (!f->in_use);
   ASSERT (!f->reclaiming);
   if (spte->status == ON_MMF){
+    acquire_filesys_lock ();	
 	if (pagedir_is_dirty (t->pagedir, spte->upage))
 	  vm_frame_save_file (spte);
-	
+	release_filesys_lock ();
 	goto saved;
   }
 

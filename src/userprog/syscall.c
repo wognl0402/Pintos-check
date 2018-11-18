@@ -264,7 +264,7 @@ static int syscall_read_ (struct intr_frame *f){
   char *buffer = * (char **) (f->esp+8);
   unsigned size = * (unsigned *) (f->esp+12);
   //printf("CHECK BUF\n");
-  acquire_filesys_lock ();
+  //acquire_filesys_lock ();
   /*
    * if (fd == 0)
 	goto std_in;
@@ -340,6 +340,7 @@ static int syscall_read_ (struct intr_frame *f){
   
   //printf("[%d]......TRYINg TO READ fd[%d]\n", thread_current ()->tid, fd);
   
+  acquire_filesys_lock ();
   //acquire_filesys_lock ();
   if (fd==0){
 	//acquire_filesys_lock ();
@@ -654,7 +655,7 @@ static int syscall_mmap_ (struct intr_frame *f){
   }
 
   //ASSERT (fd == 2);
-  int mapid = 0;
+  int mapid = 1;
   if (! list_empty (&t->mmf_list)){
 	mapid = list_entry (list_back (&t->mmf_list), struct mmf_desc, mmf_elem)->mapid + 1;
   }
@@ -691,11 +692,11 @@ bool munmap_ (int mapid){
   struct thread *t = thread_current ();
   int off = 0;
 
- // acquire_frt_lock ();
+  acquire_frt_lock ();
   for (off = 0 ; off < md->size ; off += PGSIZE){
 	vm_del_spt_mmf (t, md->addr + off);
   }
-  //release_frt_lock ();
+  release_frt_lock ();
   list_remove (&md->mmf_elem);
 
   file_close (md->file);

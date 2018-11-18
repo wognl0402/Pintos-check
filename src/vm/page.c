@@ -202,7 +202,7 @@ bool vm_spt_reclaim_mmf (struct hash *h, struct spt_entry *spte){
 	return false;
   }
   memset (kpage + spte->file.read_bytes, 0, spte->file.zero_bytes);
-
+  ASSERT (spte->file.read_bytes + spte->file.zero_bytes == PGSIZE);
   //P3-2
   
   if (!pagedir_set_page (t->pagedir, spte->upage, kpage, spte->file.writable)){
@@ -273,14 +273,14 @@ bool vm_spt_reclaim_file (struct hash *h, struct spt_entry *spte){
 }
 
 bool vm_del_spt_mmf (struct thread *t, void *upage){
-  acquire_frt_lock ();
+  //acquire_frt_lock ();
 
   struct spt_entry *spte = vm_get_spt_entry (&t->spt, upage);
   if (spte == NULL){
 	PANIC ("can't unmap - vm_del_spt_mmf");
   }
  
- 
+  ASSERT (spte->file.read_bytes + spte->file.zero_bytes == PGSIZE); 
   if (spte->is_in_disk){
 	ASSERT (spte->kpage != NULL);
 	if (pagedir_is_dirty (t->pagedir, spte->upage))
@@ -291,7 +291,7 @@ bool vm_del_spt_mmf (struct thread *t, void *upage){
   hash_delete (&t->spt, &spte->spt_elem);
 	
 //vm_frame_free_no_lock (kpage);
-  release_frt_lock ();
+  //release_frt_lock ();
   return true;
 }
 

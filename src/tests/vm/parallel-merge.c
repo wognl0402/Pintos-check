@@ -9,6 +9,7 @@
 #include "tests/arc4.h"
 #include "tests/lib.h"
 #include "tests/main.h"
+#include "tests/vm/qsort.c"
 
 #define CHUNK_SIZE (128 * 1024)
 #define CHUNK_CNT 8                             /* Number of chunks. */
@@ -76,6 +77,7 @@ sort_chunks (const char *subprocess, int exit_status)
       CHECK ((handle = open (fn)) > 1, "open \"%s\"", fn);
       read (handle, buf1 + CHUNK_SIZE * i, CHUNK_SIZE);
       close (handle);
+	  //ASSERT (is_sorted (buf1 + CHUNK_SIZE *i, CHUNK_SIZE));
       quiet = false;
     }
 }
@@ -130,11 +132,6 @@ verify (void)
     {
       while (histogram[hist_idx]-- > 0) 
         {
-		  
-		  if (buf_idx == 3562){
-			buf_idx ++;
-			continue;
-		  }
 		  
           if (buf2[buf_idx] != hist_idx)
             fail ("bad value %d in byte %zu (should be %d)", buf2[buf_idx], buf_idx, hist_idx);
