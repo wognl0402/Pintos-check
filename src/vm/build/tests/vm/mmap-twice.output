@@ -1,6 +1,6 @@
-Copying tests/vm/mmap-twice into /tmp/9kAIfpZnYD.dsk...
-Copying ../../tests/vm/sample.txt into /tmp/9kAIfpZnYD.dsk...
-Writing command line to /tmp/lEn3mKVYqv.dsk...
+Copying tests/vm/mmap-twice into /tmp/ARcw7ZIz9W.dsk...
+Copying ../../tests/vm/sample.txt into /tmp/ARcw7ZIz9W.dsk...
+Writing command line to /tmp/fE6hCy63uO.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put mmap-twice put sample.txt run mmap-twice
@@ -20,16 +20,30 @@ Executing 'mmap-twice':
 (mmap-twice) begin
 (mmap-twice) open "sample.txt" #0
 (mmap-twice) mmap "sample.txt" #0 at 0x10000000
-(mmap-twice) mmap "sample.txt" #0 at 0x10000000: FAILED
-mmap-twice: exit(1)
+(mmap-twice) open "sample.txt" #1
+(mmap-twice) mmap "sample.txt" #1 at 0x20000000
+(mmap-twice) compare mmap'd file 0 against data
+(mmap-twice) compare mmap'd file 1 against data
+(mmap-twice) end
+mmap-twice: exit(0)
 Execution of 'mmap-twice' complete.
-Timer: 372 ticks
-Thread: 0 idle ticks, 305 kernel ticks, 73 user ticks
+Timer: 408 ticks
+Thread: 0 idle ticks, 301 kernel ticks, 113 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 98 reads, 230 writes
+hd0:1: 105 reads, 230 writes
 hd1:0: 110 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1102 characters output
+CKernel PANIC at ../../threads/palloc.c:147 in palloc_free_multiple(): assertion `bitmap_all (pool->used_map, page_idx, page_cnt)' failed.
+Call stack: 0xc011fe54onsole: 1243 characters output
+mmap-twice: exit(-1)
+Kernel PANIC recursion at ../../filesys/inode.c:335 in inode_allow_write().
+Timer: 468 ticks
+Thread: 0 idle ticks, 348 kernel ticks, 120 user ticks
+hd0:0: 0 reads, 0 writes
+hd0:1: 105 reads, 230 writes
+hd1:0: 110 reads, 0 writes
+hd1:1: 0 reads, 0 writes
+Console: 1710 characters output
 Keyboard: 0 keys pressed
-Exception: 5 page faults
+Exception: 8 page faults
 Powering off...

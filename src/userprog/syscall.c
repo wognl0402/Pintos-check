@@ -25,6 +25,7 @@ static void syscall_handler (struct intr_frame *);
 static void valid_usrptr (const void *uaddr);
 void valid_multiple (int *esp, int num);
 struct file_desc *fd_find (int fd);
+struct mmf_desc *mmf_find (int mapid);
 
 static int syscall_halt_ (struct intr_frame *f){
   power_off ();
@@ -624,22 +625,123 @@ static int syscall_mmap_ (struct intr_frame *f){
   if (temp == NULL || temp->file == NULL){
 	goto failed;
   }
-  struct file *file = file_reopen (temp->file);
-  if (file_length (file) == 0)
+  //struct file *file = file_reopen (temp->file);
+  int len = 0;
+  if ((len = file_length (temp->file)) == 0)
 	goto failed;
 
+  struct thread *t = thread_current ();
+  int off = 0;
+  for (off = 0; off < len; off += PGSIZE){
+	if (vm_is_in_spt (&t->spt, addr+off))
+	  goto failed;
+  }
+
+  struct file *file = file_reopen (temp->file);
+
+  for (off = 0; off < len; off += PGSIZE){
+	uint32_t read_bytes;
+	uint32_t zero_bytes;
+	if (off + PGSIZE < len)
+	  read_bytes = PGSIZE;
+	else
+	  read_bytes = len - off;
+
+	zero_bytes = PGSIZE - read_bytes;
+
+	vm_put_spt_mmf (file, off, addr+off,  read_bytes, zero_bytes, true);
+  }
+
+  //ASSERT (fd == 2);
+  int mapid = 0;
+  if (! list_empty (&t->mmf_list)){
+	mapid = list_entry (list_back (&t->mmf_list), struct mmf_desc, mmf_elem)->mapid + 1;
+  }
+  struct mmf_desc *md;
+  md = malloc (sizeof *md);
+  md->mapid = mapid;
+  md->file = file;
+  md->addr = addr;
+  md->size = len;
+
+  list_push_back (&t->mmf_list, &md->mmf_elem);
+  release_filesys_lock ();
+  f->eax = mapid;
+  //printf( " mmap with fd: %d, mapid: %d \n", fd, f->eax);
+  return 0;	
+	//goto failed;
+  
 
 
 failed:
-
+  //PANIC("mmap failed");
   release_filesys_lock ();
-  f->eax = -1;
+  f->eax = MAP_FAILED;
   return 0;
 }
+bool munmap_ (int mapid){
 
+  acquire_filesys_lock ();
 
+  struct mmf_desc *md = mmf_find (mapid);
+  if (md == NULL)
+	goto failing;
+
+  struct thread *t = thread_current ();
+  int off = 0;
+  for (off = 0 ; off < md->size ; off += PGSIZE){
+	vm_del_spt_mmf (t, (md->addr) + off);
+  }
+
+  file_close (md->file);
+  list_remove (&md->mmf_elem);
+  free (md);
+
+  release_filesys_lock ();
+  //f->eax = 1;
+  return true;
+
+failing:
+ 
+  //f->eax = 0; 
+  release_filesys_lock ();
+  return false;
+}
 static int syscall_munmap_ (struct intr_frame *f){
-  return -1;
+  valid_multiple (f->esp, 1);
+  int mapid = * (int *) (f->esp+4);
+  
+  f->eax = munmap_ (mapid);
+  return 0;
+
+  
+  /*
+  acquire_filesys_lock ();
+
+  struct mmf_desc *md = mmf_find (mapid);
+  if (md == NULL)
+	goto failing;
+
+  struct thread *t = thread_current ();
+  int off = 0;
+  for (off = 0 ; off < md->size ; off += PGISZE){
+	vm_del_spt_mmf (t, (md->addr) + off);
+  }
+
+  file_close (md->file)
+  list_remove (&md->mmf_elem);
+  free (md);
+
+  release_filesys_lock ();
+  f->eax = 1;
+  return 0;
+
+failing:
+ 
+  f->eax = 0; 
+  release_filesys_lock ();
+  return 0;
+  */
 }
 
 
@@ -800,4 +902,18 @@ struct file_desc *fd_find (int fd){
 
 }
 
-//struct mmf_desc *mmf_find (struct thread *t, mmapid_t mid)
+struct mmf_desc *mmf_find (int mid){
+  struct list_elem *e;
+  struct thread *t = thread_current ();
+  struct mmf_desc *md;
+  for ( e = list_begin (&t->mmf_list); e != list_end (&t->mmf_list); e = list_next (e)){
+	md = list_entry (e, struct mmf_desc, mmf_elem);
+	if (md->mapid == mid){
+	  return md;
+	}
+	
+	//return md;
+  }
+  return NULL;
+}
+  

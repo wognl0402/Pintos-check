@@ -1,5 +1,5 @@
-Copying tests/vm/mmap-write into /tmp/k6dtcCnI_U.dsk...
-Writing command line to /tmp/mA061KqD5b.dsk...
+Copying tests/vm/mmap-write into /tmp/LOm9eUC6ls.dsk...
+Writing command line to /tmp/BOU2hYinpH.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put mmap-write run mmap-write
@@ -19,16 +19,554 @@ Executing 'mmap-write':
 (mmap-write) create "sample.txt"
 (mmap-write) open "sample.txt"
 (mmap-write) mmap "sample.txt"
-(mmap-write) mmap "sample.txt": FAILED
-mmap-write: exit(1)
+(mmap-write) compare read data against written data
+(mmap-write) end
+mmap-write: exit(0)
 Execution of 'mmap-write' complete.
-Timer: 364 ticks
-Thread: 0 idle ticks, 274 kernel ticks, 96 user ticks
+Timer: 384 ticks
+Thread: 0 idle ticks, 274 kernel ticks, 116 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 94 reads, 228 writes
-hd1:0: 107 reads, 0 writes
+hKernel PANIC at ../../threads/palloc.c:147 in palloc_free_multiple(): assertion `bitmap_all (pool->used_map, page_idx, page_cnt)' failed.
+Call stack: 0xc011fe54d0:1: 99 reads, 230 writes
+hmmap-write: exit(-1)
+Kernel PANIC recursion at ../../filesys/inode.c:335 in inode_allow_write().
+d1:0: 107 reads, 0 writes
+mmap-write: exit(-1)
 hd1:1: 0 reads, 0 writes
-Console: 1038 characters output
-Keyboard: 0 keys pressed
-Exception: 5 page faults
-Powering off...
+Consommap-write: exit(-1)
+mmap-le: 1347 characters output
+Kwrite: exit(-1)
+mmap-write:eyboard: 0 keys pressed
+Except exit(-1)
+mmap-wKernel command line: -q -f put mmap-write run mmap-write
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-write' into the file system...
+Executing 'mmap-write':
+(mmap-write) begin
+(mmap-write) create "sample.txt"
+(mmap-write) open "sample.txt"
+(mmap-write) mmap "sample.txt"
+(mmap-write) compare read data against written data
+(mmap-write) end
+mmap-write: exit(0)
+Execution of 'mmap-write' complete.
+Timer: 384 ticks
+Thread: 0 idle ticks, 274 kernel ticks, 116 user ticks
+hd0:0: 0 reads, 0 writes
+hKernel PANIC at ../../threads/palloc.c:147 in palloc_free_multiple(): assertion `bitmap_all (pool->used_map, page_idx, page_cnt)' failed.
+Call stack: 0xc011fe54d0:1: 99 reads, 230 writes
+hmmap-write: exit(-1)
+Kernel PANIC recursion at ../../filesys/inode.c:335 in inode_allow_write().
+d1:0: 107 reads, 0 writes
+mmap-write: exit(-1)
+hd1:1: 0 reads, 0 writes
+Consommap-write: exit(-1)
+mmap-le: 1347 characters output
+Kwrite: exit(-1)
+mmap-write:eyboard: 0 keys pressed
+Except exit(-1)
+mmap-wKernel command line: -q -f put mmap-write run mmap-write
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-write' into the file system...
+Executing 'mmap-write':
+(mmap-write) begin
+(mmap-write) create "sample.txt"
+(mmap-write) open "sample.txt"
+(mmap-write) mmap "sample.txt"
+(mmap-write) compare read data against written data
+(mmap-write) end
+mmap-write: exit(0)
+Execution of 'mmap-write' complete.
+Timer: 384 ticks
+Thread: 0 idle ticks, 274 kernel ticks, 116 user ticks
+hd0:0: 0 reads, 0 writes
+hKernel PANIC at ../../threads/palloc.c:147 in palloc_free_multiple(): assertion `bitmap_all (pool->used_map, page_idx, page_cnt)' failed.
+Call stack: 0xc011fe54d0:1: 99 reads, 230 writes
+hmmap-write: exit(-1)
+Kernel PANIC recursion at ../../filesys/inode.c:335 in inode_allow_write().
+d1:0: 107 reads, 0 writes
+mmap-write: exit(-1)
+hd1:1: 0 reads, 0 writes
+Consommap-write: exit(-1)
+mmap-le: 1347 characters output
+Kwrite: exit(-1)
+mmap-write:eyboard: 0 keys pressed
+Except exit(-1)
+mmap-wKernel command line: -q -f put mmap-write run mmap-write
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-write' into the file system...
+Executing 'mmap-write':
+(mmap-write) begin
+(mmap-write) create "sample.txt"
+(mmap-write) open "sample.txt"
+(mmap-write) mmap "sample.txt"
+(mmap-write) compare read data against written data
+(mmap-write) end
+mmap-write: exit(0)
+Execution of 'mmap-write' complete.
+Timer: 384 ticks
+Thread: 0 idle ticks, 274 kernel ticks, 116 user ticks
+hd0:0: 0 reads, 0 writes
+hKernel PANIC at ../../threads/palloc.c:147 in palloc_free_multiple(): assertion `bitmap_all (pool->used_map, page_idx, page_cnt)' failed.
+Call stack: 0xc011fe54d0:1: 99 reads, 230 writes
+hmmap-write: exit(-1)
+Kernel PANIC recursion at ../../filesys/inode.c:335 in inode_allow_write().
+d1:0: 107 reads, 0 writes
+mmap-write: exit(-1)
+hd1:1: 0 reads, 0 writes
+Consommap-write: exit(-1)
+mmap-le: 1347 characters output
+Kwrite: exit(-1)
+mmap-write:eyboard: 0 keys pressed
+Except exit(-1)
+mmap-wKernel command line: -q -f put mmap-write run mmap-write
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-write' into the file system...
+Executing 'mmap-write':
+(mmap-write) begin
+(mmap-write) create "sample.txt"
+(mmap-write) open "sample.txt"
+(mmap-write) mmap "sample.txt"
+(mmap-write) compare read data against written data
+(mmap-write) end
+mmap-write: exit(0)
+Execution of 'mmap-write' complete.
+Timer: 384 ticks
+Thread: 0 idle ticks, 274 kernel ticks, 116 user ticks
+hd0:0: 0 reads, 0 writes
+hKernel PANIC at ../../threads/palloc.c:147 in palloc_free_multiple(): assertion `bitmap_all (pool->used_map, page_idx, page_cnt)' failed.
+Call stack: 0xc011fe54d0:1: 99 reads, 230 writes
+hmmap-write: exit(-1)
+Kernel PANIC recursion at ../../filesys/inode.c:335 in inode_allow_write().
+d1:0: 107 reads, 0 writes
+mmap-write: exit(-1)
+hd1:1: 0 reads, 0 writes
+Consommap-write: exit(-1)
+mmap-le: 1347 characters output
+Kwrite: exit(-1)
+mmap-write:eyboard: 0 keys pressed
+Except exit(-1)
+mmap-wKernel command line: -q -f put mmap-write run mmap-write
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-write' into the file system...
+Executing 'mmap-write':
+(mmap-write) begin
+(mmap-write) create "sample.txt"
+(mmap-write) open "sample.txt"
+(mmap-write) mmap "sample.txt"
+(mmap-write) compare read data against written data
+(mmap-write) end
+mmap-write: exit(0)
+Execution of 'mmap-write' complete.
+Timer: 384 ticks
+Thread: 0 idle ticks, 274 kernel ticks, 116 user ticks
+hd0:0: 0 reads, 0 writes
+hKernel PANIC at ../../threads/palloc.c:147 in palloc_free_multiple(): assertion `bitmap_all (pool->used_map, page_idx, page_cnt)' failed.
+Call stack: 0xc011fe54d0:1: 99 reads, 230 writes
+hmmap-write: exit(-1)
+Kernel PANIC recursion at ../../filesys/inode.c:335 in inode_allow_write().
+d1:0: 107 reads, 0 writes
+mmap-write: exit(-1)
+hd1:1: 0 reads, 0 writes
+Consommap-write: exit(-1)
+mmap-le: 1347 characters output
+Kwrite: exit(-1)
+mmap-write:eyboard: 0 keys pressed
+Except exit(-1)
+mmap-wKernel command line: -q -f put mmap-write run mmap-write
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-write' into the file system...
+Executing 'mmap-write':
+(mmap-write) begin
+(mmap-write) create "sample.txt"
+(mmap-write) open "sample.txt"
+(mmap-write) mmap "sample.txt"
+(mmap-write) compare read data against written data
+(mmap-write) end
+mmap-write: exit(0)
+Execution of 'mmap-write' complete.
+Timer: 384 ticks
+Thread: 0 idle ticks, 274 kernel ticks, 116 user ticks
+hd0:0: 0 reads, 0 writes
+hKernel PANIC at ../../threads/palloc.c:147 in palloc_free_multiple(): assertion `bitmap_all (pool->used_map, page_idx, page_cnt)' failed.
+Call stack: 0xc011fe54d0:1: 99 reads, 230 writes
+hmmap-write: exit(-1)
+Kernel PANIC recursion at ../../filesys/inode.c:335 in inode_allow_write().
+d1:0: 107 reads, 0 writes
+mmap-write: exit(-1)
+hd1:1: 0 reads, 0 writes
+Consommap-write: exit(-1)
+mmap-le: 1347 characters output
+Kwrite: exit(-1)
+mmap-write:eyboard: 0 keys pressed
+Except exit(-1)
+mmap-wKernel command line: -q -f put mmap-write run mmap-write
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-write' into the file system...
+Executing 'mmap-write':
+(mmap-write) begin
+(mmap-write) create "sample.txt"
+(mmap-write) open "sample.txt"
+(mmap-write) mmap "sample.txt"
+(mmap-write) compare read data against written data
+(mmap-write) end
+mmap-write: exit(0)
+Execution of 'mmap-write' complete.
+Timer: 384 ticks
+Thread: 0 idle ticks, 274 kernel ticks, 116 user ticks
+hd0:0: 0 reads, 0 writes
+hKernel PANIC at ../../threads/palloc.c:147 in palloc_free_multiple(): assertion `bitmap_all (pool->used_map, page_idx, page_cnt)' failed.
+Call stack: 0xc011fe54d0:1: 99 reads, 230 writes
+hmmap-write: exit(-1)
+Kernel PANIC recursion at ../../filesys/inode.c:335 in inode_allow_write().
+d1:0: 107 reads, 0 writes
+mmap-write: exit(-1)
+hd1:1: 0 reads, 0 writes
+Consommap-write: exit(-1)
+mmap-le: 1347 characters output
+Kwrite: exit(-1)
+mmap-write:eyboard: 0 keys pressed
+Except exit(-1)
+mmap-wKernel command line: -q -f put mmap-write run mmap-write
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-write' into the file system...
+Executing 'mmap-write':
+(mmap-write) begin
+(mmap-write) create "sample.txt"
+(mmap-write) open "sample.txt"
+(mmap-write) mmap "sample.txt"
+(mmap-write) compare read data against written data
+(mmap-write) end
+mmap-write: exit(0)
+Execution of 'mmap-write' complete.
+Timer: 384 ticks
+Thread: 0 idle ticks, 274 kernel ticks, 116 user ticks
+hd0:0: 0 reads, 0 writes
+hKernel PANIC at ../../threads/palloc.c:147 in palloc_free_multiple(): assertion `bitmap_all (pool->used_map, page_idx, page_cnt)' failed.
+Call stack: 0xc011fe54d0:1: 99 reads, 230 writes
+hmmap-write: exit(-1)
+Kernel PANIC recursion at ../../filesys/inode.c:335 in inode_allow_write().
+d1:0: 107 reads, 0 writes
+mmap-write: exit(-1)
+hd1:1: 0 reads, 0 writes
+Consommap-write: exit(-1)
+mmap-le: 1347 characters output
+Kwrite: exit(-1)
+mmap-write:eyboard: 0 keys pressed
+Except exit(-1)
+mmap-wKernel command line: -q -f put mmap-write run mmap-write
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-write' into the file system...
+Executing 'mmap-write':
+(mmap-write) begin
+(mmap-write) create "sample.txt"
+(mmap-write) open "sample.txt"
+(mmap-write) mmap "sample.txt"
+(mmap-write) compare read data against written data
+(mmap-write) end
+mmap-write: exit(0)
+Execution of 'mmap-write' complete.
+Timer: 384 ticks
+Thread: 0 idle ticks, 274 kernel ticks, 116 user ticks
+hd0:0: 0 reads, 0 writes
+hKernel PANIC at ../../threads/palloc.c:147 in palloc_free_multiple(): assertion `bitmap_all (pool->used_map, page_idx, page_cnt)' failed.
+Call stack: 0xc011fe54d0:1: 99 reads, 230 writes
+hmmap-write: exit(-1)
+Kernel PANIC recursion at ../../filesys/inode.c:335 in inode_allow_write().
+d1:0: 107 reads, 0 writes
+mmap-write: exit(-1)
+hd1:1: 0 reads, 0 writes
+Consommap-write: exit(-1)
+mmap-le: 1347 characters output
+Kwrite: exit(-1)
+mmap-write:eyboard: 0 keys pressed
+Except exit(-1)
+mmap-wKernel command line: -q -f put mmap-write run mmap-write
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-write' into the file system...
+Executing 'mmap-write':
+(mmap-write) begin
+(mmap-write) create "sample.txt"
+(mmap-write) open "sample.txt"
+(mmap-write) mmap "sample.txt"
+(mmap-write) compare read data against written data
+(mmap-write) end
+mmap-write: exit(0)
+Execution of 'mmap-write' complete.
+Timer: 384 ticks
+Thread: 0 idle ticks, 274 kernel ticks, 116 user ticks
+hd0:0: 0 reads, 0 writes
+hKernel PANIC at ../../threads/palloc.c:147 in palloc_free_multiple(): assertion `bitmap_all (pool->used_map, page_idx, page_cnt)' failed.
+Call stack: 0xc011fe54d0:1: 99 reads, 230 writes
+hmmap-write: exit(-1)
+Kernel PANIC recursion at ../../filesys/inode.c:335 in inode_allow_write().
+d1:0: 107 reads, 0 writes
+mmap-write: exit(-1)
+hd1:1: 0 reads, 0 writes
+Consommap-write: exit(-1)
+mmap-le: 1347 characters output
+Kwrite: exit(-1)
+mmap-write:eyboard: 0 keys pressed
+Except exit(-1)
+mmap-wKernel command line: -q -f put mmap-write run mmap-write
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-write' into the file system...
+Executing 'mmap-write':
+(mmap-write) begin
+(mmap-write) create "sample.txt"
+(mmap-write) open "sample.txt"
+(mmap-write) mmap "sample.txt"
+(mmap-write) compare read data against written data
+(mmap-write) end
+mmap-write: exit(0)
+Execution of 'mmap-write' complete.
+Timer: 384 ticks
+Thread: 0 idle ticks, 274 kernel ticks, 116 user ticks
+hd0:0: 0 reads, 0 writes
+hKernel PANIC at ../../threads/palloc.c:147 in palloc_free_multiple(): assertion `bitmap_all (pool->used_map, page_idx, page_cnt)' failed.
+Call stack: 0xc011fe54d0:1: 99 reads, 230 writes
+hmmap-write: exit(-1)
+Kernel PANIC recursion at ../../filesys/inode.c:335 in inode_allow_write().
+d1:0: 107 reads, 0 writes
+mmap-write: exit(-1)
+hd1:1: 0 reads, 0 writes
+Consommap-write: exit(-1)
+mmap-le: 1347 characters output
+Kwrite: exit(-1)
+mmap-write:eyboard: 0 keys pressed
+Except exit(-1)
+mmap-wKernel command line: -q -f put mmap-write run mmap-write
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-write' into the file system...
+Executing 'mmap-write':
+(mmap-write) begin
+(mmap-write) create "sample.txt"
+(mmap-write) open "sample.txt"
+(mmap-write) mmap "sample.txt"
+(mmap-write) compare read data against written data
+(mmap-write) end
+mmap-write: exit(0)
+Execution of 'mmap-write' complete.
+Timer: 384 ticks
+Thread: 0 idle ticks, 274 kernel ticks, 116 user ticks
+hd0:0: 0 reads, 0 writes
+hKernel PANIC at ../../threads/palloc.c:147 in palloc_free_multiple(): assertion `bitmap_all (pool->used_map, page_idx, page_cnt)' failed.
+Call stack: 0xc011fe54d0:1: 99 reads, 230 writes
+hmmap-write: exit(-1)
+Kernel PANIC recursion at ../../filesys/inode.c:335 in inode_allow_write().
+d1:0: 107 reads, 0 writes
+mmap-write: exit(-1)
+hd1:1: 0 reads, 0 writes
+Consommap-write: exit(-1)
+mmap-le: 1347 characters output
+Kwrite: exit(-1)
+mmap-write:eyboard: 0 keys pressed
+Except exit(-1)
+mmap-wKernel command line: -q -f put mmap-write run mmap-write
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-write' into the file system...
+Executing 'mmap-write':
+(mmap-write) begin
+(mmap-write) create "sample.txt"
+(mmap-write) open "sample.txt"
+(mmap-write) mmap "sample.txt"
+(mmap-write) compare read data against written data
+(mmap-write) end
+mmap-write: exit(0)
+Execution of 'mmap-write' complete.
+Timer: 384 ticks
+Thread: 0 idle ticks, 274 kernel ticks, 116 user ticks
+hd0:0: 0 reads, 0 writes
+hKernel PANIC at ../../threads/palloc.c:147 in palloc_free_multiple(): assertion `bitmap_all (pool->used_map, page_idx, page_cnt)' failed.
+Call stack: 0xc011fe54d0:1: 99 reads, 230 writes
+hmmap-write: exit(-1)
+Kernel PANIC recursion at ../../filesys/inode.c:335 in inode_allow_write().
+d1:0: 107 reads, 0 writes
+mmap-write: exit(-1)
+hd1:1: 0 reads, 0 writes
+Consommap-write: exit(-1)
+mmap-le: 1347 characters output
+Kwrite: exit(-1)
+mmap-write:eyboard: 0 keys pressed
+Except exit(-1)
+mmap-wKernel command line: -q -f put mmap-write run mmap-write
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-write' into the file system...
+Executing 'mmap-write':
+(mmap-write) begin
+(mmap-write) create "sample.txt"
+(mmap-write) open "sample.txt"
+(mmap-write) mmap "sample.txt"
+(mmap-write) compare read data against written data
+(mmap-write) end
+mmap-write: exit(0)
+Execution of 'mmap-write' complete.
+Timer: 384 ticks
+Thread: 0 idle ticks, 274 kernel ticks, 116 user ticks
+hd0:0: 0 reads, 0 writes
+hKernel PANIC at ../../threads/palloc.c:147 in palloc_free_multiple(): assertion `bitmap_all (pool->used_map, page_idx, page_cnt)' failed.
+Call stack: 0xc011fe54d0:1: 99 reads, 230 writes
+hmmap-write: exit(-1)
+Kernel PANIC recursion at ../../filesys/inode.c:335 in inode_allow_write().
+d1:0: 107 reads, 0 writes
+mmap-write: exit(-1)
+hd1:1: 0 reads, 0 writes
+Consommap-write: exit(-1)
+mmap-le: 1347 characters output
+Kwrite: exit(-1)
+mmap-write:eyboard: 0 keys pressed
+Except exit(-1)
+mmap-wKernel command line: -q -f put mmap-write run mmap-write
+Pintos booting with 4,096 kB RAM...
+373 pages available in kernel pool.
+372 pages available in user pool.
+Calibrating timer...  204,600 loops/s.
+hd0:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00011"
+hd0:1: detected 4,032 sector (1 MB) disk, model "Generic 1234", serial "BXHD00012"
+hd1:0: detected 1,008 sector (504 kB) disk, model "Generic 1234", serial "BXHD00021"
+hd1:1: detected 8,064 sector (3 MB) disk, model "Generic 1234", serial "BXHD00022"
+Formatting file system...done.
+Boot complete.
+Putting 'mmap-write' into the file system...
+Executing 'mmap-write':
+(mmap-write) begin
+(mmap-write) create "sample.txt"
+(mmap-write) open "sample.txt"
+(mmap-write) mmap "sample.txt"
+(mmap-write) compare read data against written data
+(mmap-write) end
+mmap-write: exit(0)
+Execution of 'mmap-write' complete.
+Timer: 384 ticks
+Thread: 0 idle ticks, 274 kernel ticks, 116 user ticks
+hd0:0: 0 reads, 0 writes
+hKernel PANIC at ../../threads/palloc.c:147 in palloc_free_multiple(): assertion `bitmap_all (pool->used_map, page_idx, page_cnt)' failed.
+Call stack: 0xc011fe54d0:1: 99 reads, 230 writes
+hmmap-write: exit(-1)
+Kernel PANIC recursion at ../../filesys/inodSimulation terminated due to kernel panic.

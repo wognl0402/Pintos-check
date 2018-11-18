@@ -29,6 +29,9 @@ void vm_frt_init (void);
 void *vm_frame_alloc (enum palloc_flags);
 
 bool vm_frame_save (struct frt_entry *);
+bool vm_frame_save_swap (struct frt_entry *);
+bool vm_frame_save_file (struct spt_entry *);
+
 struct frt_entry *vm_frame_evict (void);
 struct frt_entry *vm_evict_SC (void);
 

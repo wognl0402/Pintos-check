@@ -244,6 +244,14 @@ process_exit (void)
   /* Destroy the current process's page directory and switch back
      to the kernel-only page directory. */
 #ifdef VM
+  while (!list_empty (&curr->mmf_list)){
+	struct list_elem *e = list_begin (&curr->mmf_list);
+	struct mmf_desc *md = list_entry (e, struct mmf_desc, mmf_elem);
+	if (!munmap_ (md->mapid))
+	  PANIC ("can't close mmf on process_exit ()");
+
+  }
+
   vm_spt_destroy (&curr->spt);
   //free (&curr->spt);
   //curr->spt= NULL;

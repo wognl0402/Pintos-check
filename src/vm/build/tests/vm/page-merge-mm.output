@@ -1,6 +1,6 @@
-Copying tests/vm/page-merge-mm into /tmp/OP8kXdq2og.dsk...
-Copying tests/vm/child-qsort-mm into /tmp/OP8kXdq2og.dsk...
-Writing command line to /tmp/f1B6jSnoGz.dsk...
+Copying tests/vm/page-merge-mm into /tmp/TKQbCgdzUs.dsk...
+Copying tests/vm/child-qsort-mm into /tmp/TKQbCgdzUs.dsk...
+Writing command line to /tmp/6GII5IxVAw.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put page-merge-mm put child-qsort-mm run page-merge-mm
@@ -21,37 +21,27 @@ Executing 'page-merge-mm':
 (page-merge-mm) init
 (page-merge-mm) sort chunk 0
 (page-merge-mm) sort chunk 1
-(child-qsort-mm) mmap "buf0": FAILED
-child-qsort-mm: exit(1)
 (page-merge-mm) sort chunk 2
-(child-qsort-mm) mmap "buf1": FAILED
-child-qsort-mm: exit(1)
 (page-merge-mm) sort chunk 3
 (page-merge-mm) sort chunk 4
-(child-qsort-mm) mmap "buf2": FAILED
-child-qsort-mm: exit(1)
 (page-merge-mm) sort chunk 5
-(child-qsort-mm) mmap "buf3": FAILED
-child-qsort-mm: exit(1)
-(child-qsort-mm) mmap "buf4": FAILED
-child-qsort-mm: exit(1)
 (page-merge-mm) sort chunk 6
-(child-qsort-mm) mmap "buf5": FAILED
-child-qsort-mm: exit(1)
 (page-merge-mm) sort chunk 7
-(child-qsort-mm) mmap "buf6": FAILED
-child-qsort-mm: exit(1)
 (page-merge-mm) wait for child 0
-(page-merge-mm) wait for child 0: FAILED
-page-merge-mm: exit(1)
-Execution of 'page-merge-mm' complete.
-Timer: 6659 ticks
-Thread: 0 idle ticks, 538 kernel ticks, 6132 user ticks
+child-qsort-mm: exit(80)
+child-qsort-mm: exit(80)
+Kernel PANIC at ../../threads/palloc.c:147 in palloc_free_multiple(): assertion `bitmap_all (pool->used_map, page_idx, page_cnt)' failed.
+Call stack: 0xc0131e54child-qsort-mm: exit(-1)
+IN USE? 0 
+ [entry's tid: 10] while [current tid: 9]
+Kernel PANIC recursion at ../../vm/frame.c:224 in vm_frame_set().
+Timer: 19983 ticks
+Thread: 0 idle ticks, 418 kernel ticks, 19565 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 713 reads, 4588 writes
+hd0:1: 2522 reads, 4844 writes
 hd1:0: 225 reads, 0 writes
-hd1:1: 0 reads, 0 writes
-Console: 1752 characters output
+hd1:1: 80 reads, 1320 writes
+Console: 1583 characters output
 Keyboard: 0 keys pressed
-Exception: 293 page faults
+Exception: 532 page faults
 Powering off...

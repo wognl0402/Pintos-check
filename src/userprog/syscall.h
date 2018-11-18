@@ -9,5 +9,5 @@
 
 void syscall_init (void);
 void exit_ (int status);
-
+bool munmap_ (int mapid);
 #endif /* userprog/syscall.h */

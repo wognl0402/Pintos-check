@@ -1,5 +1,5 @@
-Copying tests/vm/mmap-shuffle into /tmp/dfrC3ebIjv.dsk...
-Writing command line to /tmp/V1tRFFOf7Y.dsk...
+Copying tests/vm/mmap-shuffle into /tmp/CPNkcCuyzq.dsk...
+Writing command line to /tmp/FbD_eDuy2x.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put mmap-shuffle run mmap-shuffle
@@ -19,16 +19,27 @@ Executing 'mmap-shuffle':
 (mmap-shuffle) create "buffer"
 (mmap-shuffle) open "buffer"
 (mmap-shuffle) mmap "buffer"
-(mmap-shuffle) mmap "buffer": FAILED
-mmap-shuffle: exit(1)
+(mmap-shuffle) init: cksum=3115322833
+(mmap-shuffle) shuffle 0: cksum=1691062564
+(mmap-shuffle) shuffle 1: cksum=1973575879
+(mmap-shuffle) shuffle 2: cksum=1647619479
+(mmap-shuffle) shuffle 3: cksum=96566261
+(mmap-shuffle) shuffle 4: cksum=3885786467
+(mmap-shuffle) shuffle 5: cksum=3022003332
+(mmap-shuffle) shuffle 6: cksum=3614934266
+(mmap-shuffle) shuffle 7: cksum=2704001777
+(mmap-shuffle) shuffle 8: cksum=735775156
+(mmap-shuffle) shuffle 9: cksum=1864109763
+(mmap-shuffle) end
+mmap-shuffle: exit(0)
 Execution of 'mmap-shuffle' complete.
-Timer: 426 ticks
-Thread: 0 idle ticks, 280 kernel ticks, 149 user ticks
+Timer: 22770 ticks
+Thread: 0 idle ticks, 276 kernel ticks, 22497 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 87 reads, 496 writes
+hd0:1: 343 reads, 536 writes
 hd1:0: 114 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1045 characters output
+Console: 1497 characters output
 Keyboard: 0 keys pressed
-Exception: 4 page faults
+Exception: 36 page faults
 Powering off...

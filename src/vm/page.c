@@ -118,8 +118,34 @@ bool vm_put_spt_file (struct file *file, off_t ofs, uint8_t *upage, uint32_t rea
   }
 }
 bool vm_put_spt_mmf (struct file *file, off_t ofs, uint8_t *upage, uint32_t read_bytes, uint32_t zero_bytes, bool writable){
- 
-  return true;
+  struct thread *t = thread_current ();
+  struct spt_entry *spte;
+  spte = malloc (sizeof *spte);
+
+  if (spte == NULL){
+	PANIC ("vm_put_spt_mmf spte NULL error");
+  }
+
+  spte->upage = upage;
+  spte->kpage = NULL;
+  spte->swap_index = -1;
+  spte->status = ON_MMF;
+  spte->is_in_disk = false;
+  spte->writable = writable;
+
+  spte->file.file = file;
+  spte->file.ofs = ofs;
+  spte->file.read_bytes = read_bytes;
+  spte->file.zero_bytes = zero_bytes;
+  spte->file.writable = writable;
+
+  struct hash_elem *e = hash_insert (&t->spt, &spte->spt_elem);
+  if (e == NULL){
+	return true;
+  }else{
+	free (spte);
+	return false;
+  }
 }
 bool vm_spt_reclaim (struct hash *h, struct spt_entry *spte){
   if (spte->status == ON_FILE){
@@ -130,6 +156,10 @@ bool vm_spt_reclaim (struct hash *h, struct spt_entry *spte){
   }
 
   if (spte->status == ON_MMF){
+	//PANIC( "MMF retrieval");
+	if (!vm_spt_reclaim_mmf (h, spte)){
+	  PANIC ("Can't reclaim mmf");
+	}
 	goto done;
   }
 
@@ -141,7 +171,7 @@ bool vm_spt_reclaim (struct hash *h, struct spt_entry *spte){
 
 done:
   spte->is_in_disk = true;
-  
+  //printf("retrieval done\n");
   return true;
 }
 /*
@@ -153,8 +183,29 @@ void vm_spt_reclaim_done (struct hash *h, struct spt_entry *spte){
 }*/
 
 bool vm_spt_reclaim_mmf (struct hash *h, struct spt_entry *spte){
+  //void *kpage = vm_frame_alloc (PAL_USER);
+  struct thread *t = thread_current ();
+  file_seek (spte->file.file, spte->file.ofs);
   void *kpage = vm_frame_alloc (PAL_USER);
 
+  if (kpage == NULL){
+	PANIC ("Can't make kpage at vm_spt_reclaim_mmf");
+  }
+
+  if (file_read (spte->file.file, kpage, spte->file.read_bytes) 
+	  != (int) spte->file.read_bytes){
+	vm_frame_free (kpage);
+	return false;
+  }
+  memset (kpage + spte->file.read_bytes, 0, spte->file.zero_bytes);
+
+  if (!pagedir_set_page (t->pagedir, spte->upage, kpage, spte->file.writable)){
+	vm_frame_free (kpage);
+	return false;
+  }
+
+  spte->kpage =kpage;
+  //PANIC ("FINE");
   return true;
 }
 bool vm_spt_reclaim_swap (struct hash *h, struct spt_entry *spte){
@@ -207,13 +258,33 @@ bool vm_spt_reclaim_file (struct hash *h, struct spt_entry *spte){
   return true;
 }
 
+bool vm_del_spt_mmf (struct thread *t, void *upage){
+  acquire_frt_lock ();
+
+  struct spt_entry *spte = vm_get_spt_entry (&t->spt, upage);
+  if (spte == NULL){
+	PANIC ("can't unmap - vm_del_spt_mmf");
+  }
+  
+  if (spte->is_in_disk){
+	if (pagedir_is_dirty (t->pagedir, spte->upage))
+		vm_frame_save_file (spte);
+	vm_frame_free_no_lock (spte->kpage);
+    pagedir_clear_page (t->pagedir, spte->upage);
+  }
+  hash_delete (&t->spt, &spte->spt_elem);
+	
+//vm_frame_free_no_lock (kpage);
+  release_frt_lock ();
+  return true;
+}
 
 bool vm_set_swap (struct hash *h, void *upage, int swap_index){
   struct spt_entry *spte = vm_get_spt_entry (h, upage);
   if (spte == NULL)
 	return false;
 	//PANIC ("vm_set_swap: NO SUCH spt entry");
-  spte->kpage = NULL;
+  //spte->kpage = NULL;
   spte->status = ON_SWAP;
   spte->swap_index = swap_index;
   return true;
@@ -258,6 +329,7 @@ void vm_stack_grow (struct hash *h, void *fault_page){
   return;
   */
  }
+
 //struct hash_elem *vm_put_spt_entry (struct hash *h, void *upage){
 
 /* HASH INIT FUNC */

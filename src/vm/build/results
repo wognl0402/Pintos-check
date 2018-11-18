@@ -78,12 +78,12 @@ FAIL tests/vm/page-merge-mm
 pass tests/vm/page-shuffle
 FAIL tests/vm/mmap-read
 FAIL tests/vm/mmap-close
-FAIL tests/vm/mmap-unmap
-FAIL tests/vm/mmap-overlap
+pass tests/vm/mmap-unmap
+pass tests/vm/mmap-overlap
 FAIL tests/vm/mmap-twice
 FAIL tests/vm/mmap-write
 FAIL tests/vm/mmap-exit
-FAIL tests/vm/mmap-shuffle
+pass tests/vm/mmap-shuffle
 pass tests/vm/mmap-bad-fd
 FAIL tests/vm/mmap-clean
 FAIL tests/vm/mmap-inherit

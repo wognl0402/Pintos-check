@@ -1,6 +1,6 @@
-Copying tests/vm/mmap-exit into /tmp/t2SI7RCGcG.dsk...
-Copying tests/vm/child-mm-wrt into /tmp/t2SI7RCGcG.dsk...
-Writing command line to /tmp/ag3r3YPTdU.dsk...
+Copying tests/vm/mmap-exit into /tmp/t7WHtPDKRW.dsk...
+Copying tests/vm/child-mm-wrt into /tmp/t7WHtPDKRW.dsk...
+Writing command line to /tmp/_U9juCgyyJ.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put mmap-exit put child-mm-wrt run mmap-exit
@@ -22,18 +22,21 @@ Executing 'mmap-exit':
 (child-mm-wrt) create "sample.txt"
 (child-mm-wrt) open "sample.txt"
 (child-mm-wrt) mmap "sample.txt"
-(child-mm-wrt) mmap "sample.txt": FAILED
-child-mm-wrt: exit(1)
-(mmap-exit) wait for child (should return 0): FAILED
-mmap-exit: exit(1)
-Execution of 'mmap-exit' complete.
-Timer: 543 ticks
-Thread: 0 idle ticks, 400 kernel ticks, 154 user ticks
+(child-mm-wrt) end
+child-mm-wrt: exit(0)
+(mmap-exit) open "sample.txt" for verification
+(mmap-exit) Kernel PANIC at ../../threads/palloc.c:147 in palloc_free_multiple(): assertion `bitmap_all (pool->used_map, page_idx, page_cnt)' failed.
+Call stack: 0xc0125e54child-mmverified contents of "sample.txt"
+-wrt: exit(-1)
+(mmap-exit) close "sample.txt"
+Kernel PANIC recursion at ../../filesys/inode.c:335 in inode_allow_write().
+Timer: 564 ticks
+Thread: 0 idle ticks, 386 kernel ticks, 178 user ticks
 hd0:0: 0 reads, 0 writes
-hd0:1: 160 reads, 440 writes
+hd0:1: 170 reads, 442 writes
 hd1:0: 212 reads, 0 writes
 hd1:1: 0 reads, 0 writes
-Console: 1201 characters output
+Console: 1455 characters output
 Keyboard: 0 keys pressed
-Exception: 10 page faults
+Exception: 12 page faults
 Powering off...

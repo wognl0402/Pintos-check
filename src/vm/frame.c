@@ -97,7 +97,35 @@ void *vm_frame_alloc (enum palloc_flags flags){
   release_frt_lock ();
   return frame;
 }
+
 bool vm_frame_save (struct frt_entry *f){
+  struct thread *t = get_thread (f->tid);
+  struct spt_entry *spte = vm_get_spt_entry (&t->spt, f->upage);
+  if (spte->status == ON_MMF){
+	if (pagedir_is_dirty (t->pagedir, spte->upage)){
+	  vm_frame_save_file (spte);
+	}
+	goto saved;
+  }
+
+  if (!vm_frame_save_swap (f))
+	return false;
+  else
+	goto saved;
+
+saved:
+  spte->is_in_disk = false;
+  spte->kpage = NULL;
+  pagedir_clear_page (t->pagedir, f->upage);
+  vm_frame_free_no_lock (f->frame);
+  return true;
+}
+bool vm_frame_save_file (struct spt_entry *s){
+  file_seek (s->file.file, s->file.ofs);
+  file_write (s->file.file, s->upage, s->file.read_bytes);
+}
+
+bool vm_frame_save_swap (struct frt_entry *f){
   struct thread *t = get_thread (f->tid);
   ASSERT (t != NULL);
   //ASSERT (pg_ofs(f->upage) == 0); 
@@ -111,10 +139,10 @@ bool vm_frame_save (struct frt_entry *f){
 	printf("owner: %d, trier: %d\n", f->tid, thread_current ()->tid);
 	PANIC ("vm_frame_save - vm_set_swap: NO SUCH spt");
   }
-
+/*
   pagedir_clear_page (t->pagedir, f->upage);
   vm_frame_free_no_lock (f->frame);
-  
+  */
   return true;
 }
 struct frt_entry *vm_frame_evict (void){

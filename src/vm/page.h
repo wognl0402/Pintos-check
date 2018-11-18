@@ -67,6 +67,8 @@ bool vm_spt_reclaim_swap (struct hash *, struct spt_entry *);
 bool vm_spt_reclaim_file (struct hash *, struct spt_entry *);
 bool vm_spt_reclaim_mmf (struct hash *, struct spt_entry *);
 
+bool vm_del_spt_mmf (struct thread *t, void *upage);
+
 bool vm_set_swap (struct hash *, void *, int);
 void vm_stack_grow (struct hash *, void *);
 
