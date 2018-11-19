@@ -1,6 +1,6 @@
-Copying tests/filesys/base/syn-read into /tmp/NnD6VzyaAs.dsk...
-Copying tests/filesys/base/child-syn-read into /tmp/NnD6VzyaAs.dsk...
-Writing command line to /tmp/_vdAiSRsR6.dsk...
+Copying tests/filesys/base/syn-read into /tmp/cLPfjFSReq.dsk...
+Copying tests/filesys/base/child-syn-read into /tmp/cLPfjFSReq.dsk...
+Writing command line to /tmp/zga547HaZm.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put syn-read put child-syn-read run syn-read
@@ -33,19 +33,19 @@ Executing 'syn-read':
 (syn-read) exec child 9 of 10: "child-syn-read 8"
 (syn-read) exec child 10 of 10: "child-syn-read 9"
 child-syn-read: exit(2)
-child-syn-read: exit(3)
-child-syn-read: exit(5)
-child-syn-read: exit(6)
 child-syn-read: exit(9)
-child-syn-read: exit(8)
-child-syn-read: exit(7)
-child-syn-read: exit(1)
+child-syn-read: exit(6)
+child-syn-read: exit(4)
 child-syn-read: exit(0)
 (syn-read) wait for child 1 of 10 returned 0 (expected 0)
+child-syn-read: exit(7)
+child-syn-read: exit(8)
+child-syn-read: exit(1)
 (syn-read) wait for child 2 of 10 returned 1 (expected 1)
 (syn-read) wait for child 3 of 10 returned 2 (expected 2)
+child-syn-read: exit(3)
+child-syn-read: exit(5)
 (syn-read) wait for child 4 of 10 returned 3 (expected 3)
-child-syn-read: exit(4)
 (syn-read) wait for child 5 of 10 returned 4 (expected 4)
 (syn-read) wait for child 6 of 10 returned 5 (expected 5)
 (syn-read) wait for child 7 of 10 returned 6 (expected 6)
@@ -55,8 +55,8 @@ child-syn-read: exit(4)
 (syn-read) end
 syn-read: exit(0)
 Execution of 'syn-read' complete.
-Timer: 18231 ticks
-Thread: 0 idle ticks, 616 kernel ticks, 17622 user ticks
+Timer: 18141 ticks
+Thread: 0 idle ticks, 611 kernel ticks, 17541 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 10717 reads, 476 writes
 hd1:0: 229 reads, 0 writes

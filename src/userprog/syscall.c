@@ -341,9 +341,9 @@ static int syscall_read_ (struct intr_frame *f){
   //printf("[%d]......TRYINg TO READ fd[%d]\n", thread_current ()->tid, fd);
   
   //acquire_filesys_lock ();
-  //acquire_filesys_lock ();
+  acquire_filesys_lock ();
   if (fd==0){
-	acquire_filesys_lock ();
+	//acquire_filesys_lock ();
 	int i = 0;
 	while(i< (int) size){
 	  * (buffer + i) = input_getc();
@@ -366,11 +366,11 @@ static int syscall_read_ (struct intr_frame *f){
 	  if (fd==temp->fd){
 		if (temp->file == NULL){
 		  f->eax = -1;
-		  //release_filesys_lock ();
+		  release_filesys_lock ();
 		  goto finish;
 		  //return 0;
 		}
-		acquire_filesys_lock ();
+		//acquire_filesys_lock ();
 		//printf("read_attemp\n");
 		f->eax=file_read (temp->file, buffer, size);
 		//printf("read_done.....[size:%d], [f->eax:%d]\n", size, f->eax);

@@ -1,6 +1,6 @@
-Copying tests/vm/page-merge-stk into /tmp/DW8MY4A3tO.dsk...
-Copying tests/vm/child-qsort into /tmp/DW8MY4A3tO.dsk...
-Writing command line to /tmp/Y34TbXH1cn.dsk...
+Copying tests/vm/page-merge-stk into /tmp/nuHqfLVTIG.dsk...
+Copying tests/vm/child-qsort into /tmp/nuHqfLVTIG.dsk...
+Writing command line to /tmp/1faO3PCo6v.dsk...
 warning: can't find squish-pty, so terminal input will fail
 bochs -q
 Kernel command line: -q -f put page-merge-stk put child-qsort run page-merge-stk
@@ -27,8 +27,8 @@ Executing 'page-merge-stk':
 (page-merge-stk) sort chunk 5
 (page-merge-stk) sort chunk 6
 (page-merge-stk) sort chunk 7
-child-qsort: exit(72)
 (page-merge-stk) wait for child 0
+child-qsort: exit(72)
 child-qsort: exit(72)
 child-qsort: exit(72)
 (page-merge-stk) wait for child 1
@@ -39,8 +39,8 @@ child-qsort: exit(72)
 child-qsort: exit(72)
 child-qsort: exit(72)
 (page-merge-stk) wait for child 5
-child-qsort: exit(72)
 (page-merge-stk) wait for child 6
+child-qsort: exit(72)
 (page-merge-stk) wait for child 7
 child-qsort: exit(72)
 (page-merge-stk) merge
@@ -49,13 +49,13 @@ child-qsort: exit(72)
 (page-merge-stk) end
 page-merge-stk: exit(0)
 Execution of 'page-merge-stk' complete.
-Timer: 51618 ticks
-Thread: 0 idle ticks, 1129 kernel ticks, 50492 user ticks
+Timer: 51674 ticks
+Thread: 0 idle ticks, 1134 kernel ticks, 50543 user ticks
 hd0:0: 0 reads, 0 writes
 hd0:1: 4833 reads, 6648 writes
 hd1:0: 231 reads, 0 writes
-hd1:1: 2024 reads, 3184 writes
+hd1:1: 1984 reads, 3144 writes
 Console: 1831 characters output
 Keyboard: 0 keys pressed
-Exception: 617 page faults
+Exception: 625 page faults
 Powering off...
